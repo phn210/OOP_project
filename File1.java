@@ -1,4 +1,4 @@
-package bai_tap_lon;
+package pack1;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -13,28 +13,29 @@ import java.io.InputStreamReader;
 public class File1 {
 	public static String MoFile(String File) throws IOException  {
 		FileInputStream FileInput = null;
-		BufferedReader Reader = null;    //Khởi tạo đối tượng nhận và đọc file trong thư viện BufferedReader
-		
+		BufferedReader Reader = null;    //Khá»Ÿi táº¡o Ä‘á»‘i tÆ°á»£ng nháº­n vÃ  Ä‘á»�c file trong thÆ° viá»‡n BufferedReader
+		String line = null;
 		try {
 			FileInput = new FileInputStream(File);
 			Reader = new BufferedReader(new InputStreamReader(FileInput));
 			
-			String line = Reader.readLine();
+			line = Reader.readLine();
 			while (line != null) {
 				System.out.println(line);
 				line = Reader.readLine();
 			}
 		}catch(FileNotFoundException ex){
-			System.err.println("có lỗi xảy ra");
+			System.err.println("cÃ³ lá»—i xáº£y ra");
 		}
 		finally {
 			try {
 				FileInput.close();
 				Reader.close();
 			}catch(FileNotFoundException ex){
-				System.out.println("Lỗi");
+				System.out.println("Lá»—i");
 			}
 		}
+		
 		return line;
 	}
 }
