@@ -35,6 +35,7 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -54,6 +55,9 @@ public class Display1 extends JFrame {
 	private JTextField txtH4;
 	private JTextField txtH3;
 	private JTextField txtH5;
+	
+	public static String txtAllFile = null;
+	private static SanGiaoDich HOSE = null;
 	
 	/**
 	 * Launch the application.
@@ -147,8 +151,9 @@ public class Display1 extends JFrame {
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					String s = File.openFile(txtTenFile.getText());
-					txtKetQua.setText(s);
+					txtAllFile = File.openFile(txtTenFile.getText()); //txtAllFile lấy thông tin từ .csv
+					txtKetQua.setText(txtAllFile);
+					HOSE = new SanGiaoDich(txtAllFile); //HOSE lấy thong tin từ txtAllFile
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
