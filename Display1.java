@@ -151,9 +151,9 @@ public class Display1 extends JFrame {
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					txtAllFile = File.openFile(txtTenFile.getText()); //txtAllFile lấy thông tin từ .csv
+					txtAllFile = File.openFile(txtTenFile.getText()); //toàn bộ dữ liệu từ file .csv
 					txtKetQua.setText(txtAllFile);
-					HOSE = new SanGiaoDich(txtAllFile); //HOSE lấy thong tin từ txtAllFile
+					HOSE = new SanGiaoDich(txtAllFile,440); // co 440 loai co phieu tu file .csv
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
