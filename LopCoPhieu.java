@@ -1,4 +1,5 @@
 package bai_tap_lon;
+
 public class LopCoPhieu{
 	public String cK;
 	public float tC;
@@ -25,6 +26,7 @@ public class LopCoPhieu{
 	public float nNMua;
 	public float nNBan;
 	public float roomCon;
+	public float tongMua;
 	
 	public void ghiThongTinCoPhieu() { // ghi ra toan bo thong tin cua ma co phieu
 		String tt = this.cK + " ";
