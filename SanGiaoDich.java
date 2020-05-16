@@ -1,6 +1,4 @@
 package bai_tap_lon;
-
-
 import java.lang.String;
 
 public class SanGiaoDich{
@@ -159,8 +157,33 @@ public class SanGiaoDich{
 			coPhieu[i].nNMua = GetNum();
 			coPhieu[i].nNBan = GetNum();
 			coPhieu[i].roomCon = GetNum();
+			
+			coPhieu[i].tongMua = coPhieu[i].muaKL1 + coPhieu[i].muaKL2 + coPhieu[i].muaKL3;
 			//
 			//coPhieu[i].GhiThongTinCoPhieu();
 		}
+	}
+	
+	public void sortTongMua(int l,int r)
+	{
+		if (l>=r) return;
+		float key = coPhieu[ (l+r) / 2].tongMua;
+		int i=l;
+		int j=r;
+		while ( i<=j )
+		{
+			while (coPhieu[i].tongMua > key) i++;
+			while (coPhieu[j].tongMua < key) j--;
+			if (i<=j)
+			{
+                LopCoPhieu temp = coPhieu[i]; 
+                coPhieu[i] = coPhieu[j]; 
+                coPhieu[j] = temp; 			
+                i++;
+                j--;
+			}
+		}
+		sortTongMua(l , j);
+		sortTongMua(i,  r);
 	}
 }
