@@ -1,5 +1,4 @@
 package bai_tap_lon;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -57,7 +56,9 @@ public class Display1 extends JFrame {
 	private JTextField txtH5;
 	
 	public static String txtAllFile = null;
-	private static SanGiaoDich HOSE = null;
+	public static SanGiaoDich hOSE = null;
+	
+	
 	
 	/**
 	 * Launch the application.
@@ -151,9 +152,23 @@ public class Display1 extends JFrame {
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					
 					txtAllFile = File.openFile(txtTenFile.getText()); //toàn bộ dữ liệu từ file .csv
-					txtKetQua.setText(txtAllFile);
-					HOSE = new SanGiaoDich(txtAllFile,440); // co 440 loai co phieu tu file .csv
+					if (txtAllFile != null)
+					{
+						txtKetQua.setText(txtAllFile);
+						hOSE= new SanGiaoDich(txtAllFile,440); // co 440 loai co phieu tu file .csv
+
+						MauCau mauCau = new MauCau(hOSE);
+						mauCau.topMua();
+						mauCau.top1GD();
+						mauCau.top2GD();
+						mauCau.top3GD();
+						mauCau.gDNN();
+						mauCau.thanhKhoan();
+						mauCau.thanhKhoanLietKe();
+					}
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
