@@ -1,35 +1,113 @@
 package bai_tap_lon;
-import java.lang.String;
+import java.util.List;
+import java.util.ArrayList;
 
 public class SanGiaoDich{
-	public final String TENSAN = "HOSE";
-	public final String TENCHISO = "VNIndex";
-	public float diemChiSo;
-	public float diemTuongDoi;
-	public float diemTuyetDoi;
-	public float kLGD;
-	public float gTGD;
-	private String thongTin;
-	private int pointer = 0;
+	//attributes
+	private final String TENSAN = "HOSE";
+	private final String TENCHISO = "VNIndex";
+	private float diemChiSo;
+	private float diemTuongDoi;
+	private float diemTuyetDoi;
+	private int soMaTang;
+	private int soMaGiam;
+	private int soMaDung;
+	private long klgd;
+	private long gtdg;
+	private List<CoPhieu> dscp;
 	
-	public LopCoPhieu[] coPhieu = new LopCoPhieu[500];
-	public int soLoaiCoPhieu = 440;
-	
+	//constructors
 	public SanGiaoDich(){
-		this.thongTin = null;
-		this.SetVNIndex();
-		this.soLoaiCoPhieu = 0;
-		this.SetcoPhieu();
+		this.setDiemChiSo(800);
+		this.setDiemTuongDoi(15);
+		this.setDiemTuyetDoi(10);
+		this.setSoMaTang(300);
+		this.setSoMaGiam(300);
+		this.setSoMaDung(200);
+		this.setKlgd(1000000000);
+		this.setGtdg(1000000000);
+		this.dscp = new ArrayList<>();
 	}
 	
-	public SanGiaoDich(String txtAllFile,int SoLoai){
-		this.thongTin = txtAllFile;
-		this.SetVNIndex();
-		this.soLoaiCoPhieu = SoLoai;
-		this.SetcoPhieu();
+	public float getDiemChiSo() {
+		return diemChiSo;
+	}
+
+	public void setDiemChiSo(float diemChiSo) {
+		this.diemChiSo = diemChiSo;
+	}
+
+	public float getDiemTuongDoi() {
+		return diemTuongDoi;
+	}
+
+	public void setDiemTuongDoi(float diemTuongDoi) {
+		this.diemTuongDoi = diemTuongDoi;
+	}
+
+	public float getDiemTuyetDoi() {
+		return diemTuyetDoi;
+	}
+
+	public void setDiemTuyetDoi(float diemTuyetDoi) {
+		this.diemTuyetDoi = diemTuyetDoi;
+	}
+
+	public int getSoMaTang() {
+		return soMaTang;
+	}
+
+	public void setSoMaTang(int soMaTang) {
+		this.soMaTang = soMaTang;
+	}
+
+	public int getSoMaGiam() {
+		return soMaGiam;
+	}
+
+	public void setSoMaGiam(int soMaGiam) {
+		this.soMaGiam = soMaGiam;
+	}
+
+	public int getSoMaDung() {
+		return soMaDung;
+	}
+
+	public void setSoMaDung(int soMaDung) {
+		this.soMaDung = soMaDung;
+	}
+
+	public long getKlgd() {
+		return klgd;
+	}
+
+	public void setKlgd(long klgd) {
+		this.klgd = klgd;
+	}
+
+	public long getGtdg() {
+		return gtdg;
+	}
+
+	public void setGtdg(long gtdg) {
+		this.gtdg = gtdg;
 	}
 	
-	private float GetBigFloat() {
+	public List getDSCP() {
+		return this.dscp;
+	}
+	
+	public String getTENSAN() {
+		return TENSAN;
+	}
+
+	public String getTENCHISO() {
+		return TENCHISO;
+	}
+
+	
+	
+/*	private float getBigFloat() {
 		float res = 0;
 		
 		while(thongTin.charAt(pointer)<'0' || thongTin.charAt(pointer)>'9') pointer++;
@@ -50,7 +128,7 @@ public class SanGiaoDich{
 		return res;
 	}
 	
-	private float GetLong() {
+	private float getLong() {
 		float res = 0;
 		pointer++;
 		while (thongTin.charAt(pointer) != '"')
@@ -63,7 +141,7 @@ public class SanGiaoDich{
 		return res;
 	}
 	
-	private float GetNum() { // lay ra so dau tien sau vi tri pointer
+	private float getNum() { // lay ra so dau tien sau vi tri pointer
 		float res = 0;
 		int dau = 1; // dau am(-) hay duong
 		
@@ -73,7 +151,7 @@ public class SanGiaoDich{
 				pointer++;
 				return -1;
 			}
-			if (thongTin.charAt(pointer) == '"') return GetLong();
+			if (thongTin.charAt(pointer) == '"') return getLong();
 			pointer++;
 		}
 		while(thongTin.charAt(pointer)>='0' && thongTin.charAt(pointer)<='9') {
@@ -92,8 +170,8 @@ public class SanGiaoDich{
 		return res*dau;
 		
 	}
-	
-	private String GetCK() { // lay ra ten CK cua ma co phieu
+*/	
+/*	private String getCK() { // lay ra ten CK cua ma co phieu
 		String res = "";
 		while(thongTin.charAt(pointer)<'A' || thongTin.charAt(pointer)>'Z') pointer++;
 		while((thongTin.charAt(pointer)>='A' && thongTin.charAt(pointer)<='Z')||(thongTin.charAt(pointer)>='0' && thongTin.charAt(pointer)<='9')){
@@ -102,8 +180,8 @@ public class SanGiaoDich{
 		}	
 		return res;
 	}
-	
-	public void GhithongTinChiSo() {
+*/	
+	public void ghiThongTinChiSo() {
 		String tt = this.TENCHISO + " ";
 		tt += String.format("%.2f", this.diemChiSo) + " ";
 		tt += String.format("%.2f", this.diemTuyetDoi) + " ";
@@ -113,77 +191,53 @@ public class SanGiaoDich{
 		System.out.println(tt);
 	}
 	
-	private void SetVNIndex() {
+/*	private void setVNIndex() {
 		if (thongTin == null) return;
 		pointer = thongTin.indexOf("VNIndex");
-		this.diemChiSo = GetNum();
-		this.diemTuongDoi = GetNum();
-		this.diemTuyetDoi = GetNum();
-		this.kLGD = GetBigFloat();
-		this.gTGD = GetBigFloat();
+		this.diemChiSo = getNum();
+		this.diemTuongDoi = getNum();
+		this.diemTuyetDoi = getNum();
+		this.kLGD = getBigFloat();
+		this.gTGD = getBigFloat();
 		//
 		//GhithongTinChiSo();
 	}
 	
-	private void SetcoPhieu() {
+	private void setCoPhieu() {
 		if (thongTin == null) return;
 		pointer = thongTin.indexOf("AAA");// tim vi tri cua co phieu dau tien
 		
 		for(int i=0 ; i<440 ; i++)
 		{
-			coPhieu[i] = new LopCoPhieu();
-			coPhieu[i].cK = GetCK();
-			coPhieu[i].tC = GetNum();
-			coPhieu[i].tran = GetNum();
-			coPhieu[i].san = GetNum();
-			coPhieu[i].muaGia1 = GetNum();
-			coPhieu[i].muaKL1 = GetNum();
-			coPhieu[i].muaGia2 = GetNum();
-			coPhieu[i].muaKL2 = GetNum();
-			coPhieu[i].muaGia3 = GetNum();
-			coPhieu[i].muaKL3 = GetNum();
-			coPhieu[i].sDCGia = GetNum();
-			coPhieu[i].sDCKL = GetNum();
-			coPhieu[i].bienDong = GetNum();
-			coPhieu[i].banGia1 = GetNum();
-			coPhieu[i].banKL1 = GetNum();
-			coPhieu[i].banGia2 = GetNum();
-			coPhieu[i].banKL2 = GetNum();
-			coPhieu[i].banGia3 = GetNum(); 
-			coPhieu[i].banKL3 = GetNum();
-			coPhieu[i].lSCao = GetNum();
-			coPhieu[i].lSThap = GetNum();
-			coPhieu[i].tKL = GetNum();
-			coPhieu[i].nNMua = GetNum();
-			coPhieu[i].nNBan = GetNum();
-			coPhieu[i].roomCon = GetNum();
-			
-			coPhieu[i].tongMua = coPhieu[i].muaKL1 + coPhieu[i].muaKL2 + coPhieu[i].muaKL3;
+			coPhieu[i] = new CoPhieu();
+			coPhieu[i].cK = getCK();
+			coPhieu[i].tC = getNum();
+			coPhieu[i].tran = getNum();
+			coPhieu[i].san = getNum();
+			coPhieu[i].muaGia1 = getNum();
+			coPhieu[i].muaKL1 = getNum();
+			coPhieu[i].muaGia2 = getNum();
+			coPhieu[i].muaKL2 = getNum();
+			coPhieu[i].muaGia3 = getNum();
+			coPhieu[i].muaKL3 = getNum();
+			coPhieu[i].sDCGia = getNum();
+			coPhieu[i].sDCKL = getNum();
+			coPhieu[i].bienDong = getNum();
+			coPhieu[i].banGia1 = getNum();
+			coPhieu[i].banKL1 = getNum();
+			coPhieu[i].banGia2 = getNum();
+			coPhieu[i].banKL2 = getNum();
+			coPhieu[i].banGia3 = getNum(); 
+			coPhieu[i].banKL3 = getNum();
+			coPhieu[i].lSCao = getNum();
+			coPhieu[i].lSThap = getNum();
+			coPhieu[i].tKL = getNum();
+			coPhieu[i].nNMua = getNum();
+			coPhieu[i].nNBan = getNum();
+			coPhieu[i].roomCon = getNum();
 			//
 			//coPhieu[i].GhiThongTinCoPhieu();
 		}
 	}
-	
-	public void sortTongMua(int l,int r)
-	{
-		if (l>=r) return;
-		float key = coPhieu[ (l+r) / 2].tongMua;
-		int i=l;
-		int j=r;
-		while ( i<=j )
-		{
-			while (coPhieu[i].tongMua > key) i++;
-			while (coPhieu[j].tongMua < key) j--;
-			if (i<=j)
-			{
-                LopCoPhieu temp = coPhieu[i]; 
-                coPhieu[i] = coPhieu[j]; 
-                coPhieu[j] = temp; 			
-                i++;
-                j--;
-			}
-		}
-		sortTongMua(l , j);
-		sortTongMua(i,  r);
-	}
+*/
 }
