@@ -1,6 +1,5 @@
 package bai_tap_lon;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,37 +8,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
-import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JPasswordField;
-import javax.swing.JFormattedTextField;
-import javax.swing.JProgressBar;
-import javax.swing.JSlider;
-import javax.swing.JScrollBar;
-import javax.swing.JDesktopPane;
-import javax.swing.JScrollPane;
-import javax.swing.JLayeredPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JToolBar;
-import javax.swing.JTree;
-import java.awt.Canvas;
-import java.awt.TextField;
-import java.awt.List;
+
 import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.text.DecimalFormat;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
+import javax.swing.JList;
+import javax.swing.JComboBox;
 
 public class Display extends JFrame {
 
@@ -50,16 +36,7 @@ public class Display extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtTenFile;
 	private JTextField txtTuKhoa;
-	private JTextField txtH1;
-	private JTextField txtH2;
-	private JTextField txtH4;
-	private JTextField txtH3;
-	private JTextField txtH5;
-	
-	public static String txtAllFile = null;
-	public static SanGiaoDich hOSE = null;
-	
-	
+
 	
 	/**
 	 * Launch the application.
@@ -81,87 +58,76 @@ public class Display extends JFrame {
 	 * Create the frame.
 	 */
 	public Display() {
+		//Tạo ra bảng Panel
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1280, 720);
+		setBounds(100, 100, 838, 510);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
+		//Các khung nhập dữ liệu
 		txtTenFile = new JTextField();
-		txtTenFile.setColumns(10);
+		txtTenFile.setColumns(12);
 		
 		txtTuKhoa = new JTextField();
-		txtTuKhoa.setColumns(10);
+		txtTuKhoa.setColumns(12);
 		
+		//Tạo và cài các Label trong bảng
 		JLabel ChonFile = new JLabel("Chọn file");
 		ChonFile.setHorizontalAlignment(SwingConstants.TRAILING);
 		ChonFile.setVerticalAlignment(SwingConstants.BOTTOM);
 		ChonFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel NhapTu = new JLabel("Nhập từ khóa");
-		NhapTu.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		NhapTu.setHorizontalAlignment(SwingConstants.TRAILING);
+		JLabel nhapTuKhoa = new JLabel("Nhập Cổ Phiếu");
+		nhapTuKhoa.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		nhapTuKhoa.setHorizontalAlignment(SwingConstants.TRAILING);
 		
 		JLabel hotTag = new JLabel("Hot Tag");
 		hotTag.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		hotTag.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		JLabel ketQua = new JLabel("Kết Quả");
-		ketQua.setHorizontalAlignment(SwingConstants.TRAILING);
-		ketQua.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		JSlider slider = new JSlider();
-		
-		JScrollBar scrollBar = new JScrollBar();
-		
-		txtH1 = new JTextField();
-		txtH1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtH1.setColumns(10);
-		
-		txtH2 = new JTextField();
-		txtH2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtH2.setColumns(10);
-		
-		txtH4 = new JTextField();
-		txtH4.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtH4.setColumns(10);
-		
-		txtH3 = new JTextField();
-		txtH3.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtH3.setColumns(10);
-		
-		txtH5 = new JTextField();
-		txtH5.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		txtH5.setColumns(10);
-		
-		JTextArea txtKetQua = new JTextArea();
-		
-		JButton openFile = new JButton("...");
-		openFile.addActionListener(new ActionListener() {
+		//Các check box
+		JCheckBox checkNDT = new JCheckBox("Nhà Đầu Tư",false);
+		checkNDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		checkNDT.addActionListener(new ActionListener(){
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser(); 	//Khai báo đối tượng để mở file
-				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //Người dùng chọn file
-					String TenFile = fileChooser.getSelectedFile().getAbsolutePath();   //Khai báo và gán tên file
-					txtTenFile.setText(TenFile);  	//Hiện thị đường dẫn file ở bảng
+				int i = 1;
+				if (i%2 == 1) {
+					checkNDT.setBorderPaintedFlat(true);
+				}else {
+					checkNDT.setBorderPaintedFlat(false);
 				}
 			}
 		});
-		openFile.setToolTipText("Chọn file bạn muốn xử lý.");
-		openFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
+	
+		JButton optionalAdress = new JButton("...");
+		optionalAdress.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser(); 	
+				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //Người dùng chọn file
+					String FileAddress = fileChooser.getSelectedFile().getAbsolutePath();   //Khai báo và gán tên file
+					txtTenFile.setText(FileAddress);  	//Hiện thị địa chỉ file ở bảng
+				}
+			}
+		});
+		optionalAdress.setToolTipText("Chọn file bạn muốn xử lý.");
+		optionalAdress.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
 		JButton chayFile = new JButton("Chạy file");
+		chayFile.setToolTipText("Chạy file và in ra kết quả ");
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
-					txtAllFile = File.openFile(txtTenFile.getText()); //toàn bộ dữ liệu từ file .csv
-					txtKetQua.setText(txtAllFile);
-					hOSE= new SanGiaoDich(txtAllFile,440); // co 440 loai co phieu tu file .csv
-					MauCau mauCau = new MauCau(hOSE);
-					
-					
+					File file = new File();
+					file.openFile(txtTenFile.getText());
+										
+//					if (choice == true) {
+//						System.out.println("avx");
+//					}
+					//File.openFile(txtTenFile.getText());
+					//txtKetQua.setText(s);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -169,54 +135,65 @@ public class Display extends JFrame {
 		});
 		chayFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton timKiem = new JButton("Tìm Kiếm");
-		timKiem.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JButton TimKiemtxt = new JButton("Xử Lí");
+		TimKiemtxt.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		TimKiemtxt.setToolTipText("Xử lý file theo thông tin bạn nhập vào");
+		TimKiemtxt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(txtTuKhoa.getText());
+			}
+		});
+		
+		JCheckBox checkHNX = new JCheckBox("HNX", false);
+		checkHNX.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JCheckBox checkDanDau = new JCheckBox("Dẫn đầu", false);
+		checkDanDau.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JCheckBox checkDanDau_1 = new JCheckBox("Dẫn đầu", false);
+		checkDanDau_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		@SuppressWarnings("rawtypes")
+		JComboBox optionalTag = new JComboBox();
+		optionalTag.setName("Chọn tag");
+		optionalTag.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
+		optionalTag.setMaximumRowCount(100);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(20)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(ChonFile, GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(ChonFile, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(txtTenFile, GroupLayout.PREFERRED_SIZE, 545, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(optionalAdress, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(chayFile))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(NhapTu, GroupLayout.PREFERRED_SIZE, 108, Short.MAX_VALUE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(30)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(ketQua, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-								.addComponent(hotTag, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(txtH1, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtH2, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtH3, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addGap(10)
-							.addComponent(txtH4, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(txtH5, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(txtKetQua, GroupLayout.PREFERRED_SIZE, 1111, GroupLayout.PREFERRED_SIZE))
-							.addGap(3)
-							.addComponent(scrollBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(txtTuKhoa, GroupLayout.PREFERRED_SIZE, 545, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(timKiem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-								.addComponent(txtTenFile, GroupLayout.PREFERRED_SIZE, 545, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(openFile, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(chayFile))))
-					.addContainerGap())
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(nhapTuKhoa)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(txtTuKhoa, GroupLayout.PREFERRED_SIZE, 545, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addComponent(checkNDT, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(checkHNX, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(checkDanDau, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.UNRELATED)
+											.addComponent(checkDanDau_1, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(hotTag, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(optionalTag, 0, 98, Short.MAX_VALUE)
+								.addComponent(TimKiemtxt, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
+					.addGap(31))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -227,40 +204,45 @@ public class Display extends JFrame {
 							.addComponent(txtTenFile, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 							.addComponent(ChonFile))
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(openFile, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+							.addComponent(optionalAdress, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 							.addComponent(chayFile, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(timKiem, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(txtTuKhoa, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-							.addComponent(NhapTu)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(txtH5, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(hotTag)
-							.addComponent(txtH1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(txtH2, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtH3, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtH4, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+							.addComponent(txtTuKhoa, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+							.addComponent(nhapTuKhoa))
+						.addComponent(TimKiemtxt, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(21)
-							.addComponent(ketQua))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(scrollBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(txtKetQua, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-					.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(optionalTag, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(hotTag)
+							.addComponent(checkNDT, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(checkHNX, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+							.addComponent(checkDanDau, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+							.addComponent(checkDanDau_1, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)))
+					.addGap(317))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
 		
 	}
+	@SuppressWarnings("unused")
 	private static void addPopup(Component component, final JPopupMenu popup) {
+		component.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					showMenu(e);
+				}
+			}
+			private void showMenu(MouseEvent e) {
+				popup.show(e.getComponent(), e.getX(), e.getY());
+			}
+		});
 	}
 }
