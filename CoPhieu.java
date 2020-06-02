@@ -198,11 +198,11 @@ public class CoPhieu{
 	public void setMuaKL3(float muaKL3) {
 		this.muaKL3 = muaKL3;
 	}
-	public float getsDCKL() {
-		return sDCKL;
+	public float getKLgSDC() {
+		return kLgSDC;
 	}
-	public void setsDCKL(float sDCKL) {
-		this.sDCKL = sDCKL;
+	public void setKLgSDC(float kLgSDC) {
+		this.kLgSDC = kLgSDC;
 	}
 	public float getBanGia1() {
 		return banGia1;

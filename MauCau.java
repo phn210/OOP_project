@@ -1,6 +1,7 @@
 package bai_tap_lon;
 
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 public class MauCau {
@@ -25,8 +26,96 @@ public class MauCau {
 	}
 	
 	//method
+	public String top1Tang() {
+		StringBuffer s = new StringBuffer();
+		if (tag.getTopTang() == 1) {
+			CoPhieu cp = sGD.getTopTang().get(0);
+			s.append("Co phieu ");
+			s.append(cp.getTen() + " ");
+			s.append("tang cao nhat voi ");
+			s.append(cp.getBienDong()*sGD.getDonViGia());
+			s.append(" dong moi co phieu.");
+			System.out.println(s);
+		}
+		return s.toString();
+	}
 	
+	public String top1Giam() {
+		StringBuffer s = new StringBuffer();
+		if (tag.getTopGiam() == 1) {
+			CoPhieu cp = sGD.getTopGiam().get(0);
+			s.append("Co phieu ");
+			s.append(cp.getTen() + " ");
+			s.append("giam nhieu nhat voi ");
+			s.append(cp.getBienDong()*sGD.getDonViGia()*(-1));
+			s.append(" dong moi co phieu.");
+			System.out.println(s);
+		}
+		return s.toString();
+	}
 	
+	public String top3Tang() {
+		StringBuffer s = new StringBuffer();
+		if (tag.getTopTang() == 3) {
+			CoPhieu cp1 = sGD.getTopTang().get(0);
+			CoPhieu cp2 = sGD.getTopTang().get(1);
+			CoPhieu cp3 = sGD.getTopTang().get(2);
+			s.append("Dan dau ve muc gia tang hom nay gom ");
+			s.append(cp1.getTen() + " (+");
+			s.append(cp1.getBienDong()*sGD.getDonViGia()+" dong), ");
+			s.append(cp2.getTen() + " (+");
+			s.append(cp2.getBienDong()*sGD.getDonViGia()+" dong), ");
+			s.append(cp3.getTen() + " (+");
+			s.append(cp3.getBienDong()*sGD.getDonViGia()+" dong).");
+			System.out.println(s);
+		}
+		return s.toString();
+	}
+	
+	public String top3Giam() {
+		StringBuffer s = new StringBuffer();
+		if (tag.getTopGiam() == 3) {
+			CoPhieu cp1 = sGD.getTopGiam().get(0);
+			CoPhieu cp2 = sGD.getTopGiam().get(1);
+			CoPhieu cp3 = sGD.getTopGiam().get(2);
+			s.append("Top 3 co phieu giam gia nhieu nhat gom ");
+			s.append(cp1.getTen() + " (");
+			s.append(cp1.getBienDong()*sGD.getDonViGia()*(-1)+" dong), ");
+			s.append(cp2.getTen() + " (");
+			s.append(cp2.getBienDong()*sGD.getDonViGia()*(-1)+" dong), ");
+			s.append(cp3.getTen() + " (");
+			s.append(cp3.getBienDong()*sGD.getDonViGia()*(-1)+" dong).");
+			System.out.println(s);
+		}
+		return s.toString();
+	}
+	
+	public String nnMua(List<CoPhieu> dscp) {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNnMua() == true)
+			if (dscp.size()==0) {
+				Random rd = new Random();
+				int r = rd.nextInt(sGD.getDSCP().size()-1);
+				CoPhieu cp = sGD.getDSCP().get(r);
+				if (cp.getNnMua()==0)
+					s.append("Nha dau tu nuoc ngoai khong mua vao co phieu " + cp.getTen() + ".");
+				else {
+					s.append("Nha dau tu nuoc ngoai da mua vao ");
+					s.append(cp.getNnMua() + " co phieu ");
+					s.append(cp.getTen() + ".");
+				}
+			} else {
+				s.append("Nha dau tu nuoc ngoai da mua vao ");
+				for (int i=0; i< dscp.size() -1; i++) {
+					s.append(dscp.get(i).getNnMua() + " co phieu ");
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append(dscp.get(dscp.size()-1).getNnMua() + " co phieu ");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			}
+		System.out.println(s);
+		return s.toString();
+	}
 /*	public CoPhieu getTop1GD()
 	{
 		int  top1=0;

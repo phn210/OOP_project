@@ -18,24 +18,25 @@ public class SanGiaoDich{
 	private List<CoPhieu> topTang;
 	private List<CoPhieu> topGiam;
 	private List<CoPhieu> topGD;
-	
+	private int donViCP;
+	private int donViGia;
+
 	//constructors
 	public SanGiaoDich(){
 		this.setDiemChiSo(800);
 		this.setDiemTuongDoi(15);
 		this.setDiemTuyetDoi(10);
-		this.setSoMaTang(300);
-		this.setSoMaGiam(300);
-		this.setSoMaDung(200);
+		this.setSoMaTang(0);
+		this.setSoMaGiam(0);
+		this.setSoMaDung(0);
 		this.setKlgd(1000000000);
 		this.setGtdg(1000000000);
 		this.dscp = new ArrayList<>();
 		this.topTang = new ArrayList<>();
 		this.topGiam = new ArrayList<>();
 		this.topGD = new ArrayList<>();
-		this.sortTopTang();
-		this.sortTopGiam();
-		this.sortTopGD();
+		this.setDonViCP(10);
+		this.setDonViGia(1000);
 	}
 	
 	public float getDiemChiSo() {
@@ -122,8 +123,53 @@ public class SanGiaoDich{
 	public List<CoPhieu> getTopGD() {
 		return topGD;
 	}
+	public int getDonViCP() {
+		return donViCP;
+	}
+
+	public void setDonViCP(int donViCP) {
+		this.donViCP = donViCP;
+	}
+
+	public int getDonViGia() {
+		return donViGia;
+	}
+
+	public void setDonViGia(int donViGia) {
+		this.donViGia = donViGia;
+	}
 	
-	public CoPhieu getTop1Tang(ArrayList<CoPhieu> dscp) {
+	//methods
+	public void xuLiThongTin() { //chua cac phuong thuc xu li thong tin dau vao cho san
+		
+	}
+	
+	public void demTrangThai() { //dem so ma tang, giam, dung
+		int countTang=0;
+		int countGiam=0;
+		int countDung=0;
+		for (CoPhieu i: this.getDSCP()) {
+			if (i.getBienDong() > 0)
+				countTang ++;
+			else if (i.getBienDong() < 0)
+				countGiam ++;
+			else countDung ++;
+		}
+		this.setSoMaTang(countTang);
+		this.setSoMaGiam(countGiam);
+		this.setSoMaDung(countDung);
+	}
+	
+	public CoPhieu getTop1Tang(List<CoPhieu> dscp) {
+		CoPhieu cp = new CoPhieu();
+		for (CoPhieu i: dscp) {
+			if (i.getBienDong()>=cp.getBienDong())
+				cp = i;
+		}
+		return cp;
+	}
+	
+	public CoPhieu getTop1Giam(List<CoPhieu> dscp) {
 		CoPhieu cp = new CoPhieu();
 		for (CoPhieu i: dscp) {
 			if (i.getBienDong()<=cp.getBienDong())
@@ -132,19 +178,10 @@ public class SanGiaoDich{
 		return cp;
 	}
 	
-	public CoPhieu getTop1Giam(ArrayList<CoPhieu> dscp) {
+	public CoPhieu getTop1GD(List<CoPhieu> dscp) {
 		CoPhieu cp = new CoPhieu();
 		for (CoPhieu i: dscp) {
-			if (i.getBienDong()<=cp.getBienDong())
-				cp = i;
-		}
-		return cp;
-	}
-	
-	public CoPhieu getTop1GD(ArrayList<CoPhieu> dscp) {
-		CoPhieu cp = new CoPhieu();
-		for (CoPhieu i: dscp) {
-			if (i.getTongKLGD()>cp.getTongKLGD())
+			if (i.getTongKLGD()>=cp.getTongKLGD())
 				cp = i;
 		}
 		return cp;
@@ -178,6 +215,17 @@ public class SanGiaoDich{
 			this.getTopGD().add(cp);
 			dscp.remove(cp);
 		}
+	}
+	
+	public CoPhieu findCP(String tenCP) {
+		CoPhieu cp = new CoPhieu();
+		for (CoPhieu i: this.getDSCP()) {
+			if (i.getTen().equals(tenCP)) {
+				cp = i;
+				break;
+			}
+		}
+		return cp;
 	}
 	
 /*	private float getBigFloat() {
