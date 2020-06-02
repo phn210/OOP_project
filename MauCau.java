@@ -116,6 +116,80 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
+	
+	public String nnBan(List<CoPhieu> dscp) {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNnBan() == true)
+			if (dscp.size()==0) {
+				Random rd = new Random();
+				int r = rd.nextInt(sGD.getDSCP().size()-1);
+				CoPhieu cp = sGD.getDSCP().get(r);
+				if (cp.getNnBan()==0)
+					s.append("Nha dau tu nuoc ngoai da giu lai co phieu " + cp.getTen() + ".");
+				else {
+					s.append("Nha dau tu nuoc ngoai da ban ra ");
+					s.append(cp.getNnBan() + " co phieu ");
+					s.append(cp.getTen() + ".");
+				}
+			} else {
+				s.append("Nha dau tu nuoc ngoai da ban ra ");
+				for (int i=0; i< dscp.size() -1; i++) {
+					s.append(dscp.get(i).getNnBan() + " co phieu ");
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append(dscp.get(dscp.size()-1).getNnBan() + " co phieu ");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			} 
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nnMuaBan(List<CoPhieu> dscp) {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNnMua() == true && tag.isNnBan() == true) {
+			if (dscp.size()==0) {
+				Random rd = new Random();
+				int r1 = rd.nextInt(sGD.getDSCP().size()-1);
+				int r2 = rd.nextInt(sGD.getDSCP().size()-1);
+				CoPhieu cp1 = sGD.getDSCP().get(r1);
+				CoPhieu cp2 = sGD.getDSCP().get(r2);
+				if (cp1.getNnMua()==0)
+					s.append("Nha dau tu nuoc ngoai da khong mua vao co phieu " + cp1.getTen() + ".");
+				else {
+					s.append("Nha dau tu nuoc ngoai da mua vao ");
+					s.append(cp1.getNnMua() + " co phieu ");
+					s.append(cp1.getTen());
+				}
+				s.append(", mat khac ho ");
+				if (cp2.getNnBan()==0)
+					s.append("giu lai co phieu " + cp2.getTen() + ".");
+				else {
+					s.append("ban ra ");
+					s.append(cp2.getNnBan() + " co phieu ");
+					s.append(cp2.getTen()+".");
+				}
+			} else {
+				int i=0;
+				s.append("Nha dau tu nuoc ngoai da mua vao ");
+				for (; i< dscp.size()/2; i++) {
+					s.append(dscp.get(i).getNnMua() + " co phieu ");
+					s.append(dscp.get(i).getTen());
+				}
+				
+				if(dscp.size()>1) {
+					s.append(", dong thoi ban ra ");
+					for (; i< dscp.size() -1; i++) {
+						s.append(dscp.get(i).getNnBan() + " co phieu ");
+						s.append(dscp.get(i).getTen() + ", ");
+					}
+					s.append(dscp.get(dscp.size()-1).getNnBan() + " co phieu ");
+					s.append(dscp.get(dscp.size()-1).getTen() + ".");
+				}
+			}	
+		}
+		System.out.println(s);
+		return s.toString();
+	}
 /*	public CoPhieu getTop1GD()
 	{
 		int  top1=0;
