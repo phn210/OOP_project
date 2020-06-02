@@ -190,6 +190,79 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
+	
+	public String thongTinSan() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isThongTinSan()==true) {
+			if (sGD.getDiemTuyetDoi()>0) {
+				s.append("Chot phien giao dich ngay, " + sGD.getTENCHISO());
+				s.append(" tang " + sGD.getDiemTuyetDoi() + " diem,");
+				s.append(" len " + sGD.getDiemChiSo() + " diem,");
+				s.append(" chuyen nhuong " + sGD.getKlgd() + " co phieu,");
+				s.append(" tuong duong " + sGD.getGtdg() + " dong.");
+			} else if (sGD.getDiemTuongDoi()<0) {
+				s.append(sGD.getTENCHISO() + " bi tru ");
+				s.append(sGD.getDiemTuyetDoi() + " diem, chuyen nhuong ");
+				s.append(sGD.getKlgd() + " chung khoan, tuong duong ");
+				s.append(sGD.getGtdg() + " dong.");
+			} else {
+				s.append(sGD.getTENCHISO() + " dung o ");
+				s.append(sGD.getDiemChiSo() + " diem ngay truoc khi ket phien, voi ");
+				s.append(sGD.getKlgd() + " duoc giao dich, tuong duong ");
+				s.append(sGD.getGtdg() + " dong.");
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String trangThaiSan() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isTrangThaiSan() == true) {
+			if (sGD.getDiemTuongDoi() >= sGD.getMucTangManh()) {
+				s.append(sGD.getTENCHISO() + " da noi rong da tang voi ");
+				s.append("sac xanh lan toa toan thi truong.");
+			} else if (sGD.getDiemTuongDoi() >= sGD.getMucTangNhe()) {
+				s.append("Sac xanh chi le loi khi " + sGD.getTENCHISO());
+				s.append("tang " + sGD.getDiemTuyetDoi() + "(");
+				s.append(sGD.getDiemTuongDoi() + "%).");
+			} else if (sGD.getDiemTuongDoi() >= sGD.getMucGiamNhe()) {
+				s.append("Sang phien khop lenh lien tuc, chi so ");
+				s.append(sGD.getTENCHISO() + " cung khong co nhieu bien dong ");
+				s.append("khi xoay quanh muc " + sGD.getDiemChiSo() + ".");
+			} else if (sGD.getDiemTuongDoi() >= sGD.getMucGiamManh()) {
+				s.append("Nhieu nhom co phieu dong loat chuyen sac do nhung khong manh nen ");
+				s.append(sGD.getTENCHISO() + "giam trong bien do hep.");
+			} else {
+				s.append(sGD.getTENCHISO() + "chim trong sac do trong toan bo thoi gian giao dich, ");
+				s.append("ket phien giam toi " + sGD.getDiemTuongDoi()*(-1));
+				s.append(" ve " + sGD.getDiemChiSo() + " diem.");
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+
+	public String xuHuongSan() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isXuHuongSan() == true) {
+			if (sGD.getSoMaTang() > sGD.getSoMaGiam() && sGD.getSoMaTang() > sGD.getSoMaDung()) {
+				s.append("Thi truong tiep tuc bieu hien xu huong tang gia, ");
+				s.append("nhieu kha nang " + sGD.getTENCHISO() + "se dao dong ");
+				s.append("trong khoang " + (sGD.getDiemChiSo()+10) + "-");
+				s.append((sGD.getDiemChiSo()+20) + " diem trong tuan nay.");
+			} else if (sGD.getSoMaGiam() > sGD.getSoMaTang() && sGD.getSoMaGiam() > sGD.getSoMaDung()) {
+				s.append("Xu the giam cua " + sGD.getTENCHISO());
+				s.append(" van chua co dau hieu se ket thuc.");
+			} else {
+				s.append("Nhieu nha dau tu nhan dinh thi truong se di len trong su nghi ngo, ");
+				s.append("trang thai kho doan dinh cua " + sGD.getTENCHISO() + " o thoi diem nay ");
+				s.append("dang cho thay kich ban tren co the se xay ra.");
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
 /*	public CoPhieu getTop1GD()
 	{
 		int  top1=0;

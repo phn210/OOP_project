@@ -1,4 +1,5 @@
 package bai_tap_lon;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -20,7 +21,11 @@ public class SanGiaoDich{
 	private List<CoPhieu> topGD;
 	private int donViCP;
 	private int donViGia;
-
+	private float mucTangManh;
+	private float mucTangNhe;
+	private float mucGiamManh;
+	private float mucGiamNhe;
+	
 	//constructors
 	public SanGiaoDich(){
 		this.setDiemChiSo(800);
@@ -37,6 +42,10 @@ public class SanGiaoDich{
 		this.topGD = new ArrayList<>();
 		this.setDonViCP(10);
 		this.setDonViGia(1000);
+		this.setMucTangManh(1);
+		this.setMucTangNhe(0.5f);
+		this.setMucGiamNhe(0.5f);
+		this.setMucTangManh(1);
 	}
 	
 	public float getDiemChiSo() {
@@ -139,6 +148,38 @@ public class SanGiaoDich{
 		this.donViGia = donViGia;
 	}
 	
+	public float getMucTangManh() {
+		return mucTangManh;
+	}
+
+	public void setMucTangManh(float mucTangManh) {
+		this.mucTangManh = mucTangManh;
+	}
+
+	public float getMucTangNhe() {
+		return mucTangNhe;
+	}
+
+	public void setMucTangNhe(float mucTangNhe) {
+		this.mucTangNhe = mucTangNhe;
+	}
+
+	public float getMucGiamManh() {
+		return mucGiamManh;
+	}
+
+	public void setMucGiamManh(float mucGiamManh) {
+		this.mucGiamManh = mucGiamManh;
+	}
+
+	public float getMucGiamNhe() {
+		return mucGiamNhe;
+	}
+
+	public void setMucGiamNhe(float mucGiamNhe) {
+		this.mucGiamNhe = mucGiamNhe;
+	}
+
 	//methods
 	public void xuLiThongTin() { //chua cac phuong thuc xu li thong tin dau vao cho san
 		

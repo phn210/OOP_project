@@ -1,6 +1,6 @@
 package bai_tap_lon;
-public class CoPhieu{
 
+public class CoPhieu{
 	//attributes - cac thong tin ve co phieu
 	private String ten;
 	private float giaThamChieu;

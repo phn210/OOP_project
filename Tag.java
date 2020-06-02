@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tag {
-	private SanGiaoDich san;
+	private SanGiaoDich sGD;
 	private List<CoPhieu> listCP; //danh sach co phieu nguoi dung nhap
 	private int topTang;
 	private int topGiam;
@@ -12,17 +12,21 @@ public class Tag {
 	private boolean trangThaiSan;
 	private boolean nnMua;
 	private boolean nnBan;
+	private boolean thongTinSan;
+	private boolean xuHuongSan;
 	
 	//constructors
-	public Tag(SanGiaoDich san, String A[]) {
-		this.san = san;
+	public Tag(SanGiaoDich sGD, String A[]) {
+		this.sGD = sGD;
 		this.listCP = new ArrayList<>(); 
 		this.setTopTang(3);
-		this.setTopGiam(3);
+		this.setTopGiam(1);
 		this.setTopGD(5);
 		this.setTrangThaiSan(true);
 		this.setNnMua(true);
 		this.setNnBan(true);
+		this.setThongTinSan(true);
+		this.setXuHuongSan(true);
 		this.setListCP(A);
 	}
 	
@@ -62,14 +66,26 @@ public class Tag {
 	public void setNnBan(boolean nnBan) {
 		this.nnBan = nnBan;
 	}
+	public boolean isThongTinSan() {
+		return thongTinSan;
+	}
+	public void setThongTinSan(boolean thongTinSan) {
+		this.thongTinSan = thongTinSan;
+	}
+	public boolean isXuHuongSan() {
+		return xuHuongSan;
+	}
+
+	public void setXuHuongSan(boolean xuHuongSan) {
+		this.xuHuongSan = xuHuongSan;
+	}
+
 	public List<CoPhieu> getListCP() {
 		return listCP;
 	}
 	public void setListCP(String A[]) {
 		for (int i=0; i< A.length;i++) {
-			listCP.add(san.findCP(A[i]));
+			listCP.add(sGD.findCP(A[i]));
 		}
-	}
-	
-	
+	}	
 }
