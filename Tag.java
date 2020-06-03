@@ -22,6 +22,7 @@ public class Tag {
 	private boolean lietKeDauKhi;
 	private boolean trangThaiNganHang;
 	private boolean lietKeNganHang;
+	private boolean nhomCoPhieuTang;
 	
 	//constructors
 	public Tag(SanGiaoDich sGD, String A[]) {
@@ -131,6 +132,14 @@ public class Tag {
 		for (int i=0; i< A.length;i++) {
 			listCP.add(sGD.findCP(A[i]));
 		}
+	}
+
+	public boolean isNhomCoPhieuTang() {
+		return nhomCoPhieuTang;
+	}
+
+	public void setNhomCoPhieuTang(boolean nhomCoPhieuTang) {
+		this.nhomCoPhieuTang = nhomCoPhieuTang;
 	}
 	
 	
