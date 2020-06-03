@@ -268,7 +268,11 @@ public class SanGiaoDich{
 		}
 		return cp;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> parent of 2560fe4... Edit CoPhieu, MauCau, Tag & SanGiaoDich
 /*	private float getBigFloat() {
 		float res = 0;
 		
