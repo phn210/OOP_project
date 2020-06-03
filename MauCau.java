@@ -358,6 +358,23 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
+	
+	public String nhomCoPhieuTang() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNhomCoPhieuTang() == true) {
+			s.append("Trong phiên giao dịch hôm nay, màu xanh lá đến từ cổ phiếu ");
+			int dem = 0;
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhom.isTang() == true) {
+					dem++;
+					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " tăng " + (float)nhom.daiDienTang().getBienDong()*100 +"%,");
+				}
+			}
+			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào tăng.");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
 
 /*	public String trangThaiTran(){
 		StringBuffer s = new StringBuffer();
@@ -462,9 +479,9 @@ public class MauCau {
 		LopCoPhieu cpTop3 = getTop3GD();
 		float sumKLGD = sGD.kLGD;
 		
-		String cau="Top 3 cá»• phiáº¿u giao dá»‹ch nhiá»�u nháº¥t trÃªn sÃ n lÃ  "; 
-		cau+= cpTop2.cK + ", " + cpTop1.cK + " vÃ  " + cpTop3.cK;
-		cau+= ", dáº«n Ä‘áº§u lÃ  " + cpTop1.cK;
+		String cau="Top 3 cá»• phiáº¿u giao dá»‹ch nhiá»�u nháº¥t trÃªn sÃ n lÃ  "; 
+		cau+= cpTop2.cK + ", " + cpTop1.cK + " vÃ  " + cpTop3.cK;
+		cau+= ", dáº«n Ä‘áº§u lÃ  " + cpTop1.cK;
 		cau+= " vá»›i " + String.format("%.1f", cpTop1.tKL*10) + " cá»• phiáº¿u, ";
 		cau+= ("chiáº¿m " + String.format("%.4f", cpTop1.tKL/sumKLGD*100)+ "% thá»‹ trÆ°á»�ng giao dá»‹ch. ");
 		System.out.print(cau);
@@ -475,7 +492,7 @@ public class MauCau {
 		LopCoPhieu cpTop1 = getTop1GD();
 		float sumKLGD = sGD.kLGD;
 		String cau ="";
-		cau+= cpTop1.cK + " lÃ  cá»• phiáº¿u Ä‘Æ°á»£c giao dá»‹ch nhiá»�u nháº¥t vá»›i ";
+		cau+= cpTop1.cK + " lÃ  cá»• phiáº¿u Ä‘Æ°á»£c giao dá»‹ch nhiá»�u nháº¥t vá»›i ";
 		cau+= String.format("%.1f",cpTop1.tKL*10) + " Ä‘Æ¡n vá»‹, "; 
 		cau+= "chiáº¿m " + String.format("%.4f",cpTop1.tKL/sumKLGD*100) + " % thá»‹ trÆ°á»�ng giao dá»‹ch. ";
 		System.out.print(cau);
@@ -501,9 +518,9 @@ public class MauCau {
 		String cau;
 		
 		cau = "Dáº«n Ä‘áº§u thanh khoáº£n táº¡i " + sGD.TENSAN;
-		cau+= " lÃ  " + cpTop1.cK + " vá»›i "+ String.format("%.1f", cpTop1.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
-		cau+= "tiáº¿p theo sau lÃ  "+ cpTop2.cK + " vá»›i "+ String.format("%.1f", cpTop2.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
-		cau+= "sau Ä‘Ã³ lÃ  "+ cpTop3.cK + " vá»›i "+ String.format("%.1f", cpTop3.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra. ";
+		cau+= " lÃ  " + cpTop1.cK + " vá»›i "+ String.format("%.1f", cpTop1.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
+		cau+= "tiáº¿p theo sau lÃ  "+ cpTop2.cK + " vá»›i "+ String.format("%.1f", cpTop2.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
+		cau+= "sau Ä‘Ã³ lÃ  "+ cpTop3.cK + " vá»›i "+ String.format("%.1f", cpTop3.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra. ";
 		System.out.print(cau);
 	}
 */	
