@@ -344,5 +344,4 @@ public class SanGiaoDich{
 	public List<NhomCoPhieu> getNhomCoPhieu(){
 		return this.nhomCoPhieu;
 	}
-	
 }
