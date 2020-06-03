@@ -265,13 +265,16 @@ public class SanGiaoDich{
 		return cp;
 	}
 	
-	public void sortTopTang(){
+	public void sortTopTang(){								//undone
 		ArrayList<CoPhieu> dscp = new ArrayList<CoPhieu>();
 		dscp.addAll(this.getDSCP());
 		for (int i=0; i<5; i++) {
 			CoPhieu cp = this.getTop1Tang(dscp);
+//			int j = dscp.indexOf(this.getTop1Tang(dscp));
 			this.getTopTang().add(cp);
-			dscp.remove(cp);
+//			System.out.println(j);
+//			dscp.remove(j);
+			System.out.println(cp.getTen());
 		}
 	}
 	

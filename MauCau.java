@@ -248,7 +248,7 @@ public class MauCau {
 
 	public String xuHuongSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isxuHuongSan() == true) {
+		if (tag.isXuHuongSan() == true) {
 			if (sGD.getSoMaTang() > sGD.getSoMaGiam() && sGD.getSoMaTang() > sGD.getSoMaDung()) {
 				s.append("Thi truong tiep tuc bieu hien xu huong tang gia, ");
 				s.append("nhieu kha nang " + sGD.getTENCHISO() + "se dao dong ");
@@ -269,19 +269,6 @@ public class MauCau {
 	
 	public String trangThaiDauKhi() {
 		StringBuffer s = new StringBuffer();
-<<<<<<< HEAD
-		if(tag.istrangThaiTran()== true){
-			if(sGD.getGiaMax()== sGD.getGiaTran()){
-				s.append("Co phieu gia kich tran la:");
-				for (int i=0; i< dscp.size() -1; i++) {
-					s.append(dscp.get(i).getTen() + ", ");
-			}
-				s.append(dscp.get(dscp.size()-1).getTen() + ".");
-				}
-			else if(sGD.getGiaMax() > sGD.getGiaTran()){
-				for (int i=0; i< dscp.size() -1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-=======
 		int tang = sGD.demMaTang(sGD.getNhomDauKhi());
 		int giam = sGD.demMaGiam(sGD.getNhomDauKhi());
 		int dung = sGD.demMaDung(sGD.getNhomDauKhi());
@@ -317,28 +304,14 @@ public class MauCau {
 					else if (i.getBienDong() < 0)
 						s.append(" " + i.getBienDong()*(-1) + " diem, ");
 					else s.append(", ");
->>>>>>> parent of 83b8168... Add files via upload
 				}
 				s.append("la nhom co phieu quan trong voi thi truong.");
 			}
-<<<<<<< HEAD
-			else if(sGD.getGiaMax() - sGD.getGiaTran() < 0.5){
-				s.append("Co phieu sat gia tran la");
-				for (int i=0; i< dscp.size() -1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-				}
-				s.append(dscp.get(dscp.size()-1.getTen() + ".");
-			}
-			else if(sGD.getGiaMax() > sGD.getGiaTran()){
-				s.append("Mot so co phieu vuot tren gia tran la: ");
-				for (int i=0; i< dscp.size()-1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-=======
 		}
 		System.out.println(s);
 		return s.toString();
 	}
-	
+
 	public String trangThaiNganHang() {					// undone
 		StringBuffer s = new StringBuffer();
 		int tang = sGD.demMaTang(sGD.getNhomNganHang());
@@ -378,7 +351,6 @@ public class MauCau {
 					else if (i.getBienDong() < 0)
 						s.append(" " + i.getBienDong()*(-1) + " diem, ");
 					else s.append(", ");
->>>>>>> parent of 83b8168... Add files via upload
 				}
 				s.append("giu vai tro quan trong voi thi truong.");
 			}
@@ -386,7 +358,45 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-<<<<<<< HEAD
+
+/*	public String trangThaiTran(){
+		StringBuffer s = new StringBuffer();
+		if(tag.isTrangThaiTran()== true){
+			if(sGD.getGiaMax()== sGD.getGiaTran()){
+				s.append("Co phieu gia kich tran la:");
+				for (int i=0; i< dscp.size() -1; i++) {
+					s.append(dscp.get(i).getTen() + ", ");
+			}
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+				}
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append("cung vuot tren gia tran");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			}
+			else if(sGD.getGiaMax() - sGD.getGiaTran() < 0.5){
+				s.append("Co phieu sat gia tran la");
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append(dscp.get(dscp.size()-1.getTen() + ".");
+			}
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+				s.append("Mot so co phieu vuot tren gia tran la: ");
+				for (int i=0; i< dscp.size()-1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+			}
+			else{
+				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
+				s.append("Cac co phieu deu co muc gia nho hon gia tran. ")
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
 	public String vachThamChieu(){
 		StringBuffer s = new StringBuffer();
 		if(tag.isvachThamChieu() == true){
@@ -406,7 +416,7 @@ public class MauCau {
 	}
 	public String khopLenh(){
 		StringBuffer s = new StringBuffer();
-		if(tag.iskhopLenh() == true){
+		if(tag.isKhopLenh() == true){
 			CoPhieu cp = sGD.getDSCP().get(r);
 			s.append("Co phieu " cp.getTen());
 			s.append(" co gia tri khop lenh la " + cp.tongKLGD() );
@@ -414,8 +424,7 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-
-
+*/
 	/*	public CoPhieu getTop1GD()
 =======
 	
