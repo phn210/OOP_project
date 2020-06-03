@@ -2,13 +2,11 @@ package bai_tap_lon;
 
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.ArrayList;
 
 public class MauCau {
 	//attributes
-	private SanGiaoDich sGD;
+	private SanGiaoDich sGD = null;
 	private Tag tag;
 
 	//constructors
@@ -62,7 +60,7 @@ public class MauCau {
 			CoPhieu cp1 = sGD.getTopTang().get(0);
 			CoPhieu cp2 = sGD.getTopTang().get(1);
 			CoPhieu cp3 = sGD.getTopTang().get(2);
-			s.append("Dan dau ve muc tang gia hom nay gom ");
+			s.append("Dan dau ve muc gia tang hom nay gom ");
 			s.append(cp1.getTen() + " (+");
 			s.append(cp1.getBienDong()*sGD.getDonViGia()+" dong), ");
 			s.append(cp2.getTen() + " (+");
@@ -80,12 +78,12 @@ public class MauCau {
 			CoPhieu cp1 = sGD.getTopGiam().get(0);
 			CoPhieu cp2 = sGD.getTopGiam().get(1);
 			CoPhieu cp3 = sGD.getTopGiam().get(2);
-			s.append("Top 3 co phieu giam diem nhieu nhat gom ");
-			s.append(cp1.getTen() + " (-");
+			s.append("Top 3 co phieu giam gia nhieu nhat gom ");
+			s.append(cp1.getTen() + " (");
 			s.append(cp1.getBienDong()*sGD.getDonViGia()*(-1)+" dong), ");
-			s.append(cp2.getTen() + " (-");
+			s.append(cp2.getTen() + " (");
 			s.append(cp2.getBienDong()*sGD.getDonViGia()*(-1)+" dong), ");
-			s.append(cp3.getTen() + " (-");
+			s.append(cp3.getTen() + " (");
 			s.append(cp3.getBienDong()*sGD.getDonViGia()*(-1)+" dong).");
 			System.out.println(s);
 		}
@@ -112,7 +110,7 @@ public class MauCau {
 					s.append(dscp.get(i).getNnMua() + " co phieu ");
 					s.append(dscp.get(i).getTen() + ", ");
 				}
-				s.append("va " +dscp.get(dscp.size()-1).getNnMua() + " co phieu ");
+				s.append(dscp.get(dscp.size()-1).getNnMua() + " co phieu ");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			}
 		System.out.println(s);
@@ -139,7 +137,7 @@ public class MauCau {
 					s.append(dscp.get(i).getNnBan() + " co phieu ");
 					s.append(dscp.get(i).getTen() + ", ");
 				}
-				s.append("va " + dscp.get(dscp.size()-1).getNnBan() + " co phieu ");
+				s.append(dscp.get(dscp.size()-1).getNnBan() + " co phieu ");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			} 
 		System.out.println(s);
@@ -200,19 +198,18 @@ public class MauCau {
 				s.append("Chot phien giao dich ngay, " + sGD.getTENCHISO());
 				s.append(" tang " + sGD.getDiemTuyetDoi() + " diem,");
 				s.append(" len " + sGD.getDiemChiSo() + " diem,");
-				s.append(" chuyen nhuong " + sGD.getKlgd()*sGD.getDonViCP() + " co phieu,");
-				s.append(" tuong duong " + sGD.getGtdg()*sGD.getDonViGia() + " dong.");
+				s.append(" chuyen nhuong " + sGD.getKlgd() + " co phieu,");
+				s.append(" tuong duong " + sGD.getGtdg() + " dong.");
 			} else if (sGD.getDiemTuongDoi()<0) {
 				s.append(sGD.getTENCHISO() + " bi tru ");
-				s.append(sGD.getDiemTuyetDoi() + " diem, con lai ");
-				s.append(sGD.getDiemChiSo() + " diem, chuyen nhuong ");
-				s.append(sGD.getKlgd()*sGD.getDonViCP() + " chung khoan, tuong duong ");
-				s.append(sGD.getGtdg()*sGD.getDonViGia() + " dong.");
+				s.append(sGD.getDiemTuyetDoi() + " diem, chuyen nhuong ");
+				s.append(sGD.getKlgd() + " chung khoan, tuong duong ");
+				s.append(sGD.getGtdg() + " dong.");
 			} else {
 				s.append(sGD.getTENCHISO() + " dung o ");
 				s.append(sGD.getDiemChiSo() + " diem ngay truoc khi ket phien, voi ");
-				s.append(sGD.getKlgd() + " giao dich, tuong duong ");
-				s.append(sGD.getGtdg()*sGD.getDonViGia() + " dong.");
+				s.append(sGD.getKlgd() + " duoc giao dich, tuong duong ");
+				s.append(sGD.getGtdg() + " dong.");
 			}
 		}
 		System.out.println(s);
@@ -232,13 +229,13 @@ public class MauCau {
 			} else if (sGD.getDiemTuongDoi() >= sGD.getMucGiamNhe()) {
 				s.append("Sang phien khop lenh lien tuc, chi so ");
 				s.append(sGD.getTENCHISO() + " cung khong co nhieu bien dong ");
-				s.append("khi xoay quanh muc " + sGD.getDiemChiSo() + " diem.");
+				s.append("khi xoay quanh muc " + sGD.getDiemChiSo() + ".");
 			} else if (sGD.getDiemTuongDoi() >= sGD.getMucGiamManh()) {
 				s.append("Nhieu nhom co phieu dong loat chuyen sac do nhung khong manh nen ");
 				s.append(sGD.getTENCHISO() + "giam trong bien do hep.");
 			} else {
 				s.append(sGD.getTENCHISO() + "chim trong sac do trong toan bo thoi gian giao dich, ");
-				s.append("ket phien giam toi " + sGD.getDiemTuongDoi()*(-1) + "%");
+				s.append("ket phien giam toi " + sGD.getDiemTuongDoi()*(-1));
 				s.append(" ve " + sGD.getDiemChiSo() + " diem.");
 			}
 		}
@@ -266,100 +263,44 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-	
-	public String trangThaiDauKhi() {
+	public String trangThaiTran(){
 		StringBuffer s = new StringBuffer();
-		int tang = sGD.demMaTang(sGD.getNhomDauKhi());
-		int giam = sGD.demMaGiam(sGD.getNhomDauKhi());
-		int dung = sGD.demMaDung(sGD.getNhomDauKhi());
-		if (tag.isTrangThaiDauKhi() == true) {
-			if (tang > giam && tang > dung)
-				s.append("Nhom dau khi nhuom xanh voi nhieu co phieu tang het bien do.");
-			else if (giam < tang && giam < dung) {
-				s.append("Hang loat ma dau khi da lao doc khong phanh, ");
-				s.append("trong boi canh gia dau van con dien bien phuc tap.");
-			} else 
-				s.append("Cac co phieu nhom dau khi dao dong voi xu huong kho doan dinh.");
-		}
-		System.out.println(s);
-		return s.toString();
-	}
-	
-	public String lietKeDauKhi() {						
-		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeDauKhi() == true) {
-			List<CoPhieu> dscp = new ArrayList<>();
-			dscp.addAll(sGD.getNhomDauKhi());
-			Set<CoPhieu> setCP = new HashSet<>();
-			Random rd = new Random();
-			if (setCP.size() == 0) {
-				while (setCP.size() <= 0) {
-					setCP.add(dscp.get(rd.nextInt(dscp.size())));
+		if(tag.trangthaiTran== true){
+			if(sGD.getgiaMax()== sGD.getgiaTran()){
+				s.append("Co phieu gia kich tran la:");
+				for (int i=0; i< dscp.size() -1; i++) {
+					s.append(dscp.get(i).getTen() + ", ");
+			}
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 				}
-				s.append("Nhom dau khi ghi nhan ");
-				for (CoPhieu i: setCP) {
-					s.append("ma " +i.getTen() + " " + i.getTrangThai());
-					if (i.getBienDong() > 0)
-						s.append(" " + i.getBienDong() + " diem, ");
-					else if (i.getBienDong() < 0)
-						s.append(" " + i.getBienDong()*(-1) + " diem, ");
-					else s.append(", ");
+			else if(sGD.getgiaMax() > sGD.getgiaTran()){
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
 				}
-				s.append("la nhom co phieu quan trong voi thi truong.");
+				s.append("cung vuot tren gia tran");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			}
+			else if(sGD.getgiaMax() - sGD.getgiaTran() < 3){
+				s.append("Co phieu sat gia tran la");
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append(dscp.get(dscp.size()-1.getTen() + ".");
+			}
+			else if(sGD.getgiaMax > sGD.getgiaTran){
+				s.append("Mot so co phieu vuot tren gia tran la: ");
+				for (int i=0; i< dscp.size()-1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+			}
+			else{
+				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
+				s.append("Cac co phieu deu co muc gia nho hon gia tran. ")
 			}
 		}
-		System.out.println(s);
-		return s.toString();
 	}
-	
-	public String trangThaiNganHang() {					// undone
-		StringBuffer s = new StringBuffer();
-		int tang = sGD.demMaTang(sGD.getNhomNganHang());
-		int giam = sGD.demMaGiam(sGD.getNhomNganHang());
-		int dung = sGD.demMaDung(sGD.getNhomNganHang());
-		if (tag.isTrangThaiNganHang() == true) {
-			if (tang > giam && tang > dung)
-				s.append("Nhom ngan hang bat xanh, duy tri phong do cao.");
-			else if (giam < tang && giam < dung) {
-				s.append("Co phieu ngan hang chim trong sac do, ");
-				s.append("gay anh huong lon toi tam li thi truong.");
-			} else 
-				s.append("Trong suot phien, nhom ngan hang bien dong voi xu the kho doan dinh.");
-		}
-		System.out.println(s);
-		return s.toString();
-	}
-	
-	public String lietKeNganHang() {						
-		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeNganHang() == true) {
-			List<CoPhieu> dscp = new ArrayList<>();
-			dscp.addAll(sGD.getNhomNganHang());
-			Set<CoPhieu> setCP = new HashSet<>();
-			Random rd = new Random();
-			if (setCP.size() == 0)
-				s.append("Khong co thong tin ve co phieu nhom ngan hang.");
-			else {
-				while (setCP.size() <= 0) {
-					setCP.add(dscp.get(rd.nextInt(dscp.size())));
-				}
-				s.append("Trong cac co phieu nhom nganh ngan hang: ");
-				for (CoPhieu i: setCP) {
-					s.append("ma " +i.getTen() + " " + i.getTrangThai());
-					if (i.getBienDong() > 0)
-						s.append(" " + i.getBienDong() + " diem, ");
-					else if (i.getBienDong() < 0)
-						s.append(" " + i.getBienDong()*(-1) + " diem, ");
-					else s.append(", ");
-				}
-				s.append("giu vai tro quan trong voi thi truong.");
-			}
-		}
-		System.out.println(s);
-		return s.toString();
-	}
-	
-/*	public CoPhieu getTop1GD()
+
+	/*	public CoPhieu getTop1GD()
 	{
 		int  top1=0;
 		for (int i = 1; i <sGD.soLoaiCoPhieu; i++) 

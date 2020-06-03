@@ -1,7 +1,5 @@
 package bai_tap_lon;
 
-import java.util.Random;
-
 public class CoPhieu{
 	//attributes - cac thong tin ve co phieu
 	private String ten;
@@ -32,10 +30,6 @@ public class CoPhieu{
 	private boolean blueChip;
 	private boolean cpNganHang;
 	private boolean cpDauKhi;
-	private float mucTangManh;
-	private float mucTangNhe;
-	private float mucGiamManh;
-	private float mucGiamNhe;
 	
 	//constructor
 	public CoPhieu() {
@@ -68,13 +62,6 @@ public class CoPhieu{
 		this.setNnMua(Integer.parseInt(A[22]));
 		this.setNnBan(Integer.parseInt(A[23]));
 		this.setRoomCon(Integer.parseInt(A[24]));
-		this.setBlueChip();
-		this.setCpNganHang();
-		this.setCpDauKhi();
-		this.setMucTangManh(1);
-		this.setMucTangNhe(0.5f);
-		this.setMucGiamNhe(-0.25f);
-		this.setMucGiamManh(-0.5f);
 	}
 	
 	//getters & setters
@@ -163,29 +150,17 @@ public class CoPhieu{
 	public void setBlueChip(boolean blueChip) {
 		this.blueChip = blueChip;
 	}
-	public void setBlueChip() {
-		Random rd = new Random();
-		this.blueChip = rd.nextBoolean();
-	}
 	public boolean isCpNganHang() {
 		return cpNganHang;
 	}
 	public void setCpNganHang(boolean cpNganHang) {
 		this.cpNganHang = cpNganHang;
 	}
-	public void setCpNganHang() {
-		Random rd = new Random();
-		this.cpNganHang = rd.nextBoolean();
-	}
 	public boolean isCpDauKhi() {
 		return cpDauKhi;
 	}
 	public void setCpDauKhi(boolean cpDauKhi) {
 		this.cpDauKhi = cpDauKhi;
-	}
-	public void setCpDauKhi() {
-		Random rd = new Random();
-		this.cpDauKhi = rd.nextBoolean();
 	}
 	public float getMuaGia1() {
 		return muaGia1;
@@ -266,42 +241,10 @@ public class CoPhieu{
 		this.banKL3 = banKL3;
 	}
 	
-	public float getMucTangManh() {
-		return mucTangManh;
-	}
-
-	public void setMucTangManh(float mucTangManh) {
-		this.mucTangManh = mucTangManh;
-	}
-
-	public float getMucTangNhe() {
-		return mucTangNhe;
-	}
-
-	public void setMucTangNhe(float mucTangNhe) {
-		this.mucTangNhe = mucTangNhe;
-	}
-
-	public float getMucGiamManh() {
-		return mucGiamManh;
-	}
-
-	public void setMucGiamManh(float mucGiamManh) {
-		this.mucGiamManh = mucGiamManh;
-	}
-
-	public float getMucGiamNhe() {
-		return mucGiamNhe;
-	}
-
-	public void setMucGiamNhe(float mucGiamNhe) {
-		this.mucGiamNhe = mucGiamNhe;
-	}
-
 	//methods
 	public void inTTinCP() {
 		StringBuffer tt = new StringBuffer();
-		tt.append(this.getTen() + " " );
+		tt.append(this.getTen() + " ");
 		tt.append(this.getGiaTran() + " ");
 		tt.append(this.getGiaSan() + " ");
 /*		tt.append(this.getMuaGia1() + " ");
@@ -310,7 +253,8 @@ public class CoPhieu{
 		tt.append(this.getMuaKL2() + " ");
 		tt.append(this.getMuaGia3() + " ");
 		tt.append(this.getMuaKL3() + " ");
-*/		tt.append(this.getGiaChot() + " ");
+*/
+		tt.append(this.getGiaChot() + " ");
 		tt.append(this.getBienDong() + " ");
 		tt.append(this.getGiaMax() + " ");
 		tt.append(this.getGiaMin() + " ");
@@ -319,23 +263,6 @@ public class CoPhieu{
 		tt.append(this.getNnBan() + " ");
 		tt.append(this.getRoomCon() + " ");
 	}
-	
-	public String getTrangThai() {
-		String s = "";
-		if (this.getBienDong() > this.getMucTangManh())
-			s += "tang manh ";
-		else if (this.getBienDong() > this.getMucTangNhe())
-			s += "tang ";
-		else if (this.getBienDong() > 0)
-			s += "nhich nhe ";
-		else if (this.getBienDong() == 0)
-			s += "dung gia";
-		else if (this.getBienDong() > this.getMucGiamNhe())
-			s += "giam nhe ";
-		else if (this.getBienDong() > this.getMucGiamManh())
-			s += "bi tru ";
-		else s += "mat den ";
-		return s;
-	}
+
 
 }

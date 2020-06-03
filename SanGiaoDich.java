@@ -25,9 +25,7 @@ public class SanGiaoDich{
 	private float mucTangNhe;
 	private float mucGiamManh;
 	private float mucGiamNhe;
-	private List<CoPhieu> nhomDauKhi;
-	private List<CoPhieu> nhomNganHang;
- 	
+	
 	//constructors
 	public SanGiaoDich(){
 		this.setDiemChiSo(800);
@@ -46,10 +44,8 @@ public class SanGiaoDich{
 		this.setDonViGia(1000);
 		this.setMucTangManh(1);
 		this.setMucTangNhe(0.5f);
-		this.setMucGiamNhe(-0.5f);
-		this.setMucTangManh(-1);
-		this.nhomDauKhi = new ArrayList<>();
-		this.nhomNganHang = new ArrayList<>();
+		this.setMucGiamNhe(0.5f);
+		this.setMucTangManh(1);
 	}
 	
 	public float getDiemChiSo() {
@@ -184,24 +180,16 @@ public class SanGiaoDich{
 		this.mucGiamNhe = mucGiamNhe;
 	}
 
-	public List<CoPhieu> getNhomDauKhi() {
-		return nhomDauKhi;
-	}
-
-	public List<CoPhieu> getNhomNganHang() {
-		return nhomNganHang;
-	}
-
 	//methods
 	public void xuLiThongTin() { //chua cac phuong thuc xu li thong tin dau vao cho san
 		
 	}
 	
-/*	public void demTrangThai(List<CoPhieu> dscp) { //dem so ma tang, giam, dung
+	public void demTrangThai() { //dem so ma tang, giam, dung
 		int countTang=0;
 		int countGiam=0;
 		int countDung=0;
-		for (CoPhieu i: dscp) {
+		for (CoPhieu i: this.getDSCP()) {
 			if (i.getBienDong() > 0)
 				countTang ++;
 			else if (i.getBienDong() < 0)
@@ -211,31 +199,6 @@ public class SanGiaoDich{
 		this.setSoMaTang(countTang);
 		this.setSoMaGiam(countGiam);
 		this.setSoMaDung(countDung);
-	}
-*/	
-	public int demMaTang(List<CoPhieu> dscp) {
-		int count = 0;
-		for (CoPhieu i: dscp) {
-			if (i.getBienDong() > 0)
-				count ++;
-		}
-		return count;
-	}
-	public int demMaGiam(List<CoPhieu> dscp) {
-		int count = 0;
-		for (CoPhieu i: dscp) {
-			if (i.getBienDong() < 0)
-				count ++;
-		}
-		return count;
-	}
-	public int demMaDung(List<CoPhieu> dscp) {
-		int count = 0;
-		for (CoPhieu i: dscp) {
-			if (i.getBienDong() == 0)
-				count ++;
-		}
-		return count;
 	}
 	
 	public CoPhieu getTop1Tang(List<CoPhieu> dscp) {
@@ -305,19 +268,7 @@ public class SanGiaoDich{
 		}
 		return cp;
 	}
-	
-	public void setNhomDauKhi() {
-		for (CoPhieu i: this.getDSCP()) {
-			if (i.isCpDauKhi() == true)
-				this.getNhomDauKhi().add(i);
-		}
-	}
-	public void setNhomNganHang() {
-		for (CoPhieu i: this.getDSCP()) {
-			if (i.isCpNganHang() == true)
-				this.getNhomNganHang().add(i);
-		}
-	}
+
 /*	private float getBigFloat() {
 		float res = 0;
 		
