@@ -14,6 +14,10 @@ public class Tag {
 	private boolean nnBan;
 	private boolean thongTinSan;
 	private boolean xuHuongSan;
+	private boolean trangThaiDauKhi;
+	private boolean lietKeDauKhi;
+	private boolean trangThaiNganHang;
+	private boolean lietKeNganHang;
 	
 	//constructors
 	public Tag(SanGiaoDich sGD, String A[]) {
@@ -27,6 +31,10 @@ public class Tag {
 		this.setNnBan(true);
 		this.setThongTinSan(true);
 		this.setXuHuongSan(true);
+		this.setLietKeDauKhi(true);
+		this.setLietKeNganHang(true);
+		this.setTrangThaiDauKhi(true);
+		this.setTrangThaiNganHang(true);
 		this.setListCP(A);
 	}
 	
@@ -80,6 +88,38 @@ public class Tag {
 		this.xuHuongSan = xuHuongSan;
 	}
 
+	public boolean isTrangThaiDauKhi() {
+		return trangThaiDauKhi;
+	}
+
+	public void setTrangThaiDauKhi(boolean trangThaiDauKhi) {
+		this.trangThaiDauKhi = trangThaiDauKhi;
+	}
+
+	public boolean isLietKeDauKhi() {
+		return lietKeDauKhi;
+	}
+
+	public void setLietKeDauKhi(boolean lietKeDauKhi) {
+		this.lietKeDauKhi = lietKeDauKhi;
+	}
+
+	public boolean isTrangThaiNganHang() {
+		return trangThaiNganHang;
+	}
+
+	public void setTrangThaiNganHang(boolean trangThaiNganHang) {
+		this.trangThaiNganHang = trangThaiNganHang;
+	}
+
+	public boolean isLietKeNganHang() {
+		return lietKeNganHang;
+	}
+
+	public void setLietKeNganHang(boolean lietKeNganHang) {
+		this.lietKeNganHang = lietKeNganHang;
+	}
+
 	public List<CoPhieu> getListCP() {
 		return listCP;
 	}
@@ -87,5 +127,7 @@ public class Tag {
 		for (int i=0; i< A.length;i++) {
 			listCP.add(sGD.findCP(A[i]));
 		}
-	}	
+	}
+	
+	
 }
