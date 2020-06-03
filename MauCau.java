@@ -263,7 +263,6 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-<<<<<<< HEAD
 	public String trangThaiTran(){
 		StringBuffer s = new StringBuffer();
 		if(tag.istrangThaiTran()== true){
@@ -332,9 +331,6 @@ public class MauCau {
 
 
 	/*	public CoPhieu getTop1GD()
-=======
-/*	public CoPhieu getTop1GD()
->>>>>>> parent of 2560fe4... Edit CoPhieu, MauCau, Tag & SanGiaoDich
 	{
 		int  top1=0;
 		for (int i = 1; i <sGD.soLoaiCoPhieu; i++) 

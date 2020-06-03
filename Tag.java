@@ -15,7 +15,6 @@ public class Tag {
 	private boolean nnBan;
 	private boolean thongTinSan;
 	private boolean xuHuongSan;
-<<<<<<< HEAD
 	private boolean trangThaiTran;
 	private boolean vachThamChieu;
 	private boolean khopLenh;
@@ -25,9 +24,6 @@ public class Tag {
 
 
 
-=======
-	
->>>>>>> parent of 2560fe4... Edit CoPhieu, MauCau, Tag & SanGiaoDich
 	//constructors
 	public Tag(SanGiaoDich sGD, String A[]) {
 		this.sGD = sGD;

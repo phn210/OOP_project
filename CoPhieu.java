@@ -263,9 +263,6 @@ public class CoPhieu{
 		tt.append(this.getNnBan() + " ");
 		tt.append(this.getRoomCon() + " ");
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> parent of 2560fe4... Edit CoPhieu, MauCau, Tag & SanGiaoDich
 
 }
