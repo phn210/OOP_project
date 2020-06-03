@@ -9,12 +9,21 @@ public class Tag {
 	private int topTang;
 	private int topGiam;
 	private int topGD;
+	private int topKL; //top khop lenh (=5)
 	private boolean trangThaiSan;
 	private boolean nnMua;
 	private boolean nnBan;
 	private boolean thongTinSan;
 	private boolean xuHuongSan;
 	private boolean trangThaiTran;
+	private boolean vachThamChieu;
+	private boolean khopLenh;
+	private boolean soSanhGiaTriKhopLenh;
+
+
+
+
+
 	//constructors
 	public Tag(SanGiaoDich sGD, String A[]) {
 		this.sGD = sGD;

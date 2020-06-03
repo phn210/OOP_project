@@ -245,7 +245,7 @@ public class MauCau {
 
 	public String xuHuongSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isXuHuongSan() == true) {
+		if (tag.isxuHuongSan() == true) {
 			if (sGD.getSoMaTang() > sGD.getSoMaGiam() && sGD.getSoMaTang() > sGD.getSoMaDung()) {
 				s.append("Thi truong tiep tuc bieu hien xu huong tang gia, ");
 				s.append("nhieu kha nang " + sGD.getTENCHISO() + "se dao dong ");
@@ -265,29 +265,29 @@ public class MauCau {
 	}
 	public String trangThaiTran(){
 		StringBuffer s = new StringBuffer();
-		if(tag.trangthaiTran== true){
-			if(sGD.getgiaMax()== sGD.getgiaTran()){
+		if(tag.istrangThaiTran()== true){
+			if(sGD.getGiaMax()== sGD.getGiaTran()){
 				s.append("Co phieu gia kich tran la:");
 				for (int i=0; i< dscp.size() -1; i++) {
 					s.append(dscp.get(i).getTen() + ", ");
 			}
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 				}
-			else if(sGD.getgiaMax() > sGD.getgiaTran()){
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
 				for (int i=0; i< dscp.size() -1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
 				}
 				s.append("cung vuot tren gia tran");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			}
-			else if(sGD.getgiaMax() - sGD.getgiaTran() < 3){
+			else if(sGD.getGiaMax() - sGD.getGiaTran() < 0.5){
 				s.append("Co phieu sat gia tran la");
 				for (int i=0; i< dscp.size() -1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
 				}
 				s.append(dscp.get(dscp.size()-1.getTen() + ".");
 			}
-			else if(sGD.getgiaMax > sGD.getgiaTran){
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
 				s.append("Mot so co phieu vuot tren gia tran la: ");
 				for (int i=0; i< dscp.size()-1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
@@ -298,7 +298,37 @@ public class MauCau {
 				s.append("Cac co phieu deu co muc gia nho hon gia tran. ")
 			}
 		}
+		System.out.println(s);
+		return s.toString();
 	}
+	public String vachThamChieu(){
+		StringBuffer s = new StringBuffer();
+		if(tag.isvachThamChieu() == true){
+			CoPhieu cp = sGD.getDSCP().get(r);
+			if(sGD.getGiaChot() < sGD.getGiaThamChieu()){
+				s.append( cp.getTen() + " tiep tuc giao dich duoi vach tham chieu. ");
+			}
+			else if(sGD.getGiaChot() == sGD.getGiaThamChieu()){
+				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
+			}
+			else{
+				s.append( cp.getTen() + " la cac co phieu giao dich tren vach tham chieu, va co xu huong phai lui ve vach tham chieu");
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	public String khopLenh(){
+		StringBuffer s = new StringBuffer();
+		if(tag.iskhopLenh() == true){
+			CoPhieu cp = sGD.getDSCP().get(r);
+			s.append("Co phieu " cp.getTen());
+			s.append(" co gia tri khop lenh la " + cp.tongKLGD() );
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+
 
 	/*	public CoPhieu getTop1GD()
 	{
