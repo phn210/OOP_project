@@ -7,7 +7,7 @@ public class NhomCoPhieu{
 	private List<CoPhieu> danhSachCP;
 	private float kiVong;
 	private float doLechChuan;
-	//contructor
+	//constructor
 	public NhomCoPhieu(List<CoPhieu> dscp,String tenNhom ,String...danhSachMa ) {
 		this.setTenNhom(tenNhom);
 		for(String maCP:danhSachMa)
