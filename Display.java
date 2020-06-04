@@ -19,6 +19,8 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -35,6 +37,7 @@ public class Display extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtTenFile;
 	private JTextField txtTuKhoa;
+	private FileTxt file;
 
 	
 	/**
@@ -132,7 +135,7 @@ public class Display extends JFrame {
 			}
 		});
 		
-		JButton chayFile = new JButton("Cháº¡y file");
+		JButton chayFile = new JButton("Xu li file");
 		chayFile.setToolTipText("Cháº¡y file vÃ  in ra káº¿t quáº£ ");
 		chayFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		chayFile.addActionListener(new ActionListener() {
@@ -140,10 +143,6 @@ public class Display extends JFrame {
 				try {
 					FileTxt file = new FileTxt();
 					file.openFile(txtTenFile.getText());
-					file.createNewFile();
-					//File.openFile(txtTenFile.getText());
-					//txtKetQua.setText(s);
-					file.writeToFile(file.processFile());
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -155,7 +154,10 @@ public class Display extends JFrame {
 		TimKiemtxt.setToolTipText("Xá»­ lÃ½ file theo thÃ´ng tin báº¡n nháº­p vÃ o");
 		TimKiemtxt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(txtTuKhoa.getText());
+				String s = txtTuKhoa.getText();
+				List<String> A = Arrays.asList(s.split(","));
+				file.setTag(new Tag(file.getSgd(), A));
+				
 			}
 		});
 		

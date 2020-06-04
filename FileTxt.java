@@ -11,11 +11,21 @@ public class FileTxt{
 	private String location = "D:\\HUST\\OOP\\Result.txt";
 
 	private SanGiaoDich sgd = new SanGiaoDich();
-	private MauCau cau;
-	private String result;
 	private Tag tag;
 	
 	public FileTxt() {
+	}
+
+	public SanGiaoDich getSgd() {
+		return sgd;
+	}
+
+	public Tag getTag() {
+		return tag;
+	}
+	
+	public void setTag(Tag tag) {
+		this.tag = tag;
 	}
 	
 	//Má»Ÿ file
@@ -62,13 +72,11 @@ public class FileTxt{
 	
 	protected String processFile() {
 		String s = "";
-		String A[] = {};
-		tag = new Tag(sgd, A);
-		cau = new MauCau(sgd, tag);
+		MauCau cau = new MauCau(sgd, tag);
 		s = cau.tongHopCau();
 		return s;
 	}
-	
+
 	//Ghi vÃ o file
 	protected void writeToFile(String A) {
 		try {

@@ -17,7 +17,7 @@ public class Tag {
 	private boolean trangThaiTran;
 	private boolean vachThamChieu;
 	private boolean khopLenh;
-	private boolean soSanhGiaTriKhopLenh;
+//	private boolean soSanhGiaTriKhopLenh;
 	private boolean trangThaiDauKhi;
 	private boolean lietKeDauKhi;
 	private boolean trangThaiNganHang;
@@ -25,7 +25,7 @@ public class Tag {
 	private boolean nhomCoPhieuTang;
 	
 	//constructors
-	public Tag(SanGiaoDich sGD, String A[]) {
+	public Tag(SanGiaoDich sGD, List<String> A) {
 		this.sGD = sGD;
 		this.listCP = new ArrayList<>(); 
 		this.setTopTang(3);
@@ -135,9 +135,9 @@ public class Tag {
 	public List<CoPhieu> getListCP() {
 		return listCP;
 	}
-	public void setListCP(String A[]) {
-		for (int i=0; i< A.length;i++) {
-			listCP.add(sGD.findCP(A[i]));
+	public void setListCP(List<String> A) {
+		for (int i=0; i< A.size();i++) {
+			listCP.add(sGD.findCP(A.get(i)));
 		}
 	}
 

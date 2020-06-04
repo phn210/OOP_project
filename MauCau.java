@@ -28,6 +28,25 @@ public class MauCau {
 	}
 	
 	//method
+	public String tongHopCau() {
+		StringBuilder s = new StringBuilder();
+		s.append((this.top1Tang() != null) ? this.top1Tang() + '\n' : null);
+		s.append((this.top1Giam() != null) ? this.top1Giam() + '\n' : null);
+		s.append((this.top3Tang() != null) ? this.top3Tang() + '\n' : null);
+		s.append((this.top3Giam() != null) ? this.top3Giam() + '\n' : null);
+		s.append((this.nnMua(tag.getListCP()) != null) ? this.nnMua(tag.getListCP()) + '\n' : null);
+		s.append((this.nnBan(tag.getListCP()) != null) ? this.nnBan(tag.getListCP()) + '\n' : null);
+		s.append((this.nnMuaBan(tag.getListCP()) != null) ? this.nnMuaBan(tag.getListCP()) + '\n' : null);
+		s.append((this.thongTinSan() != null) ? this.thongTinSan() + '\n' : "");
+		s.append((this.trangThaiSan() != null) ? this.trangThaiSan() + '\n' : "");
+		s.append((this.xuHuongSan() != null) ? this.xuHuongSan() + '\n' : "");
+		s.append((this.trangThaiDauKhi() != null) ? this.trangThaiDauKhi() + '\n' : "");
+		s.append((this.trangThaiNganHang() != null) ? this.trangThaiNganHang() + '\n' : "");
+		s.append((this.lietKeDauKhi() != null) ? this.lietKeDauKhi() + '\n' : "");
+		s.append((this.lietKeNganHang() != null) ? this.lietKeNganHang() + '\n' : "");
+		return s.toString();
+	}
+
 	public String top1Tang() {
 		StringBuffer s = new StringBuffer();
 		if (tag.getTopTang() == 1) {
@@ -37,7 +56,6 @@ public class MauCau {
 			s.append("tang cao nhat voi ");
 			s.append(cp.getBienDong()*sGD.getDonViGia());
 			s.append(" dong moi co phieu.");
-			System.out.println(s);
 		}
 		return s.toString();
 	}
@@ -51,7 +69,6 @@ public class MauCau {
 			s.append("giam nhieu nhat voi ");
 			s.append(cp.getBienDong()*sGD.getDonViGia()*(-1));
 			s.append(" dong moi co phieu.");
-			System.out.println(s);
 		}
 		return s.toString();
 	}
@@ -69,7 +86,6 @@ public class MauCau {
 			s.append(cp2.getBienDong()*sGD.getDonViGia()+" dong), ");
 			s.append(cp3.getTen() + " (+");
 			s.append(cp3.getBienDong()*sGD.getDonViGia()+" dong).");
-			System.out.println(s);
 		}
 		return s.toString();
 	}
@@ -87,7 +103,6 @@ public class MauCau {
 			s.append(cp2.getBienDong()*sGD.getDonViGia()*(-1)+" dong), ");
 			s.append(cp3.getTen() + " (-");
 			s.append(cp3.getBienDong()*sGD.getDonViGia()*(-1)+" dong).");
-			System.out.println(s);
 		}
 		return s.toString();
 	}
@@ -115,7 +130,6 @@ public class MauCau {
 				s.append("va " +dscp.get(dscp.size()-1).getNnMua() + " co phieu ");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -142,7 +156,6 @@ public class MauCau {
 				s.append("va " + dscp.get(dscp.size()-1).getNnBan() + " co phieu ");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			} 
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -189,7 +202,6 @@ public class MauCau {
 				}
 			}	
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -215,7 +227,6 @@ public class MauCau {
 				s.append(sGD.getGtdg()*sGD.getDonViGia() + " dong.");
 			}
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -242,7 +253,6 @@ public class MauCau {
 				s.append(" ve " + sGD.getDiemChiSo() + " diem.");
 			}
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 
@@ -263,7 +273,6 @@ public class MauCau {
 				s.append("dang cho thay kich ban tren co the se xay ra.");
 			}
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -281,7 +290,6 @@ public class MauCau {
 			} else 
 				s.append("Cac co phieu nhom dau khi dao dong voi xu huong kho doan dinh.");
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -292,8 +300,10 @@ public class MauCau {
 			dscp.addAll(sGD.getNhomDauKhi());
 			Set<CoPhieu> setCP = new HashSet<>();
 			Random rd = new Random();
-			if (setCP.size() == 0) {
-				while (setCP.size() <= 0) {
+			if (dscp.size() == 0)
+				s.append("Khong co thong tin ve co phieu nhom ngan hang.");
+			else {	
+				while (setCP.size() <= 5) {
 					setCP.add(dscp.get(rd.nextInt(dscp.size())));
 				}
 				s.append("Nhom dau khi ghi nhan ");
@@ -308,11 +318,10 @@ public class MauCau {
 				s.append("la nhom co phieu quan trong voi thi truong.");
 			}
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 
-	public String trangThaiNganHang() {					// undone
+	public String trangThaiNganHang() {					
 		StringBuffer s = new StringBuffer();
 		int tang = sGD.demMaTang(sGD.getNhomNganHang());
 		int giam = sGD.demMaGiam(sGD.getNhomNganHang());
@@ -326,7 +335,6 @@ public class MauCau {
 			} else 
 				s.append("Trong suot phien, nhom ngan hang bien dong voi xu the kho doan dinh.");
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -337,10 +345,10 @@ public class MauCau {
 			dscp.addAll(sGD.getNhomNganHang());
 			Set<CoPhieu> setCP = new HashSet<>();
 			Random rd = new Random();
-			if (setCP.size() == 0)
+			if (dscp.size() == 0)
 				s.append("Khong co thong tin ve co phieu nhom ngan hang.");
 			else {
-				while (setCP.size() <= 0) {
+				while (setCP.size() <= 5) {
 					setCP.add(dscp.get(rd.nextInt(dscp.size())));
 				}
 				s.append("Trong cac co phieu nhom nganh ngan hang: ");
@@ -355,7 +363,6 @@ public class MauCau {
 				s.append("giu vai tro quan trong voi thi truong.");
 			}
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -378,10 +385,7 @@ public class MauCau {
 	public String trangThaiTran(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
 		if(tag.isTrangThaiTran()== true){
-
-
 			CoPhieu cp = sGD.getDSCP().get(0);
-
 			if(cp.getGiaMax() == cp.getGiaTran()){
 				s.append("Co phieu gia kich tran la:");
 				for (int i=0; i< dscp.size() -1; i++) {
@@ -409,7 +413,7 @@ public class MauCau {
 					s.append(dscp.get(i).getTen() + ", ");
 				}
 			}
-			else{
+				else{
 				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
 				s.append("Cac co phieu deu co muc gia nho hon gia tran. ");
 			}
@@ -417,6 +421,7 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
+	
 	public String vachThamChieu(){
 		StringBuffer s = new StringBuffer();
 		if(tag.isVachThamChieu() == true){
@@ -427,13 +432,11 @@ public class MauCau {
 			else if(cp.getGiaChot() == cp.getGiaThamChieu()){
 				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
 			}
-			else{
-				s.append( cp.getTen() + " la cac co phieu giao dich tren vach tham chieu, va co xu huong phai lui ve vach tham chieu");
-			}
 		}
 		System.out.println(s);
 		return s.toString();
 	}
+
 	public String khopLenh(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
 		if(tag.isKhopLenh() == true){
@@ -444,15 +447,77 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-	
-	public String tongHopCau() {
-		StringBuilder s = new StringBuilder();
-		s.append((this.top3Tang() != null) ? this.top3Tang() + '\n' : "");
-		s.append((this.lietKeDauKhi() != null) ? this.lietKeDauKhi() + '\n' : "");
-		s.append((this.lietKeNganHang() != null) ? this.lietKeNganHang() + '\n' : "");
+
+	public String trangThaiCoPhieu(List<CoPhieu> dscp) {
+		StringBuffer s = new StringBuffer();
+		System.out.println(s);
 		return s.toString();
 	}
-
+/*	public String trangThaiTran(){
+		StringBuffer s = new StringBuffer();
+		if(tag.isTrangThaiTran()== true){
+			if(sGD.getGiaMax()== sGD.getGiaTran()){
+				s.append("Co phieu gia kich tran la:");
+				for (int i=0; i< dscp.size() -1; i++) {
+					s.append(dscp.get(i).getTen() + ", ");
+			}
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+				}
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append("cung vuot tren gia tran");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			}
+			else if(sGD.getGiaMax() - sGD.getGiaTran() < 0.5){
+				s.append("Co phieu sat gia tran la");
+				for (int i=0; i< dscp.size() -1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+				s.append(dscp.get(dscp.size()-1.getTen() + ".");
+			}
+			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+				s.append("Mot so co phieu vuot tren gia tran la: ");
+				for (int i=0; i< dscp.size()-1; i++){
+					s.append(dscp.get(i).getTen() + ", ");
+				}
+			}
+			else{
+				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
+				s.append("Cac co phieu deu co muc gia nho hon gia tran. ")
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	public String vachThamChieu(){
+		StringBuffer s = new StringBuffer();
+		if(tag.isvachThamChieu() == true){
+			CoPhieu cp = sGD.getDSCP().get(r);
+			if(sGD.getGiaChot() < sGD.getGiaThamChieu()){
+				s.append( cp.getTen() + " tiep tuc giao dich duoi vach tham chieu. ");
+			}
+			else if(sGD.getGiaChot() == sGD.getGiaThamChieu()){
+				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
+			}
+			else{
+				s.append( cp.getTen() + " la cac co phieu giao dich tren vach tham chieu, va co xu huong phai lui ve vach tham chieu");
+			}
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	public String khopLenh(){
+		StringBuffer s = new StringBuffer();
+		if(tag.isKhopLenh() == true){
+			CoPhieu cp = sGD.getDSCP().get(r);
+			s.append("Co phieu " cp.getTen());
+			s.append(" co gia tri khop lenh la " + cp.tongKLGD() );
+		}
+		System.out.println(s);
+		return s.toString();
+	}
 */
 	/*	public CoPhieu getTop1GD()
 =======
@@ -491,11 +556,11 @@ public class MauCau {
 		LopCoPhieu cpTop3 = getTop3GD();
 		float sumKLGD = sGD.kLGD;
 		
-		String cau="Top 3 cá»• phiáº¿u giao dá»‹ch nhiá»�u nháº¥t trÃªn sÃ n lÃ  "; 
-		cau+= cpTop2.cK + ", " + cpTop1.cK + " vÃ  " + cpTop3.cK;
-		cau+= ", dáº«n Ä‘áº§u lÃ  " + cpTop1.cK;
-		cau+= " vá»›i " + String.format("%.1f", cpTop1.tKL*10) + " cá»• phiáº¿u, ";
-		cau+= ("chiáº¿m " + String.format("%.4f", cpTop1.tKL/sumKLGD*100)+ "% thá»‹ trÆ°á»�ng giao dá»‹ch. ");
+		String cau="Top 3 cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u giao dÃ¡Â»â€¹ch nhiÃ¡Â»ï¿½u nhÃ¡ÂºÂ¥t trÃƒÂªn sÃƒÂ n lÃƒÂ  "; 
+		cau+= cpTop2.cK + ", " + cpTop1.cK + " vÃƒÂ  " + cpTop3.cK;
+		cau+= ", dÃ¡ÂºÂ«n Ã„â€˜Ã¡ÂºÂ§u lÃƒÂ  " + cpTop1.cK;
+		cau+= " vÃ¡Â»â€ºi " + String.format("%.1f", cpTop1.tKL*10) + " cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u, ";
+		cau+= ("chiÃ¡ÂºÂ¿m " + String.format("%.4f", cpTop1.tKL/sumKLGD*100)+ "% thÃ¡Â»â€¹ trÃ†Â°Ã¡Â»ï¿½ng giao dÃ¡Â»â€¹ch. ");
 		System.out.print(cau);
 		
 	}
@@ -504,9 +569,9 @@ public class MauCau {
 		LopCoPhieu cpTop1 = getTop1GD();
 		float sumKLGD = sGD.kLGD;
 		String cau ="";
-		cau+= cpTop1.cK + " lÃ  cá»• phiáº¿u Ä‘Æ°á»£c giao dá»‹ch nhiá»�u nháº¥t vá»›i ";
-		cau+= String.format("%.1f",cpTop1.tKL*10) + " Ä‘Æ¡n vá»‹, "; 
-		cau+= "chiáº¿m " + String.format("%.4f",cpTop1.tKL/sumKLGD*100) + " % thá»‹ trÆ°á»�ng giao dá»‹ch. ";
+		cau+= cpTop1.cK + " lÃƒÂ  cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u Ã„â€˜Ã†Â°Ã¡Â»Â£c giao dÃ¡Â»â€¹ch nhiÃ¡Â»ï¿½u nhÃ¡ÂºÂ¥t vÃ¡Â»â€ºi ";
+		cau+= String.format("%.1f",cpTop1.tKL*10) + " Ã„â€˜Ã†Â¡n vÃ¡Â»â€¹, "; 
+		cau+= "chiÃ¡ÂºÂ¿m " + String.format("%.4f",cpTop1.tKL/sumKLGD*100) + " % thÃ¡Â»â€¹ trÃ†Â°Ã¡Â»ï¿½ng giao dÃ¡Â»â€¹ch. ";
 		System.out.print(cau);
 	}
 	
@@ -515,9 +580,9 @@ public class MauCau {
 		LopCoPhieu cpTop1 = getTop1GD();
 		LopCoPhieu cpTop2 = getTop2GD();
 		String cau ="";
-		cau+= cpTop1.cK +" tiáº¿p tá»¥c dáº«n Ä‘áº§u vá»� tÃ­nh thanh khoáº£n vá»›i " + String.format("%.1f",cpTop1.tKL*10);
-		cau+=" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra ra trong phiÃªn, ";
-		cau+= cpTop2.cK + " Ä‘á»©ng thá»© 2 vá»›i "+ String.format("%.1f",cpTop2.tKL*10) + " cá»• phiáº¿u. ";
+		cau+= cpTop1.cK +" tiÃ¡ÂºÂ¿p tÃ¡Â»Â¥c dÃ¡ÂºÂ«n Ã„â€˜Ã¡ÂºÂ§u vÃ¡Â»ï¿½ tÃƒÂ­nh thanh khoÃ¡ÂºÂ£n vÃ¡Â»â€ºi " + String.format("%.1f",cpTop1.tKL*10);
+		cau+=" cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u Ã„â€˜Ã†Â°Ã¡Â»Â£c bÃƒÂ¡n ra ra trong phiÃƒÂªn, ";
+		cau+= cpTop2.cK + " Ã„â€˜Ã¡Â»Â©ng thÃ¡Â»Â© 2 vÃ¡Â»â€ºi "+ String.format("%.1f",cpTop2.tKL*10) + " cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u. ";
 		System.out.print(cau);
 	}
 	
@@ -529,10 +594,10 @@ public class MauCau {
 		
 		String cau;
 		
-		cau = "Dáº«n Ä‘áº§u thanh khoáº£n táº¡i " + sGD.TENSAN;
-		cau+= " lÃ  " + cpTop1.cK + " vá»›i "+ String.format("%.1f", cpTop1.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
-		cau+= "tiáº¿p theo sau lÃ  "+ cpTop2.cK + " vá»›i "+ String.format("%.1f", cpTop2.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra, ";
-		cau+= "sau Ä‘Ã³ lÃ  "+ cpTop3.cK + " vá»›i "+ String.format("%.1f", cpTop3.tKL*10) +" cá»• phiáº¿u Ä‘Æ°á»£c bÃ¡n ra. ";
+		cau = "DÃ¡ÂºÂ«n Ã„â€˜Ã¡ÂºÂ§u thanh khoÃ¡ÂºÂ£n tÃ¡ÂºÂ¡i " + sGD.TENSAN;
+		cau+= " lÃƒÂ  " + cpTop1.cK + " vÃ¡Â»â€ºi "+ String.format("%.1f", cpTop1.tKL*10) +" cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u Ã„â€˜Ã†Â°Ã¡Â»Â£c bÃƒÂ¡n ra, ";
+		cau+= "tiÃ¡ÂºÂ¿p theo sau lÃƒÂ  "+ cpTop2.cK + " vÃ¡Â»â€ºi "+ String.format("%.1f", cpTop2.tKL*10) +" cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u Ã„â€˜Ã†Â°Ã¡Â»Â£c bÃƒÂ¡n ra, ";
+		cau+= "sau Ã„â€˜ÃƒÂ³ lÃƒÂ  "+ cpTop3.cK + " vÃ¡Â»â€ºi "+ String.format("%.1f", cpTop3.tKL*10) +" cÃ¡Â»â€¢ phiÃ¡ÂºÂ¿u Ã„â€˜Ã†Â°Ã¡Â»Â£c bÃƒÂ¡n ra. ";
 		System.out.print(cau);
 	}
 */	

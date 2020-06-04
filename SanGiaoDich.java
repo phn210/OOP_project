@@ -204,7 +204,8 @@ public class SanGiaoDich{
 		this.demMaGiam(this.getDSCP());
 		this.demMaDung(this.getDSCP());
 		this.sortTopTang();
-//		this.sortTopGiam();
+		this.sortTopGiam();
+		this.sortTopGD();
 		this.setNhomDauKhi();
 		this.setNhomNganHang();
 	}
