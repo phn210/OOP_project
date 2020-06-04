@@ -88,6 +88,10 @@ public class Tag {
 	public boolean isXuHuongSan() {
 		return xuHuongSan;
 	}
+	public boolean isXuHuongSan() { return xuHuongSan; }
+	public boolean isTrangThaiTran() { return trangThaiTran; }
+	public boolean isVachThamChieu() { return vachThamChieu; }
+	public boolean isKhopLenh() { return khopLenh; }
 
 	public void setXuHuongSan(boolean xuHuongSan) {
 		this.xuHuongSan = xuHuongSan;

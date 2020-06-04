@@ -375,32 +375,35 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-
-/*	public String trangThaiTran(){
+	public String trangThaiTran(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
 		if(tag.isTrangThaiTran()== true){
-			if(sGD.getGiaMax()== sGD.getGiaTran()){
+
+
+			CoPhieu cp = sGD.getDSCP().get(0);
+
+			if(cp.getGiaMax() == cp.getGiaTran()){
 				s.append("Co phieu gia kich tran la:");
 				for (int i=0; i< dscp.size() -1; i++) {
 					s.append(dscp.get(i).getTen() + ", ");
-			}
-				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 				}
-			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
+			}
+			else if(cp.getGiaMax() > cp.getGiaTran()){
 				for (int i=0; i< dscp.size() -1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
 				}
 				s.append("cung vuot tren gia tran");
 				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			}
-			else if(sGD.getGiaMax() - sGD.getGiaTran() < 0.5){
+			else if(cp.getGiaMax() - cp.getGiaTran() < 0.5){
 				s.append("Co phieu sat gia tran la");
 				for (int i=0; i< dscp.size() -1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
 				}
-				s.append(dscp.get(dscp.size()-1.getTen() + ".");
+				s.append(dscp.get(dscp.size()-1).getTen() + ".");
 			}
-			else if(sGD.getGiaMax() > sGD.getGiaTran()){
+			else if(cp.getGiaMax() > cp.getGiaTran()){
 				s.append("Mot so co phieu vuot tren gia tran la: ");
 				for (int i=0; i< dscp.size()-1; i++){
 					s.append(dscp.get(i).getTen() + ", ");
@@ -408,7 +411,7 @@ public class MauCau {
 			}
 			else{
 				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
-				s.append("Cac co phieu deu co muc gia nho hon gia tran. ")
+				s.append("Cac co phieu deu co muc gia nho hon gia tran. ");
 			}
 		}
 		System.out.println(s);
@@ -416,12 +419,12 @@ public class MauCau {
 	}
 	public String vachThamChieu(){
 		StringBuffer s = new StringBuffer();
-		if(tag.isvachThamChieu() == true){
-			CoPhieu cp = sGD.getDSCP().get(r);
-			if(sGD.getGiaChot() < sGD.getGiaThamChieu()){
+		if(tag.isVachThamChieu() == true){
+			CoPhieu cp = sGD.getDSCP().get(0);
+			if(cp.getGiaChot() < cp.getGiaThamChieu()){
 				s.append( cp.getTen() + " tiep tuc giao dich duoi vach tham chieu. ");
 			}
-			else if(sGD.getGiaChot() == sGD.getGiaThamChieu()){
+			else if(cp.getGiaChot() == cp.getGiaThamChieu()){
 				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
 			}
 			else{
@@ -431,16 +434,17 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-	public String khopLenh(){
+	public String khopLenh(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
 		if(tag.isKhopLenh() == true){
-			CoPhieu cp = sGD.getDSCP().get(r);
-			s.append("Co phieu " cp.getTen());
-			s.append(" co gia tri khop lenh la " + cp.tongKLGD() );
+			CoPhieu cp = sGD.getDSCP().get(0);
+			s.append("Co phieu " + cp.getTen());
+			s.append(" co gia tri khop lenh la " + cp.getTongKLGD() );
 		}
 		System.out.println(s);
 		return s.toString();
 	}
+
 */
 	/*	public CoPhieu getTop1GD()
 =======
