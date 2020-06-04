@@ -10,12 +10,11 @@ public class NhomCoPhieu{
 	//constructor
 	public NhomCoPhieu(List<CoPhieu> dscp,String tenNhom ,String...danhSachMa ) {
 		this.setTenNhom(tenNhom);
-		for(String maCP:danhSachMa)
+		for(String maCP: danhSachMa)
 		{
 			for(CoPhieu item: dscp) {
 				if (maCP==item.getTen())
 						danhSachCP.add(item);
-				
 			}
 		}
 	}
@@ -38,7 +37,7 @@ public class NhomCoPhieu{
 	public CoPhieu daiDienTang() { // dua ra dai dien tang nhieu nhat
 		CoPhieu tmp = null;
 		for(CoPhieu coPhieu: danhSachCP) 
-			if (coPhieu.getBienDong()>0.02) {
+			if (coPhieu.getBienDong() > 0.02) {
 				if (tmp == null)
 					tmp = coPhieu;
 				if (tmp.getBienDong() < coPhieu.getBienDong())

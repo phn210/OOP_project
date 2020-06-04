@@ -58,10 +58,6 @@ public class SanGiaoDich{
 		this.dscp.add(coPhieu);
 	}
 	
-	public List<CoPhieu> dsCP(){
-		return this.dscp;
-	}
-	
 	public float getDiemChiSo() {
 		return diemChiSo;
 	}
@@ -204,20 +200,17 @@ public class SanGiaoDich{
 
 	//methods
 	public void xuLiThongTin() { //chua cac phuong thuc xu li thong tin dau vao cho san
-		
+		this.demMaTang(this.getDSCP());
+		this.demMaGiam(this.getDSCP());
+		this.demMaDung(this.getDSCP());
+		this.sortTopTang();
+//		this.sortTopGiam();
+		this.setNhomDauKhi();
+		this.setNhomNganHang();
 	}
 	
 /*	public void demTrangThai(List<CoPhieu> dscp) { //dem so ma tang, giam, dung
-		int countTang=0;
-		int countGiam=0;
-		int countDung=0;
-		for (CoPhieu i: dscp) {
-			if (i.getBienDong() > 0)
-				countTang ++;
-			else if (i.getBienDong() < 0)
-				countGiam ++;
-			else countDung ++;
-		}
+		
 		this.setSoMaTang(countTang);
 		this.setSoMaGiam(countGiam);
 		this.setSoMaDung(countDung);
@@ -275,16 +268,13 @@ public class SanGiaoDich{
 		return cp;
 	}
 	
-	public void sortTopTang(){								//undone
+	public void sortTopTang(){								
 		ArrayList<CoPhieu> dscp = new ArrayList<CoPhieu>();
 		dscp.addAll(this.getDSCP());
 		for (int i=0; i<5; i++) {
 			CoPhieu cp = this.getTop1Tang(dscp);
-//			int j = dscp.indexOf(this.getTop1Tang(dscp));
 			this.getTopTang().add(cp);
-//			System.out.println(j);
-//			dscp.remove(j);
-			System.out.println(cp.getTen());
+			dscp.remove(cp);
 		}
 	}
 	
@@ -331,8 +321,6 @@ public class SanGiaoDich{
 				this.getNhomNganHang().add(i);
 		}
 	}
-	
-
 	public NhomCoPhieu atNhomCoPhieu(int pos) {
 		return nhomCoPhieu.get(pos);
 	}

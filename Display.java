@@ -24,7 +24,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
-import javax.swing.JList;
 import javax.swing.JComboBox;
 
 public class Display extends JFrame {
@@ -58,27 +57,27 @@ public class Display extends JFrame {
 	 * Create the frame.
 	 */
 	public Display() {
-		//Tạo ra bảng Panel
+		//Táº¡o ra báº£ng Panel
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 838, 510);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		//Các khung nhập dữ liệu
+		//CÃ¡c khung nháº­p dá»¯ liá»‡u
 		txtTenFile = new JTextField();
 		txtTenFile.setColumns(12);
 		
 		txtTuKhoa = new JTextField();
 		txtTuKhoa.setColumns(12);
 		
-		//Tạo và cài các Label trong bảng
-		JLabel ChonFile = new JLabel("Chọn file");
+		//Táº¡o vÃ  cÃ i cÃ¡c Label trong báº£ng
+		JLabel ChonFile = new JLabel("Chá»�n file");
 		ChonFile.setHorizontalAlignment(SwingConstants.TRAILING);
 		ChonFile.setVerticalAlignment(SwingConstants.BOTTOM);
 		ChonFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel nhapTuKhoa = new JLabel("Nhập Cổ Phiếu");
+		JLabel nhapTuKhoa = new JLabel("Nháº­p Cá»• Phiáº¿u");
 		nhapTuKhoa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		nhapTuKhoa.setHorizontalAlignment(SwingConstants.TRAILING);
 		
@@ -86,76 +85,83 @@ public class Display extends JFrame {
 		hotTag.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		hotTag.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		//Các check box
-		JCheckBox checkNDT = new JCheckBox("Nhà Đầu Tư",false);
+		//CÃ¡c check box
+		JCheckBox checkNDT = new JCheckBox("NhÃ  Ä�áº§u TÆ°",false);
 		checkNDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		checkNDT.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int i = 1;
-				if (i%2 == 1) {
+				if (checkNDT.isSelected()) {
 					checkNDT.setBorderPaintedFlat(true);
 				}else {
 					checkNDT.setBorderPaintedFlat(false);
 				}
 			}
 		});
+		
+		JCheckBox checkHNX = new JCheckBox("HNX", false);
+		checkHNX.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		checkHNX.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (checkHNX.isSelected()) {
+					checkHNX.setBorderPaintedFlat(true);
+				}else {
+					checkHNX.setBorderPaintedFlat(false);
+				}
+			}
+		});
+		
+		JCheckBox checkDanDau = new JCheckBox("Dáº«n Ä‘áº§u", false);
+		checkDanDau.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		
+		JCheckBox checkDanDau_1 = new JCheckBox("Dáº«n Ä‘áº§u", false);
+		checkDanDau_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 	
 		JButton optionalAdress = new JButton("...");
+		optionalAdress.setToolTipText("Chá»�n file báº¡n muá»‘n xá»­ lÃ½.");
+		optionalAdress.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		optionalAdress.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(); 	
-				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //Người dùng chọn file
-					String FileAddress = fileChooser.getSelectedFile().getAbsolutePath();   //Khai báo và gán tên file
-					txtTenFile.setText(FileAddress);  	//Hiện thị địa chỉ file ở bảng
+				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //NgÆ°á»�i dÃ¹ng chá»�n file
+					String FileAddress = fileChooser.getSelectedFile().getAbsolutePath();   //Khai bÃ¡o vÃ  gÃ¡n tÃªn file
+					txtTenFile.setText(FileAddress);  	//Hiá»‡n thá»‹ Ä‘á»‹a chá»‰ file á»Ÿ báº£ng
 				}
 			}
 		});
-		optionalAdress.setToolTipText("Chọn file bạn muốn xử lý.");
-		optionalAdress.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton chayFile = new JButton("Chạy file");
-		chayFile.setToolTipText("Chạy file và in ra kết quả ");
+		JButton chayFile = new JButton("Cháº¡y file");
+		chayFile.setToolTipText("Cháº¡y file vÃ  in ra káº¿t quáº£ ");
+		chayFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					File file = new File();
+					FileTxt file = new FileTxt();
 					file.openFile(txtTenFile.getText());
-										
-//					if (choice == true) {
-//						System.out.println("avx");
-//					}
+					file.createNewFile();
 					//File.openFile(txtTenFile.getText());
 					//txtKetQua.setText(s);
+					file.writeToFile(file.processFile());
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				
 			}
 		});
-		chayFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JButton TimKiemtxt = new JButton("Xử Lí");
+		JButton TimKiemtxt = new JButton("Xá»­ LÃ­");
 		TimKiemtxt.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		TimKiemtxt.setToolTipText("Xử lý file theo thông tin bạn nhập vào");
+		TimKiemtxt.setToolTipText("Xá»­ lÃ½ file theo thÃ´ng tin báº¡n nháº­p vÃ o");
 		TimKiemtxt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(txtTuKhoa.getText());
 			}
 		});
 		
-		JCheckBox checkHNX = new JCheckBox("HNX", false);
-		checkHNX.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		JCheckBox checkDanDau = new JCheckBox("Dẫn đầu", false);
-		checkDanDau.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
-		JCheckBox checkDanDau_1 = new JCheckBox("Dẫn đầu", false);
-		checkDanDau_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		
 		@SuppressWarnings("rawtypes")
 		JComboBox optionalTag = new JComboBox();
-		optionalTag.setName("Chọn tag");
+		optionalTag.setName("Chá»�n tag");
 		optionalTag.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
 		optionalTag.setMaximumRowCount(100);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
