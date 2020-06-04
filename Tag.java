@@ -158,6 +158,61 @@ public class Tag {
 	public void setNhomCoPhieuTang(boolean nhomCoPhieuTang) {
 		this.nhomCoPhieuTang = nhomCoPhieuTang;
 	}
+		public boolean isDungGiaThamChieu() {
+		return dungGiaThamChieu;
+	}
+
+	public void setDungGiaThamChieu(boolean dungGiaThamChieu) {
+		this.dungGiaThamChieu = dungGiaThamChieu;
+	}
+
+	public boolean isTuTruTang() {
+		return tuTruTang;
+	}
+
+	public void setTuTruTang(boolean tuTruTang) {
+		this.tuTruTang = tuTruTang;
+	}
+
+	public boolean isTangHetBienDo() {
+		return tangHetBienDo;
+	}
+
+	public void setTangHetBienDo(boolean tangHetBienDo) {
+		this.tangHetBienDo = tangHetBienDo;
+	}
+
+	public boolean isDienBienTraiChieu() {
+		return dienBienTraiChieu;
+	}
+
+	public void setDienBienTraiChieu(boolean dienBienTraiChieu) {
+		this.dienBienTraiChieu = dienBienTraiChieu;
+	}
+
+	public boolean isDongLoatMatDiem() {
+		return dongLoatMatDiem;
+	}
+
+	public void setDongLoatMatDiem(boolean dongLoatMatDiem) {
+		this.dongLoatMatDiem = dongLoatMatDiem;
+	}
+
+	public boolean isTuotDoc() {
+		return tuotDoc;
+	}
+
+	public void setTuotDoc(boolean tuotDoc) {
+		this.tuotDoc = tuotDoc;
+	}
+
+	public boolean isChimTrongSacDo() {
+		return chimTrongSacDo;
+	}
+
+	public void setChimTrongSacDo(boolean chimTrongSacDo) {
+		this.chimTrongSacDo = chimTrongSacDo;
+	}
 	
 	
 }
