@@ -16,8 +16,8 @@ public class Tag {
 	private boolean xuHuongSan;
 	private boolean trangThaiTran;
 	private boolean vachThamChieu;
-	private boolean khopLenh;
-//	private boolean soSanhGiaTriKhopLenh;
+	private boolean khopLenhTungCoPhieu;
+	private boolean soSanhKhopLenh;
 	private boolean trangThaiDauKhi;
 	private boolean lietKeDauKhi;
 	private boolean trangThaiNganHang;
@@ -97,9 +97,6 @@ public class Tag {
 	public boolean isVachThamChieu() { 
 		return vachThamChieu; 
 	}
-	public boolean isKhopLenh() { 
-		return khopLenh; 
-	}
 	public boolean isTrangThaiDauKhi() {
 		return trangThaiDauKhi;
 	}
@@ -139,6 +136,12 @@ public class Tag {
 		for (int i=0; i< A.size();i++) {
 			listCP.add(sGD.findCP(A.get(i)));
 		}
+	}
+	public boolean isKhopLenhTungCoPhieu() {
+		return khopLenhTungCoPhieu;
+	}
+	public boolean isSoSanhKhopLenh() {
+		return soSanhKhopLenh;
 	}
 
 	public boolean isNhomCoPhieuTang() {
