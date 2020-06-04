@@ -382,71 +382,7 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-	public String trangThaiTran(List<CoPhieu> dscp){
-		StringBuffer s = new StringBuffer();
-		if(tag.isTrangThaiTran()== true){
-			CoPhieu cp = sGD.getDSCP().get(0);
-			if(cp.getGiaMax() == cp.getGiaTran()){
-				s.append("Co phieu gia kich tran la:");
-				for (int i=0; i< dscp.size() -1; i++) {
-					s.append(dscp.get(i).getTen() + ", ");
-				}
-				s.append(dscp.get(dscp.size()-1).getTen() + ".");
-			}
-			else if(cp.getGiaMax() > cp.getGiaTran()){
-				for (int i=0; i< dscp.size() -1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-				}
-				s.append("cung vuot tren gia tran");
-				s.append(dscp.get(dscp.size()-1).getTen() + ".");
-			}
-			else if(cp.getGiaMax() - cp.getGiaTran() < 0.5){
-				s.append("Co phieu sat gia tran la");
-				for (int i=0; i< dscp.size() -1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-				}
-				s.append(dscp.get(dscp.size()-1).getTen() + ".");
-			}
-			else if(cp.getGiaMax() > cp.getGiaTran()){
-				s.append("Mot so co phieu vuot tren gia tran la: ");
-				for (int i=0; i< dscp.size()-1; i++){
-					s.append(dscp.get(i).getTen() + ", ");
-				}
-			}
-				else{
-				s.append("Ngoai cac co phieu tren, thi cac ma co phieu con lai deu o trang thai binh thuong.");
-				s.append("Cac co phieu deu co muc gia nho hon gia tran. ");
-			}
-		}
-		System.out.println(s);
-		return s.toString();
-	}
-	
-	public String vachThamChieu(){
-		StringBuffer s = new StringBuffer();
-		if(tag.isVachThamChieu() == true){
-			CoPhieu cp = sGD.getDSCP().get(0);
-			if(cp.getGiaChot() < cp.getGiaThamChieu()){
-				s.append( cp.getTen() + " tiep tuc giao dich duoi vach tham chieu. ");
-			}
-			else if(cp.getGiaChot() == cp.getGiaThamChieu()){
-				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
-			}
-		}
-		System.out.println(s);
-		return s.toString();
-	}
 
-	public String khopLenh(List<CoPhieu> dscp){
-		StringBuffer s = new StringBuffer();
-		if(tag.isKhopLenh() == true){
-			CoPhieu cp = sGD.getDSCP().get(0);
-			s.append("Co phieu " + cp.getTen());
-			s.append(" co gia tri khop lenh la " + cp.getTongKLGD() );
-		}
-		System.out.println(s);
-		return s.toString();
-	}
 
 	public String trangThaiCoPhieu(List<CoPhieu> dscp) {
 		StringBuffer s = new StringBuffer();
@@ -506,24 +442,6 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
-	public String vachThamChieu(){
-		StringBuffer s = new StringBuffer();
-		if(tag.isVachThamChieu() == true){
-			CoPhieu cp = sGD.getDSCP().get(0);
-			if(cp.getGiaChot() < cp.getGiaThamChieu()){
-				s.append( cp.getTen() + " tiep tuc giao dich duoi vach tham chieu. ");
-			}
-			else if(cp.getGiaChot() == cp.getGiaThamChieu()){
-				s.append( cp.getTen() + " tiep tuc giao dich bam sat vach tham chieu. ");
-			}
-			else{
-				s.append( cp.getTen() + " la cac co phieu giao dich tren vach tham chieu, va co xu huong phai lui ve vach tham chieu");
-			}
-		}
-		System.out.println(s);
-		return s.toString();
-	}
-
 	public String khopLenh(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
 		if(tag.isKhopLenhTungCoPhieu() == true){
