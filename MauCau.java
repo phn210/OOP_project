@@ -444,6 +444,14 @@ public class MauCau {
 		System.out.println(s);
 		return s.toString();
 	}
+	
+	public String tongHopCau() {
+		StringBuilder s = new StringBuilder();
+		s.append((this.top3Tang() != null) ? this.top3Tang() + '\n' : "");
+		s.append((this.lietKeDauKhi() != null) ? this.lietKeDauKhi() + '\n' : "");
+		s.append((this.lietKeNganHang() != null) ? this.lietKeNganHang() + '\n' : "");
+		return s.toString();
+	}
 
 */
 	/*	public CoPhieu getTop1GD()
