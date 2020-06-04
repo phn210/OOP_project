@@ -23,6 +23,13 @@ public class Tag {
 	private boolean trangThaiNganHang;
 	private boolean lietKeNganHang;
 	private boolean nhomCoPhieuTang;
+	private boolean dungGiaThamChieu;
+	private boolean tuTruTang;
+	private boolean tangHetBienDo;
+	private boolean dienBienTraiChieu;
+	private boolean dongLoatMatDiem;
+	private boolean tuotDoc;
+	private boolean chimTrongSacDo;
 	
 	//constructors
 	public Tag(SanGiaoDich sGD, List<String> A) {
