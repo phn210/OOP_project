@@ -9,10 +9,33 @@ import java.io.FileReader;
 public class FileTxt{
 	String Result = "D:\\StudyIT\\Java\\Result.txt";
 
-	SanGiaoDich sdg = new SanGiaoDich();
+	SanGiaoDich sgd = new SanGiaoDich();
+	private Tag tag;
+	private String[] keyCP;
 	
 	public FileTxt() {
 	}
+
+	public SanGiaoDich getSgd() {
+		return sgd;
+	}
+
+	public Tag getTag() {
+		return tag;
+	}
+	
+	public void setTag(Tag tag) {
+		this.tag = tag;
+	}
+	
+	public String[] getKeyCP() {
+		return keyCP;
+	}
+	
+	public void setKeyCP(String[] keyCP) {
+		this.keyCP = keyCP;
+	}
+
 	
 	//Mở file
 	protected void openFile (String DuongDan) throws IOException {
@@ -21,14 +44,15 @@ public class FileTxt{
 
 		try(BufferedReader br = new BufferedReader(fr);){
 		//Gán thuộc tính
-		while ((line = br.readLine()) != null) {
-			String A[] = line.split(",");
-			sdg.dscp.add(new CoPhieu(A));
-
-		}}catch(IOException e){
-		System.out.println("Có lỗi");
+			while ((line = br.readLine()) != null) {
+				String A[] = line.split(",");
+				sgd.getDSCP().add(new CoPhieu(A));
+			}
+			sgd.xuLiThongTin();
+		} catch(IOException e){
+		System.out.println("Có lỗi!");
 			fr.close();
-	    }
+		}
 		System.out.println("Truyền dữ liệu thành công.");
     }
 	
@@ -48,8 +72,19 @@ public class FileTxt{
 			}
 	}
 	
+	//xử lí file
+	protected String processFile() {
+		String s = "";
+		for (int i=0; i< keyCP.length;i++) {
+			tag.getListCP().add(sgd.findCP(keyCP[i]));
+		}
+		MauCau cau = new MauCau(sgd, tag);
+		s = cau.tongHopCau();
+		return s;
+	}
+	
 	//Ghi vào file
-	protected void writerToFile(String A) {
+	protected void writeToFile(String A) {
 		try {
 			FileWriter fileWriter = new FileWriter(Result);
 			fileWriter.write(A);

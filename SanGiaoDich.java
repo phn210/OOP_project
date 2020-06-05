@@ -54,8 +54,7 @@ public class SanGiaoDich{
 		this.nhomNganHang = new ArrayList<>();
 	}
 	
-	public void taoNhom()
-	{
+	public void taoNhom() {
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm vốn hóa lớn","VHM","VIC","POW","GAS","VIC","VNM","SBT","HNG","GVR","BID","VRE","ITA","HAG","HPG","FLC"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm dầu khí","POW","GAS","PLX","PVD","PVT","PXS","PGD"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm ngân hàng","BID","BVH","CTG","EIB","HDB","MBB","STB","TCB","TPB","VCB","VPB"));

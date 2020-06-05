@@ -163,10 +163,13 @@ public class Display extends JFrame {
 			//Lấy từ khóa người dùng nhập ở đây
 			public void actionPerformed(ActionEvent e) {
 				String TuKhoa = txtTuKhoa.getText();
-				
-				
-				
-				
+				System.out.println(TuKhoa);
+				String A[] = new String[0];
+				if (!TuKhoa.equals(""))
+					A = TuKhoa.split(",");
+				file.setKeyCP(A);
+				System.out.println(A.length);
+				file.setTag(new Tag());
 			}
 		});
 		
@@ -190,9 +193,9 @@ public class Display extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FileTxt file = new FileTxt();
+
 				file.createNewFile();
-				//file.writerToFile("Long");
+				file.writeToFile(file.processFile());
 				
 				JOptionPane.showMessageDialog(null, "Hoàn thành,Kết quả đã được tạo !!");
 				
