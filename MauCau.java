@@ -506,136 +506,243 @@ public class MauCau {
 	
 	public String dungGiaThamChieu() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isDungGiaThamChieu() == true) {
-			int countDungGia =0;
-			for (CoPhieu i : sGD.getDSCP())
-				if (i.getBienDong() == 0) {
-					countDungGia++;
-					s.append(i.getTen());
-					if (countDungGia <4)
-						s.append(", ");
-					if (countDungGia==4) {
-						s.append(" Ä‘á»©ng giÃ¡ tham chiáº¿u");
-						System.out.println(s);
-						return s.toString();
-					}
-						
-				}
-			s.append(" Ä‘á»©ng giÃ¡ tham chiáº¿u.");
-		}
-		return s.toString();
+	if (tag.isDungGiaThamChieu() == true)
+	{
+		int countDungGia =0;
+		for (CoPhieu i : sGD.getDSCP())
+			if ( i.getBienDong() == 0 )
+			{
+				countDungGia++;
+				s.append(i.getTen());
+				if (countDungGia <4)
+					s.append(", ");
+				if (countDungGia==4)
+					break;	
+			}
+		s.append(" đứng giá tham chiếu.");
+		System.out.println(s);
+	}
+	return s.toString();
 	}
 	
 	
 	public String tuTruTang() {
-		StringBuffer s = new StringBuffer();
-		if (tag.isTuTruTang() == true) {
-			CoPhieu cp1 = sGD.getTopTang().get(0);
-			CoPhieu cp2 = sGD.getTopTang().get(1);
-			CoPhieu cp3 = sGD.getTopTang().get(2);
-			CoPhieu cp4 = sGD.getTopTang().get(3);
-			s.append("HOSE ghi nhận tứ trụ ");
-			s.append(cp1.getTen() + ", ");
-			s.append(cp2.getTen() + ", ");
-			s.append(cp3.getTen() + ", ");
-			s.append(cp4.getTen() + " cộng ");
-			s.append(cp4.getBienDong()* sGD.getDonViGia());
-			s.append("-");
-			s.append(cp1.getBienDong()* sGD.getDonViGia());
-			s.append(" đồng.");
-		}
-		return s.toString();
+	StringBuffer s = new StringBuffer();
+	if (tag.isTuTruTang() == true)
+	{
+		CoPhieu cp1 = sGD.getTopTang().get(0);
+		CoPhieu cp2 = sGD.getTopTang().get(1);
+		CoPhieu cp3 = sGD.getTopTang().get(2);
+		CoPhieu cp4 = sGD.getTopTang().get(3);
+		s.append("HOSE ghi nhận tứ trụ ");
+		s.append(cp1.getTen() + ", ");
+		s.append(cp2.getTen() + ", ");
+		s.append(cp3.getTen() + ", ");
+		s.append(cp4.getTen() + " cộng ");
+		s.append(cp4.getBienDong()* sGD.getDonViGia());
+		s.append("-");
+		s.append(cp1.getBienDong()* sGD.getDonViGia());
+		s.append(" đồng.");
+		System.out.println(s);
+	}
+	
+	return s.toString();
 	}
 	
 	public String tangHetBienDo() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isTangHetBienDo() == true) {
-			int countGiaTran =0;
-			for (CoPhieu i : sGD.getDSCP())
-				if (i.getGiaChot() == i.getGiaTran()) {
-					countGiaTran++;
-					s.append(i.getTen());
-					if (countGiaTran < 5)
-						s.append(", ");
-					if (countGiaTran == 5) {
-						s.append(" vươn lên hết biên độ.");
-						System.out.println(s);
-						return s.toString();
-					}
-						
-				}
-		}
+	if (tag.isTangHetBienDo() == true)
+	{
+		int countGiaTran =0;
+		for (CoPhieu i : sGD.getDSCP())
+			if ( i.getGiaChot() == i.getGiaTran() )
+			{
+				countGiaTran++;
+				s.append(i.getTen());
+				if (countGiaTran < 5)
+					s.append(", ");
+				if (countGiaTran == 5)
+					break;
+					
+			}
 		s.append(" vươn lên hết biên độ.");
-		return s.toString();
+		System.out.println(s);
+	}
+	
+	return s.toString();
 	}
 	
 	public String dienBienTraiChieu() {
-		StringBuffer s = new StringBuffer();
-		if (tag.isDienBienTraiChieu() == true) {
-			CoPhieu cp1 = sGD.getTop1Giam(sGD.getDSCP());
-			CoPhieu cp2 = sGD.getTopTang().get(0);
-			CoPhieu cp3 = sGD.getTopTang().get(1);
-			s.append("Bộ ba ");
-			s.append(cp1.getTen()+ ", ");
-			s.append(cp2.getTen()+ ", ");
-			s.append(cp3.getTen()+ " diễn biến trái chiều.");
-		}
-		return s.toString();
+	StringBuffer s = new StringBuffer();
+	if (tag.isDienBienTraiChieu() == true)
+	{
+		CoPhieu cp1 = sGD.getTop1Giam(sGD.getDSCP());
+		CoPhieu cp2 = sGD.getTopTang().get(0);
+		CoPhieu cp3 = sGD.getTopTang().get(1);
+		s.append("Bộ ba ");
+		s.append(cp1.getTen()+ ", ");
+		s.append(cp2.getTen()+ ", ");
+		s.append(cp3.getTen()+ " diễn biến trái chiều.");
+		System.out.println(s);
+	}
+	
+	return s.toString();
 	}
 	
 	public String dongLoatMatDiem() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isDongLoatMatDiem() == true) {
-			CoPhieu cp1 = sGD.getTopGiam().get(0);
-			CoPhieu cp2 = sGD.getTopGiam().get(1);
-			CoPhieu cp3 = sGD.getTopGiam().get(2);
-			s.append(cp1.getTen()+ ", ");
-			s.append(cp2.getTen()+ " và ");
-			s.append(cp3.getTen()+ " đều đồng loạt mất điểm.");
-		}
-		return s.toString();
+	if (tag.isDongLoatMatDiem() == true)
+	{
+		CoPhieu cp1 = sGD.getTopGiam().get(0);
+		CoPhieu cp2 = sGD.getTopGiam().get(1);
+		CoPhieu cp3 = sGD.getTopGiam().get(2);
+		s.append(cp1.getTen()+ ", ");
+		s.append(cp2.getTen()+ " và ");
+		s.append(cp3.getTen()+ " đều đồng loạt mất điểm.");
+		System.out.println(s);
+	}
+	
+	return s.toString();
 	}
 	
 	public String tuotDoc() {
-		StringBuffer s = new StringBuffer();
-		if (tag.isTuotDoc() == true) {
-			CoPhieu cp1 = sGD.getTopGiam().get(0);
-			CoPhieu cp2 = sGD.getTopGiam().get(1);
-			CoPhieu cp3 = sGD.getTopGiam().get(2);
-			CoPhieu cp4 = sGD.getTopGiam().get(3);
-			CoPhieu cp5 = sGD.getTopGiam().get(4);
-			s.append("Tuột dốc từ ");
-			s.append(cp5.getBienDong()+ "-");
-			s.append(cp1.getBienDong()+ "điểm: ");
-			s.append(cp1.getTen()+ ", ");
-			s.append(cp2.getTen()+ ", ");
-			s.append(cp3.getTen()+ ", ");
-			s.append(cp4.getTen()+ ", ");
-			s.append(cp5.getTen()+ "... ");
-		}
-
-		return s.toString();
+	StringBuffer s = new StringBuffer();
+	if (tag.isTuotDoc())
+	{
+		CoPhieu cp1 = sGD.getTopGiam().get(0);
+		CoPhieu cp2 = sGD.getTopGiam().get(1);
+		CoPhieu cp3 = sGD.getTopGiam().get(2);
+		CoPhieu cp4 = sGD.getTopGiam().get(3);
+		CoPhieu cp5 = sGD.getTopGiam().get(4);
+		s.append("Tuột dốc từ ");
+		s.append(cp5.getBienDong()+ "-");
+		s.append(cp1.getBienDong()+ " điểm: ");
+		s.append(cp1.getTen()+ ", ");
+		s.append(cp2.getTen()+ ", ");
+		s.append(cp3.getTen()+ ", ");
+		s.append(cp4.getTen()+ ", ");
+		s.append(cp5.getTen()+ "... ");
+		System.out.println(s);
+	}
+	
+	return s.toString();
 	}
 	
 	public String chimTrongSacDo() {
+	StringBuffer s = new StringBuffer();
+	if (tag.isChimTrongSacDo()==true)
+	{
+		int countGiam =0;
+		for (CoPhieu i : sGD.getDSCP())
+			if ( i.getBienDong() < 0 )
+			{
+				countGiam++;
+				s.append(i.getTen());
+				if (countGiam < 5)
+					s.append(", ");
+				if (countGiam == 5)
+					break;
+					
+			}
+		s.append(" ... chìm trong sắc đỏ");
+		System.out.println(s);
+	}
+	
+	return s.toString();
+	}
+	
+	public String vhlDoSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isChimTrongSacDo() == true){
-			int countGiam =0;
-			for (CoPhieu i : sGD.getDSCP())
-				if (i.getBienDong() < 0){
-					countGiam++;
+		if (tag.isVonHoaLon() == true)
+		{
+			s.append("Cổ phiếu vốn hóa lớn tại HOSE gồm: ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm vốn hóa lớn").getDanhSachCP())
+				if (i.getBienDong()<0)
+				{
+					counter++;
 					s.append(i.getTen());
-					if (countGiam < 5)
-						s.append(", ");
-					if (countGiam == 5) {
-						s.append(" ... chìm trong sắc đỏ.");
-						System.out.println(s);
-						return s.toString();
-					}
-						
+					if (counter<3) s.append(", ");
+					if (counter == 3) break;
 				}
+			s.append("... đồng loạt đỏ sàn. ");
 		}
-		s.append(" ... chìm trong sắc đỏ.");
 		return s.toString();
+	}
+	
+	public String vhlTran() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isVonHoaLon() == true)
+		{
+			s.append("Hàng loạt cổ phiếu vốn hóa lớn: ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm vốn hóa lớn").getDanhSachCP())
+				if (i.getGiaChot() == i.getGiaTran())
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<3) s.append(", ");
+					if (counter == 3) break;
+				}
+			s.append("... cùng giao dịch ở giá trần.");
 		}
+		return s.toString();
+	}
+	
+	public String vhlThamChieu() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isVonHoaLon() == true)
+		{
+			s.append("Những mã vốn hóa lớn: ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm vốn hóa lớn").getDanhSachCP())
+				if (i.getGiaChot() == i.getGiaThamChieu())
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<3) s.append(", ");
+					if (counter == 3) break;
+				}
+			s.append("... nỗ lực bám vạch tham chiếu.");
+		}
+		return s.toString();
+	}
+	
+	public String vhlXanh() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isVonHoaLon() == true)
+		{
+			s.append("Những mã vốn hóa lớn: ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm vốn hóa lớn").getDanhSachCP())
+				if (i.getBienDong() >0)
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<3) s.append(", ");
+					if (counter == 3) break;
+				}
+			s.append("... đều bật xanh.");
+		}
+		return s.toString();
+	}
+	
+	public String vhlGiuGia() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isVonHoaLon() == true)
+		{
+			s.append("Những mã vốn hóa lớn: ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm vốn hóa lớn").getDanhSachCP())
+				if (i.getBienDong() == 0 )
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<3) s.append(", ");
+					if (counter == 3) break;
+				}
+			s.append("...  đứng giá.");
+		}
+		return s.toString();
+	}
 	}
