@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.JFileChooser;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
@@ -19,27 +21,22 @@ import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 
 public class Display extends JFrame {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtTenFile;
 	private JTextField txtTuKhoa;
-	private FileTxt file;
+	private FileTxt file = new FileTxt();
+	private ChonTag selectionTag = new ChonTag();
 
-	
 	/**
 	 * Launch the application.
 	 */
@@ -60,27 +57,28 @@ public class Display extends JFrame {
 	 * Create the frame.
 	 */
 	public Display() {
-		//Táº¡o ra báº£ng Panel
+		//Tạo ra bảng Panel
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 838, 510);
+		setBounds(100, 100, 838, 210);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		setTitle("OOP");
 		
-		//CÃ¡c khung nháº­p dá»¯ liá»‡u
+		//Các khung nhập dữ liệu
 		txtTenFile = new JTextField();
 		txtTenFile.setColumns(12);
 		
 		txtTuKhoa = new JTextField();
 		txtTuKhoa.setColumns(12);
 		
-		//Táº¡o vÃ  cÃ i cÃ¡c Label trong báº£ng
-		JLabel ChonFile = new JLabel("Chá»�n file");
+		//Tạo và cài các Label trong bảng
+		JLabel ChonFile = new JLabel("Chọn file");
 		ChonFile.setHorizontalAlignment(SwingConstants.TRAILING);
 		ChonFile.setVerticalAlignment(SwingConstants.BOTTOM);
 		ChonFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		
-		JLabel nhapTuKhoa = new JLabel("Nháº­p Cá»• Phiáº¿u");
+		JLabel nhapTuKhoa = new JLabel("Nhập Cổ Phiếu");
 		nhapTuKhoa.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		nhapTuKhoa.setHorizontalAlignment(SwingConstants.TRAILING);
 		
@@ -88,84 +86,119 @@ public class Display extends JFrame {
 		hotTag.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		hotTag.setHorizontalAlignment(SwingConstants.TRAILING);
 		
-		//CÃ¡c check box
-		JCheckBox checkNDT = new JCheckBox("NhÃ  Ä�áº§u TÆ°",false);
-		checkNDT.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		checkNDT.addActionListener(new ActionListener(){
+		//Các check box
+		JCheckBox check1 = new JCheckBox("Thông tin sàn giao dịch",false);
+		check1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		check1.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (checkNDT.isSelected()) {
-					checkNDT.setBorderPaintedFlat(true);
+				if (check1.isSelected()) {
+					check1.setBorderPaintedFlat(true);
 				}else {
-					checkNDT.setBorderPaintedFlat(false);
+					check1.setBorderPaintedFlat(false);
 				}
 			}
 		});
 		
-		JCheckBox checkHNX = new JCheckBox("HNX", false);
-		checkHNX.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		checkHNX.addActionListener(new ActionListener() {
+		JCheckBox check2 = new JCheckBox("Tăng nhiều nhất", false);
+		check2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		check2.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (checkHNX.isSelected()) {
-					checkHNX.setBorderPaintedFlat(true);
+				if (check2.isSelected()) {
+					check2.setBorderPaintedFlat(true);
 				}else {
-					checkHNX.setBorderPaintedFlat(false);
+					check2.setBorderPaintedFlat(false);
 				}
 			}
 		});
 		
-		JCheckBox checkDanDau = new JCheckBox("Dáº«n Ä‘áº§u", false);
-		checkDanDau.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		JCheckBox check3 = new JCheckBox("Dẫn đầu", false);
+		check3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		check3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(check3.isSelected()) {
+					check3.setBorderPaintedFlat(true);
+				}else {
+					check3.setBorderPaintedFlat(false);
+				}
+				
+			}
+		});
 		
-		JCheckBox checkDanDau_1 = new JCheckBox("Dáº«n Ä‘áº§u", false);
-		checkDanDau_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-	
 		JButton optionalAdress = new JButton("...");
-		optionalAdress.setToolTipText("Chá»�n file báº¡n muá»‘n xá»­ lÃ½.");
+		optionalAdress.setToolTipText("Chọn file bạn muốn xử lý.");
 		optionalAdress.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		optionalAdress.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser(); 	
-				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //NgÆ°á»�i dÃ¹ng chá»�n file
-					String FileAddress = fileChooser.getSelectedFile().getAbsolutePath();   //Khai bÃ¡o vÃ  gÃ¡n tÃªn file
-					txtTenFile.setText(FileAddress);  	//Hiá»‡n thá»‹ Ä‘á»‹a chá»‰ file á»Ÿ báº£ng
+				if (fileChooser.showOpenDialog(txtTenFile) == JFileChooser.APPROVE_OPTION) {    //chọn file
+					String FileAddress = fileChooser.getSelectedFile().getAbsolutePath();   //Khai báo và gán tên file
+					txtTenFile.setText(FileAddress);
 				}
 			}
 		});
 		
-		JButton chayFile = new JButton("Xu li file");
-		chayFile.setToolTipText("Cháº¡y file vÃ  in ra káº¿t quáº£ ");
+		JButton chayFile = new JButton("Đọc file");
+		chayFile.setToolTipText("Chạy file và in ra kết quả ");
 		chayFile.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		chayFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					FileTxt file = new FileTxt();
 					file.openFile(txtTenFile.getText());
+					JOptionPane.showMessageDialog(null, "Đọc file thành công!!");
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
 		
-		JButton TimKiemtxt = new JButton("Xá»­ LÃ­");
+		JButton TimKiemtxt = new JButton("Xử Lí");
 		TimKiemtxt.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		TimKiemtxt.setToolTipText("Xá»­ lÃ½ file theo thÃ´ng tin báº¡n nháº­p vÃ o");
+		TimKiemtxt.setToolTipText("Xử lý file theo thông tin bạn nhập vào");
 		TimKiemtxt.addActionListener(new ActionListener() {
+			//Lấy từ khóa người dùng nhập ở đây
 			public void actionPerformed(ActionEvent e) {
-				String s = txtTuKhoa.getText();
-				List<String> A = Arrays.asList(s.split(","));
-				file.setTag(new Tag(file.getSgd(), A));
+				String TuKhoa = txtTuKhoa.getText();
+				
+				
+				
 				
 			}
 		});
 		
-		@SuppressWarnings("rawtypes")
-		JComboBox optionalTag = new JComboBox();
-		optionalTag.setName("Chá»�n tag");
-		optionalTag.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 15));
-		optionalTag.setMaximumRowCount(100);
+		JButton SelectionTag = new JButton("Chọn Tag");
+		SelectionTag.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		SelectionTag.setToolTipText("Bạn có thể chọn những tag bạn muốn !!");
+		SelectionTag.addActionListener(new ActionListener() {
+			
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectionTag.run();
+				
+			}
+		});
+		
+		JButton Result = new JButton("In kết quả");
+		Result.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		Result.setToolTipText("Kết quả sẽ được in ra dưới dạng result.txt");
+		Result.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FileTxt file = new FileTxt();
+				file.createNewFile();
+				//file.writerToFile("Long");
+				
+				JOptionPane.showMessageDialog(null, "Hoàn thành,Kết quả đã được tạo !!");
+				
+			}
+		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -180,27 +213,27 @@ public class Display extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(optionalAdress, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(chayFile))
+							.addComponent(chayFile, GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(nhapTuKhoa)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 										.addComponent(txtTuKhoa, GroupLayout.PREFERRED_SIZE, 545, GroupLayout.PREFERRED_SIZE)
 										.addGroup(gl_contentPane.createSequentialGroup()
-											.addComponent(checkNDT, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+											.addComponent(check1)
 											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(checkHNX, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-											.addGap(18)
-											.addComponent(checkDanDau, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+											.addComponent(check2)
 											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(checkDanDau_1, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE))))
+											.addComponent(check3, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(SelectionTag))))
 								.addComponent(hotTag, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(optionalTag, 0, 98, Short.MAX_VALUE)
-								.addComponent(TimKiemtxt, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(TimKiemtxt, GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+								.addComponent(Result))))
 					.addGap(31))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -221,14 +254,13 @@ public class Display extends JFrame {
 							.addComponent(nhapTuKhoa))
 						.addComponent(TimKiemtxt, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(optionalTag, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-							.addComponent(hotTag)
-							.addComponent(checkNDT, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(checkHNX, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-							.addComponent(checkDanDau, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-							.addComponent(checkDanDau_1, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(hotTag)
+						.addComponent(Result)
+						.addComponent(SelectionTag)
+						.addComponent(check1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(check2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(check3, GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
 					.addGap(317))
 		);
 		contentPane.setLayout(gl_contentPane);
