@@ -54,14 +54,16 @@ public class SanGiaoDich{
 		this.nhomNganHang = new ArrayList<>();
 	}
 	
-	public void taoNhom() {
-		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm vốn hóa lớn","VHM","VIC","POW","GAS","VIC","VNM","SBT","HNG","GVR","BID","VRE","ITA","HAG","HPG","FLC"));
+	public void taoNhom()
+	{
+		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm vốn hóa lớn","BID","BVH","CTD","CTG","EIB","FPT","GAS","HDB","HPG","MBB","MSN","MWG","NVL","PLX","PNJ","POW","REE","ROS","SAB","SBT","SSI","STB","TCB","VCB","VHM","VIC","VJC","VNM","VPB","VRE"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm dầu khí","POW","GAS","PLX","PVD","PVT","PXS","PGD"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm ngân hàng","BID","BVH","CTG","EIB","HDB","MBB","STB","TCB","TPB","VCB","VPB"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm xây dựng và bất động sản","VRE","ITA","VRE","VHM","VIC","REE","KDH","NVL","LGC","PDR","HPX"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm khai khoáng","PVD","NNC","KSB","DHA"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm sản xuất nông nghiệp","HNG","HAG","NSC","ASM","SSC"));
 		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm sản xuất và tiêu dùng","BHN","DHG","GVR","HPG","MSN","SAB","VNM","KDC","PHR","GEX","PNJ"));
+		this.addNhomCoPhieu(new NhomCoPhieu(this.getDSCP(),"Nhóm blue chip","BID","BVH","CTD","CTG","EIB","FPT","GAS","HDB","HPG","MBB","MSN","MWG","NVL","PLX","PNJ","POW","REE","ROS","SAB","SBT","SSI","STB","TCB","VCB","VHM","VIC","VJC","VNM","VPB","VRE","SAM"));
 	}
 	
 	public void addCoPhieu(CoPhieu coPhieu){
@@ -343,4 +345,11 @@ public class SanGiaoDich{
 	public List<NhomCoPhieu> getNhomCoPhieu(){
 		return this.nhomCoPhieu;
 	}
+	
+	public NhomCoPhieu getNhomCoPhieuByName(String name){
+        for (NhomCoPhieu i : this.nhomCoPhieu)
+            if (i.getTenNhom() == name)
+                return i;
+        return null;
+    }
 }
