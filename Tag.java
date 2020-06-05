@@ -30,6 +30,8 @@ public class Tag {
 	private boolean dongLoatMatDiem;
 	private boolean tuotDoc;
 	private boolean chimTrongSacDo;
+	private boolean vonHoaLon;
+	private boolean blueChip;
 	
 	//constructors
 	public Tag(SanGiaoDich sGD, List<String> A) {
@@ -213,6 +215,21 @@ public class Tag {
 	public void setChimTrongSacDo(boolean chimTrongSacDo) {
 		this.chimTrongSacDo = chimTrongSacDo;
 	}
+	public boolean isVonHoaLon() {
+		return vonHoaLon;
+	}
+
+	public void setVonHoaLon(boolean vonHoaLon) {
+		vonHoaLon = vonHoaLon;
+	}
+
+	public boolean isBlueChip() {
+		return blueChip;
+	}
+
+	public void setBlueChip(boolean blueChip) {
+		this.blueChip = blueChip;
+	}	
 	
 	
 }
