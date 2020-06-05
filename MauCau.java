@@ -413,6 +413,138 @@ public class MauCau {
 		return s.toString();
 	}
 	
+	public String trangThaiKhaiKhoang(){
+		StringBuffer s = new StringBuffer();
+		if (tag.isTrangThaiKhaiKhoang() == true) {
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
+			//
+			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
+			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
+			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
+			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+		}
+		return s.toString();
+	}
+	
+	public String lietKeKhaiKhoang() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isLietKeKhaiKhoang() == true) {
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
+			//
+			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getDanhSachCP().get(0).getTen());
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			s.append(nhomChon.getDanhSachCP().get(1).getTen());
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+		}
+		return s.toString();
+	}
+	
+	public String trangThaiXDBDS() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isTrangThaiXDBDS() == true) {
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
+			//
+			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
+			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
+			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
+			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+		}
+		return s.toString();
+	}
+	
+	public String lietKeXDBDS() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isLietKeXDBDS() == true) {
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
+			//
+			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getDanhSachCP().get(0).getTen());
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			s.append(nhomChon.getDanhSachCP().get(1).getTen());
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+		}
+		return s.toString();
+	}
+	
+	public String trangThaiSXNN() {//ten phuong thuc
+		StringBuffer s = new StringBuffer();
+		if (tag.isTrangThaiSXNN() == true) {//ten tag
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
+			//
+			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
+			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
+			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
+			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+		}
+		return s.toString();
+	}
+	
+	public String lietKeSXNN() {//ten phuong thuc
+		StringBuffer s = new StringBuffer();
+		if (tag.isLietKeSXNN() == true) {//ten tag
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
+			//
+			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getDanhSachCP().get(0).getTen());
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			s.append(nhomChon.getDanhSachCP().get(1).getTen());
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+		}
+		return s.toString();
+	}	
+	
+	public String trangThaiSXTD() {//ten phuong thuc
+		StringBuffer s = new StringBuffer();
+		if (tag.isTrangThaiSXTD() == true) {//ten tag
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
+			//
+			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
+			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
+			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
+			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+		}
+		return s.toString();
+	}
+	
+	public String lietKeSXTD() {//ten phuong thuc
+		StringBuffer s = new StringBuffer();
+		if (tag.isLietKeSXTD() == true) {//ten tag
+			NhomCoPhieu nhomChon = null;
+			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
+				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
+			//
+			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getDanhSachCP().get(0).getTen());
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			s.append(nhomChon.getDanhSachCP().get(1).getTen());
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+		}
+		return s.toString();
+	}
+
 	public String nhomCoPhieuTang() {
 		StringBuffer s = new StringBuffer();
 		if (tag.isNhomCoPhieuTang() == true) {
@@ -421,10 +553,101 @@ public class MauCau {
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isTang() == true) {
 					dem++;
-					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " tăng " + (float)nhom.daiDienTang().getBienDong()*100 +"%,");
+					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " tăng " + (float)nhom.daiDienTang().getBienDong()*100 +"%, ");
 				}
 			}
 			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào tăng.");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nhomCoPhieuTangNhanh() {
+		StringBuffer s = new StringBuffer();
+		NhomCoPhieu nhomTangNhanh = null;
+		if (tag.isNhomCoPhieuTangNhanh() == true) {
+			int dem = 0;
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhom.isTang() == true) {
+					if (nhomTangNhanh == null) nhomTangNhanh = nhom;
+					if (nhom.getKiVong() > nhomTangNhanh.getKiVong())
+						nhomTangNhanh = nhom;
+					dem++;
+				}
+			}
+			if (dem ==0 || nhomTangNhanh.getKiVong()<2) s = new StringBuffer("Ngay hom nay khong co nhom co phieu nao tang nhanh.");
+			else s = new StringBuffer("Nhom co phieu " + nhomTangNhanh.getTenNhom() + " tang manh trong phien giao dich ngay hom nay, dai dien la co phieu " + nhomTangNhanh.daiDienTang().getTen() + " voi muc tang an tuong la " + nhomTangNhanh.daiDienTang().getBienDong()*100 +"%. ");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nhomCoPhieuGiam() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNhomCoPhieuGiam() == true) {
+			s.append("Mau do trong phien giao dich ngay hom nay chu yeu den tu nhom co phieu ");
+			int dem = 0;
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhom.isGiam() == true) {
+					dem++;
+					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " giam " + (float)nhom.daiDienTang().getBienDong()*100 +"%, ");
+				}
+			}
+			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào giam. ");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nhomCoPhieuGiamManh() {
+		StringBuffer s = new StringBuffer();
+		NhomCoPhieu nhomGiamManh = null;
+		if (tag.isNhomCoPhieuGiamManh() == true) {
+			int dem = 0;
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhom.isGiam() == true) {
+					if (nhomGiamManh == null) nhomGiamManh = nhom;
+					if (nhom.getKiVong() < nhomGiamManh.getKiVong())
+						nhomGiamManh = nhom;
+					dem++;
+				}
+			}
+			if (dem ==0 || nhomGiamManh.getKiVong()>-2) s = new StringBuffer("Ngay hom nay khong co nhom co phieu nao giam manh. ");
+			else s = new StringBuffer("Tin xau cho cac nha dau tu " + nhomGiamManh.getTenNhom() + " khi ma nhom nay giam manh, dai dien la co phieu " + nhomGiamManh.daiDienGiam().getTen() + " ve cuoi phien giam tan " + nhomGiamManh.daiDienGiam().getBienDong()*100 +"%. ");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nhomCoPhieuOnDinh() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isNhomCoPhieuOnDinh() == true) {
+			s.append("Bat chat su dien dong cua san giao dich");
+			int dem = 0;
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhom.isOnDinh() == true) {
+					dem++;
+					s.append(", " + nhom.getTenNhom());
+				}
+			}
+			if (dem>0) s.append("van giu o muc on dinh deu. ");
+			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào on dinh. ");
+		}
+		System.out.println(s);
+		return s.toString();
+	}
+	
+	public String nhomCoPhieuPhanHoa() {
+		StringBuffer s = new StringBuffer();
+		NhomCoPhieu nhomPhanHoa = null;
+		if (tag.isNhomCoPhieuPhanHoa() == true) {
+			s.append("Mot so nha dau tu quan ngai khi ma nhom co phieu ");
+			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
+				if (nhomPhanHoa == null) nhomPhanHoa = nhom;
+				if (nhom.getDoLechChuan() > nhomPhanHoa.getDoLechChuan()) nhomPhanHoa = nhom;
+			}
+			if (nhomPhanHoa.getDoLechChuan() > 0.65) s.append(nhomPhanHoa.getTenNhom() + " co su phan hoa ro ret khi ma " + nhomPhanHoa.daiDienTang().getTen() + " tang " + nhomPhanHoa.daiDienTang().getBienDong()*100 + "% trong khi ma " + nhomPhanHoa.daiDienGiam().getTen() + " giam " + nhomPhanHoa.daiDienGiam().getBienDong()*100 + "%. ");
+			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào phan hoa ro ret. ");
 		}
 		System.out.println(s);
 		return s.toString();
