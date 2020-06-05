@@ -745,4 +745,43 @@ public class MauCau {
 		}
 		return s.toString();
 	}
+	
+	public String bcDieuChinhNhe() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isBlueChip() == true)
+		{
+			s.append("Giá một số blue-chip như ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm blue chip").getDanhSachCP())
+				if ((i.getBienDong()<=0.3) && (i.getBienDong()>=-0.05))
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<2) s.append(", ");
+					if (counter == 2) break;
+				}
+			s.append("...  điều chỉnh nhẹ.");
+		}
+		return s.toString();
 	}
+	
+	public String bcGiamNhe() {
+		StringBuffer s = new StringBuffer();
+		if (tag.isBlueChip() == true)
+		{
+			s.append("Một số blue-chip khác như ");
+			int counter=0;
+			for (CoPhieu i : sGD.getNhomCoPhieuByName("Nhóm blue chip").getDanhSachCP())
+				if ((i.getBienDong()>=-0.4) && (i.getBienDong()<0.05))
+				{
+					counter++;
+					s.append(i.getTen());
+					if (counter<2) s.append(", ");
+					if (counter == 2) break;
+				}
+			s.append("...  giảm nhẹ 1-2%");
+		}
+		return s.toString();
+	}
+	
+}
