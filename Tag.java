@@ -32,6 +32,19 @@ public class Tag {
 	private boolean chimTrongSacDo;
 	private boolean vonHoaLon;
 	private boolean blueChip;
+	private boolean nhomCoPhieuTangNhanh;
+	private boolean nhomCoPhieuGiam;
+	private boolean nhomCoPhieuGiamManh;
+	private boolean nhomCoPhieuOnDinh;
+	private boolean nhomCoPhieuPhanHoa;
+	private boolean trangThaiXDBDS;
+	private boolean	lietKeXDBDS;
+	private boolean trangThaiKhaiKhoang;
+	private boolean lietKeKhaiKhoang;
+	private boolean trangThaiSXNN;
+	private boolean lietKeSXNN;
+	private boolean trangThaiSXTD;
+	private boolean lietKeSXTD;
 	
 	//constructors
 	public Tag(SanGiaoDich sGD, List<String> A) {
@@ -230,6 +243,108 @@ public class Tag {
 	public void setBlueChip(boolean blueChip) {
 		this.blueChip = blueChip;
 	}	
-	
+	public boolean isNhomCoPhieuTangNhanh() {
+		return nhomCoPhieuTangNhanh;
+	}
+
+	public void setNhomCoPhieuTangNhanh(boolean nhomCoPhieuTangNhanh) {
+		this.nhomCoPhieuTangNhanh = nhomCoPhieuTangNhanh;
+	}
+
+	public boolean isNhomCoPhieuGiam() {
+		return nhomCoPhieuGiam;
+	}
+
+	public void setNhomCoPhieuGiam(boolean nhomCoPhieuGiam) {
+		this.nhomCoPhieuGiam = nhomCoPhieuGiam;
+	}
+
+	public boolean isNhomCoPhieuGiamManh() {
+		return nhomCoPhieuGiamManh;
+	}
+
+	public void setNhomCoPhieuGiamManh(boolean nhomCoPhieuGiamManh) {
+		this.nhomCoPhieuGiamManh = nhomCoPhieuGiamManh;
+	}
+
+	public boolean isNhomCoPhieuOnDinh() {
+		return nhomCoPhieuOnDinh;
+	}
+
+	public void setNhomCoPhieuOnDinh(boolean nhomCoPhieuOnDinh) {
+		this.nhomCoPhieuOnDinh = nhomCoPhieuOnDinh;
+	}
+
+	public boolean isNhomCoPhieuPhanHoa() {
+		return nhomCoPhieuPhanHoa;
+	}
+
+	public void setNhomCoPhieuPhanHoa(boolean nhomCoPhieuPhanHoa) {
+		this.nhomCoPhieuPhanHoa = nhomCoPhieuPhanHoa;
+	}
+
+	public boolean isTrangThaiXDBDS() {
+		return trangThaiXDBDS;
+	}
+
+	public void setTrangThaiXDBDS(boolean trangThaiXDBS) {
+		this.trangThaiXDBDS = trangThaiXDBS;
+	}
+
+	public boolean isLietKeXDBDS() {
+		return lietKeXDBDS;
+	}
+
+	public void setLietKeXDBDS(boolean lietKeXDBDS) {
+		this.lietKeXDBDS = lietKeXDBDS;
+	}
+
+	public boolean isTrangThaiKhaiKhoang() {
+		return trangThaiKhaiKhoang;
+	}
+
+	public void setTrangThaiKhaiKhoang(boolean trangThaiKhaiKhoang) {
+		this.trangThaiKhaiKhoang = trangThaiKhaiKhoang;
+	}
+
+	public boolean isLietKeKhaiKhoang() {
+		return lietKeKhaiKhoang;
+	}
+
+	public void setLietKeKhaiKhoang(boolean lietKeKhaiKhoang) {
+		this.lietKeKhaiKhoang = lietKeKhaiKhoang;
+	}
+
+	public boolean isTrangThaiSXNN() {
+		return trangThaiSXNN;
+	}
+
+	public void setTrangThaiSXNN(boolean trangThaiSXNN) {
+		this.trangThaiSXNN = trangThaiSXNN;
+	}
+
+	public boolean isLietKeSXNN() {
+		return lietKeSXNN;
+	}
+
+	public void setLietKeSXNN(boolean lietKeSXNN) {
+		this.lietKeSXNN = lietKeSXNN;
+	}
+
+	public boolean isTrangThaiSXTD() {
+		return trangThaiSXTD;
+	}
+
+	public void setTrangThaiSXTD(boolean trangThaiSXTD) {
+		this.trangThaiSXTD = trangThaiSXTD;
+	}
+
+	public boolean isLietKeSXTD() {
+		return lietKeSXTD;
+	}
+
+	public void setLietKeSXTD(boolean lietKeSXTD) {
+		this.lietKeSXTD = lietKeSXTD;
+	}
 	
 }
