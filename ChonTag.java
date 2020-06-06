@@ -10,6 +10,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -22,8 +23,8 @@ public class ChonTag extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel ChonTag;
-	private ArrayList<String> tag = new ArrayList<String>();
-	private ArrayList <String> Arr;
+	private List<String> tag = new ArrayList<>();
+	protected List<String> Arr;
 	//private JScrollPane scrollPane;
 
 	public void run() {
@@ -72,6 +73,8 @@ public class ChonTag extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Arr = (ArrayList<String>) list.getSelectedValuesList();
 				System.out.println(Arr); //test
+				Tag.setListTag(Arr);
+				Tag.setTag();
 				setVisible(false);
 				JOptionPane.showMessageDialog(null, "Chọn Tag thành công!!");
 			}

@@ -4,372 +4,476 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tag {
-	private List<CoPhieu> listCP; //danh sach co phieu nguoi dung nhap
-	private int topTang;
-	private int topGiam;
-	private int topGD;
-	private boolean trangThaiSan;
-	private boolean nnMua;
-	private boolean nnBan;
-	private boolean thongTinSan;
-	private boolean xuHuongSan;
-	private boolean trangThaiTran;
-	private boolean vachThamChieu;
-	private boolean khopLenhTungCoPhieu;
-	private boolean soSanhKhopLenh;
-	private boolean trangThaiDauKhi;
-	private boolean lietKeDauKhi;
-	private boolean trangThaiNganHang;
-	private boolean lietKeNganHang;
-	private boolean nhomCoPhieuTang;
-	private boolean dungGiaThamChieu;
-	private boolean tuTruTang;
-	private boolean tangHetBienDo;
-	private boolean dienBienTraiChieu;
-	private boolean dongLoatMatDiem;
-	private boolean tuotDoc;
-	private boolean chimTrongSacDo;
-	private boolean vonHoaLon;
-	private boolean blueChip;
-	private boolean nhomCoPhieuTangNhanh;
-	private boolean nhomCoPhieuGiam;
-	private boolean nhomCoPhieuGiamManh;
-	private boolean nhomCoPhieuOnDinh;
-	private boolean nhomCoPhieuPhanHoa;
-	private boolean trangThaiXDBDS;
-	private boolean	lietKeXDBDS;
-	private boolean trangThaiKhaiKhoang;
-	private boolean lietKeKhaiKhoang;
-	private boolean trangThaiSXNN;
-	private boolean lietKeSXNN;
-	private boolean trangThaiSXTD;
-	private boolean lietKeSXTD;
-	private boolean trangThaiCoPhieu;
+	private static List<String> listTag = new ArrayList<>();
+	private static List<CoPhieu> listCP = new ArrayList<>(); //danh sach co phieu nguoi dung nhap
+	private static boolean top1Tang;
+	private static boolean top1Giam;
+	private static boolean top3Tang;
+	private static boolean top3Giam;
+//	private static int topGD;
+	private static boolean trangThaiSan;
+	private static boolean nnMua;
+	private static boolean nnBan;
+	private static boolean thongTinSan;
+	private static boolean xuHuongSan;
+	private static boolean trangThaiTran;
+	private static boolean khopLenhTungCoPhieu;
+	private static boolean soSanhKhopLenh;
+	private static boolean trangThaiDauKhi;
+	private static boolean lietKeDauKhi;
+	private static boolean trangThaiNganHang;
+	private static boolean lietKeNganHang;
+	private static boolean nhomCoPhieuTang;
+	private static boolean dungGiaThamChieu;
+	private static boolean tuTruTang;
+	private static boolean tangHetBienDo;
+	private static boolean dienBienTraiChieu;
+	private static boolean dongLoatMatDiem;
+	private static boolean tuotDoc;
+	private static boolean chimTrongSacDo;
+	private static boolean vonHoaLon;
+	private static boolean blueChip;
+	private static boolean nhomCoPhieuTangNhanh;
+	private static boolean nhomCoPhieuGiam;
+	private static boolean nhomCoPhieuGiamManh;
+	private static boolean nhomCoPhieuOnDinh;
+	private static boolean nhomCoPhieuPhanHoa;
+	private static boolean trangThaiXDBDS;
+	private static boolean	lietKeXDBDS;
+	private static boolean trangThaiKhaiKhoang;
+	private static boolean lietKeKhaiKhoang;
+	private static boolean trangThaiSXNN;
+	private static boolean lietKeSXNN;
+	private static boolean trangThaiSXTD;
+	private static boolean lietKeSXTD;
+	private static boolean trangThaiCoPhieu;
 	
 	//constructors
 	public Tag() {
-		this.listCP = new ArrayList<>(); 
-		this.setTopTang(3);
-		this.setTopGiam(1);
-		this.setTopGD(5);
-		this.setTrangThaiSan(true);
-		this.setNnMua(true);
-		this.setNnBan(true);
-		this.setThongTinSan(true);
-		this.setXuHuongSan(true);
-		this.setLietKeDauKhi(true);
-		this.setLietKeNganHang(true);
-		this.setTrangThaiDauKhi(true);
-		this.setTrangThaiNganHang(true);
-		this.setTuTruTang(true);
-		this.setTangHetBienDo(true);
-		this.setDienBienTraiChieu(true);
-		this.setDongLoatMatDiem(true);
-		this.setTuotDoc(true);
-		this.setChimTrongSacDo(true);
-		this.setVonHoaLon(true);
-		this.setBlueChip(true);
-		this.setNhomCoPhieuTang(true);
-		this.setNhomCoPhieuTangNhanh(true);
-		this.setNhomCoPhieuGiam(true);
-		this.setNhomCoPhieuGiamManh(true);
-		this.setNhomCoPhieuOnDinh(true);
-		this.setNhomCoPhieuPhanHoa(true);
-		this.setNhomCoPhieuTangNhanh(true);
-		this.setTrangThaiXDBDS(true);
-		this.setLietKeXDBDS(true);
-		this.setTrangThaiKhaiKhoang(true);
-		this.setLietKeKhaiKhoang(true);
-		this.setTrangThaiSXNN(true);
-		this.setLietKeSXNN(true);
-		this.setTrangThaiSXTD(true);
-		this.setLietKeSXTD(true);
+ 
 	}
 	
-	public int getTopTang() {
-		return topTang;
-	}
-	public void setTopTang(int topTang) {
-		this.topTang = topTang;
-	}
-	public int getTopGiam() {
-		return topGiam;
-	}
-	public void setTopGiam(int topGiam) {
-		this.topGiam = topGiam;
-	}
-	public int getTopGD() {
-		return topGD;
-	}
-	public void setTopGD(int topGD) {
-		this.topGD = topGD;
-	}
-	public boolean isTrangThaiSan() {
-		return trangThaiSan;
-	}
-	public void setTrangThaiSan(boolean trangThaiSan) {
-		this.trangThaiSan = trangThaiSan;
-	}
-	public boolean isNnMua() {
-		return nnMua;
-	}
-	public void setNnMua(boolean nnMua) {
-		this.nnMua = nnMua;
-	}
-	public boolean isNnBan() {
-		return nnBan;
-	}
-	public void setNnBan(boolean nnBan) {
-		this.nnBan = nnBan;
-	}
-	public boolean isThongTinSan() {
-		return thongTinSan;
-	}
-	public void setThongTinSan(boolean thongTinSan) {
-		this.thongTinSan = thongTinSan;
-	}
-	public boolean isXuHuongSan() {
-		return xuHuongSan;
-	}
-	public void setXuHuongSan(boolean xuHuongSan) {
-		this.xuHuongSan = xuHuongSan;
-	}
-	public boolean isTrangThaiTran() { 
-		return trangThaiTran; 
-	}
-	public boolean isVachThamChieu() { 
-		return vachThamChieu; 
-	}
-	public boolean isTrangThaiDauKhi() {
-		return trangThaiDauKhi;
-	}
-
-	public void setTrangThaiDauKhi(boolean trangThaiDauKhi) {
-		this.trangThaiDauKhi = trangThaiDauKhi;
-	}
-
-	public boolean isLietKeDauKhi() {
-		return lietKeDauKhi;
-	}
-
-	public void setLietKeDauKhi(boolean lietKeDauKhi) {
-		this.lietKeDauKhi = lietKeDauKhi;
-	}
-
-	public boolean isTrangThaiNganHang() {
-		return trangThaiNganHang;
-	}
-
-	public void setTrangThaiNganHang(boolean trangThaiNganHang) {
-		this.trangThaiNganHang = trangThaiNganHang;
-	}
-
-	public boolean isLietKeNganHang() {
-		return lietKeNganHang;
-	}
-
-	public void setLietKeNganHang(boolean lietKeNganHang) {
-		this.lietKeNganHang = lietKeNganHang;
-	}
-
-	public List<CoPhieu> getListCP() {
+	public static List<CoPhieu> getListCP() {
 		return listCP;
 	}
 	
-	public boolean isKhopLenhTungCoPhieu() {
+	public static void setListTag(List<String> listTag) {
+		Tag.listTag = listTag;
+	}
+	
+	public static void setTag() {
+		Tag.setTop1Tang();
+		Tag.setTop1Giam();
+		Tag.setTrangThaiSan();
+		Tag.setNnMua();
+		Tag.setNnBan();
+		Tag.setThongTinSan();
+		Tag.setXuHuongSan();
+		Tag.setLietKeDauKhi();
+		Tag.setLietKeNganHang();
+		Tag.setTrangThaiDauKhi();
+		Tag.setTrangThaiNganHang();
+		Tag.setTuTruTang();
+		Tag.setTrangThaiCoPhieu();
+		Tag.setTangHetBienDo();
+		Tag.setDienBienTraiChieu();
+		Tag.setDongLoatMatDiem();
+		Tag.setTuotDoc();
+		Tag.setChimTrongSacDo();
+		Tag.setVonHoaLon();
+		Tag.setBlueChip();
+		Tag.setNhomCoPhieuTang();
+		Tag.setNhomCoPhieuTangNhanh();
+		Tag.setNhomCoPhieuGiam();
+		Tag.setNhomCoPhieuGiamManh();
+		Tag.setNhomCoPhieuOnDinh();
+		Tag.setNhomCoPhieuPhanHoa();
+		Tag.setTrangThaiXDBDS();
+		Tag.setLietKeXDBDS();
+		Tag.setTrangThaiKhaiKhoang();
+		Tag.setLietKeKhaiKhoang();
+		Tag.setTrangThaiSXNN();
+		Tag.setLietKeSXNN();
+		Tag.setTrangThaiSXTD();
+		Tag.setLietKeSXTD();
+	}
+
+	public static boolean isTop1Tang() {
+		return top1Tang;
+	}
+	public static void setTop1Tang() {
+		for (String s: listTag)
+			if (s.contains("Tăng nhiều nhất"))
+				Tag.top1Tang = true;
+	}
+	public static boolean isTop1Giam() {
+		return top1Giam;
+	}
+	public static void setTop1Giam() {
+		for (String s: listTag)
+			if (s.equals("Giảm nhiều nhất"))
+				Tag.top1Giam = true;
+	}
+	public static boolean isTop3Tang() {
+		return top3Tang;
+	}
+
+	public static void setTop3Tang(boolean top3Tang) {
+		for (String s: listTag)
+			if (s.contains("Top 3 tăng"))
+				Tag.top3Tang = true;
+	}
+
+	public static boolean isTop3Giam() {
+		return top3Giam;
+	}
+
+	public static void setTop3Giam(boolean top3Giam) {
+		for (String s: listTag)
+			if (s.contains("Top 3 giảm"))
+				Tag.top3Giam = true;
+	}
+
+/*	public static int getTopGD() {
+		return topGD;
+	}
+	public static void setTopGD(int topGD) {
+		Tag.topGD = topGD;
+	}
+*/
+	public static boolean isTrangThaiSan() {
+		return trangThaiSan;
+	}
+	public static void setTrangThaiSan() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái sàn giao dịch"))
+				Tag.trangThaiSan = true;
+	}
+	public static boolean isNnMua() {
+		return nnMua;
+	}
+	public static void setNnMua() {
+		for (String s: listTag)
+			if (s.contains("Nước ngoài mua"))
+				Tag.nnMua = true;
+	}
+	public static boolean isNnBan() {
+		return nnBan;
+	}
+	public static void setNnBan() {
+		for (String s: listTag)
+			if (s.contains("Nước ngoài bán"))
+				Tag.nnBan = true;
+	}
+	public static boolean isThongTinSan() {
+		return thongTinSan;
+	}
+	public static void setThongTinSan() {
+		for (String s: listTag)
+			if (s.contains("Thông tin sàn giao dịch"))
+				Tag.thongTinSan = true;
+	}
+	public static boolean isXuHuongSan() {
+		return xuHuongSan;
+	}
+	public static void setXuHuongSan() {
+		for (String s: listTag)
+			if (s.contains("Xu hướng sàn giao dịch"))
+				Tag.xuHuongSan = true;
+	}
+
+	public static boolean isTrangThaiTran() { 
+		return trangThaiTran; 
+	}
+	
+	public static void setTrangThaiTran() {
+		for (String s: listTag)
+			if (s.contains("So sánh với giá trần"))
+				Tag.trangThaiTran = true;
+	}
+	
+	public static boolean isTrangThaiDauKhi() {
+		return trangThaiDauKhi;
+	}
+
+	public static void setTrangThaiDauKhi() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm dầu khí"))
+				Tag.trangThaiDauKhi = true;
+	}
+
+	public static boolean isLietKeDauKhi() {
+		return lietKeDauKhi;
+	}
+
+	public static void setLietKeDauKhi () {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm dầu khí"))
+				Tag.lietKeDauKhi = true;
+	}
+
+	public static boolean isTrangThaiNganHang() {
+		return trangThaiNganHang;
+	}
+
+	public static void setTrangThaiNganHang() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm ngân hàng"))
+				Tag.trangThaiNganHang = true;
+	}
+
+	public static boolean isLietKeNganHang() {
+		return lietKeNganHang;
+	}
+
+	public static void setLietKeNganHang() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm ngân hàng"))
+				Tag.lietKeNganHang = true;
+	}
+	
+	public static boolean isKhopLenhTungCoPhieu() {
 		return khopLenhTungCoPhieu;
 	}
-	public boolean isSoSanhKhopLenh() {
+	
+	public static boolean isSoSanhKhopLenh() {
 		return soSanhKhopLenh;
 	}
 
-	public boolean isNhomCoPhieuTang() {
+	public static boolean isNhomCoPhieuTang() {
 		return nhomCoPhieuTang;
 	}
 
-	public void setNhomCoPhieuTang(boolean nhomCoPhieuTang) {
-		this.nhomCoPhieuTang = nhomCoPhieuTang;
+	public static void setNhomCoPhieuTang() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu tăng"))
+				Tag.nhomCoPhieuTang = true;
 	}
-		public boolean isDungGiaThamChieu() {
+	public static boolean isDungGiaThamChieu() {
 		return dungGiaThamChieu;
 	}
 
-	public void setDungGiaThamChieu(boolean dungGiaThamChieu) {
-		this.dungGiaThamChieu = dungGiaThamChieu;
+	public static void setDungGiaThamChieu() {
+		for (String s: listTag)
+			if (s.contains("Đứng giá tham chiếu"))
+				Tag.dungGiaThamChieu = true;
 	}
 
-	public boolean isTuTruTang() {
+	public static boolean isTuTruTang() {
 		return tuTruTang;
 	}
 
-	public void setTuTruTang(boolean tuTruTang) {
-		this.tuTruTang = tuTruTang;
+	public static void setTuTruTang() {
+		for (String s: listTag)
+			if (s.contains("Tứ trụ tăng"))
+				Tag.tuTruTang = true;
 	}
 
-	public boolean isTangHetBienDo() {
+	public static boolean isTangHetBienDo() {
 		return tangHetBienDo;
 	}
 
-	public void setTangHetBienDo(boolean tangHetBienDo) {
-		this.tangHetBienDo = tangHetBienDo;
+	public static void setTangHetBienDo() {
+		for (String s: listTag)
+			if (s.contains("Tăng hết biên độ"))
+				Tag.tangHetBienDo = true;
 	}
 
-	public boolean isDienBienTraiChieu() {
+	public static boolean isDienBienTraiChieu() {
 		return dienBienTraiChieu;
 	}
 
-	public void setDienBienTraiChieu(boolean dienBienTraiChieu) {
-		this.dienBienTraiChieu = dienBienTraiChieu;
+	public static void setDienBienTraiChieu() {
+		for (String s: listTag)
+			if (s.contains("Diễn biến trái chiều"))
+				Tag.dienBienTraiChieu = true;
 	}
 
-	public boolean isDongLoatMatDiem() {
+	public static boolean isDongLoatMatDiem() {
 		return dongLoatMatDiem;
 	}
 
-	public void setDongLoatMatDiem(boolean dongLoatMatDiem) {
-		this.dongLoatMatDiem = dongLoatMatDiem;
+	public static void setDongLoatMatDiem() {
+		for (String s: listTag)
+			if (s.contains("Đồng loạt mất điểm"))
+				Tag.dongLoatMatDiem = true;
 	}
 
-	public boolean isTuotDoc() {
+	public static boolean isTuotDoc() {
 		return tuotDoc;
 	}
 
-	public void setTuotDoc(boolean tuotDoc) {
-		this.tuotDoc = tuotDoc;
+	public static void setTuotDoc() {
+		for (String s: listTag)
+			if (s.contains("Tuột dốc"))
+				Tag.tuotDoc = true;
 	}
 
-	public boolean isChimTrongSacDo() {
+	public static boolean isChimTrongSacDo() {
 		return chimTrongSacDo;
 	}
 
-	public void setChimTrongSacDo(boolean chimTrongSacDo) {
-		this.chimTrongSacDo = chimTrongSacDo;
+	public static void setChimTrongSacDo() {
+		for (String s: listTag)
+			if (s.contains("Chìm trong sắc đỏ"))
+				Tag.chimTrongSacDo = true;
 	}
-	public boolean isVonHoaLon() {
+	public static boolean isVonHoaLon() {
 		return vonHoaLon;
 	}
 
-	public void setVonHoaLon(boolean vonHoaLon) {
-		this.vonHoaLon = vonHoaLon;
+	public static void setVonHoaLon() {
+		for (String s: listTag)
+			if (s.contains("Vốn hóa lớn"))
+				Tag.vonHoaLon = true;
 	}
 
-	public boolean isBlueChip() {
+	public static boolean isBlueChip() {
 		return blueChip;
 	}
 
-	public void setBlueChip(boolean blueChip) {
-		this.blueChip = blueChip;
+	public static void setBlueChip() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu blue chip"))
+				Tag.blueChip = true;
 	}	
-	public boolean isNhomCoPhieuTangNhanh() {
+	public static boolean isNhomCoPhieuTangNhanh() {
 		return nhomCoPhieuTangNhanh;
 	}
 
-	public void setNhomCoPhieuTangNhanh(boolean nhomCoPhieuTangNhanh) {
-		this.nhomCoPhieuTangNhanh = nhomCoPhieuTangNhanh;
+	public static void setNhomCoPhieuTangNhanh() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu tăng nhanh"))
+				Tag.nhomCoPhieuTangNhanh = true;
 	}
 
-	public boolean isNhomCoPhieuGiam() {
+	public static boolean isNhomCoPhieuGiam() {
 		return nhomCoPhieuGiam;
 	}
 
-	public void setNhomCoPhieuGiam(boolean nhomCoPhieuGiam) {
-		this.nhomCoPhieuGiam = nhomCoPhieuGiam;
+	public static void setNhomCoPhieuGiam() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu giảm"))
+				Tag.nhomCoPhieuGiam = true;
 	}
 
-	public boolean isNhomCoPhieuGiamManh() {
+	public static boolean isNhomCoPhieuGiamManh() {
 		return nhomCoPhieuGiamManh;
 	}
 
-	public void setNhomCoPhieuGiamManh(boolean nhomCoPhieuGiamManh) {
-		this.nhomCoPhieuGiamManh = nhomCoPhieuGiamManh;
+	public static void setNhomCoPhieuGiamManh() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu giảm mạnh"))
+				Tag.nhomCoPhieuGiamManh = true;
 	}
 
-	public boolean isNhomCoPhieuOnDinh() {
+	public static boolean isNhomCoPhieuOnDinh() {
 		return nhomCoPhieuOnDinh;
 	}
 
-	public void setNhomCoPhieuOnDinh(boolean nhomCoPhieuOnDinh) {
-		this.nhomCoPhieuOnDinh = nhomCoPhieuOnDinh;
-	}
+	public static void setNhomCoPhieuOnDinh() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu ổn định"))
+				Tag.nhomCoPhieuOnDinh = true;	}
 
-	public boolean isNhomCoPhieuPhanHoa() {
+	public static boolean isNhomCoPhieuPhanHoa() {
 		return nhomCoPhieuPhanHoa;
 	}
 
-	public void setNhomCoPhieuPhanHoa(boolean nhomCoPhieuPhanHoa) {
-		this.nhomCoPhieuPhanHoa = nhomCoPhieuPhanHoa;
+	public static void setNhomCoPhieuPhanHoa() {
+		for (String s: listTag)
+			if (s.contains("Nhóm cổ phiếu phân hóa"))
+				Tag.nhomCoPhieuPhanHoa = true;
 	}
 
-	public boolean isTrangThaiXDBDS() {
+	public static boolean isTrangThaiXDBDS() {
 		return trangThaiXDBDS;
 	}
 
-	public void setTrangThaiXDBDS(boolean trangThaiXDBS) {
-		this.trangThaiXDBDS = trangThaiXDBS;
+	public static void setTrangThaiXDBDS() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm xây dựng và bất động sản"))
+				Tag.trangThaiXDBDS = true;
 	}
 
-	public boolean isLietKeXDBDS() {
+	public static boolean isLietKeXDBDS() {
 		return lietKeXDBDS;
 	}
 
-	public void setLietKeXDBDS(boolean lietKeXDBDS) {
-		this.lietKeXDBDS = lietKeXDBDS;
+	public static void setLietKeXDBDS() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm xây dựng và bất động sản"))
+				Tag.lietKeXDBDS = true;
 	}
 
-	public boolean isTrangThaiKhaiKhoang() {
+	public static boolean isTrangThaiKhaiKhoang() {
 		return trangThaiKhaiKhoang;
 	}
 
-	public void setTrangThaiKhaiKhoang(boolean trangThaiKhaiKhoang) {
-		this.trangThaiKhaiKhoang = trangThaiKhaiKhoang;
+	public static void setTrangThaiKhaiKhoang() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm khai khoáng"))
+				Tag.trangThaiKhaiKhoang = true;
 	}
 
-	public boolean isLietKeKhaiKhoang() {
+	public static boolean isLietKeKhaiKhoang() {
 		return lietKeKhaiKhoang;
 	}
 
-	public void setLietKeKhaiKhoang(boolean lietKeKhaiKhoang) {
-		this.lietKeKhaiKhoang = lietKeKhaiKhoang;
+	public static void setLietKeKhaiKhoang() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm xây dựng và bất động sản"))
+				Tag.lietKeKhaiKhoang = true;
 	}
 
-	public boolean isTrangThaiSXNN() {
+	public static boolean isTrangThaiSXNN() {
 		return trangThaiSXNN;
 	}
 
-	public void setTrangThaiSXNN(boolean trangThaiSXNN) {
-		this.trangThaiSXNN = trangThaiSXNN;
+	public static void setTrangThaiSXNN() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm sản xuất nông nghiệp"))
+				Tag.trangThaiSXNN = true;
 	}
 
-	public boolean isLietKeSXNN() {
+	public static boolean isLietKeSXNN() {
 		return lietKeSXNN;
 	}
 
-	public void setLietKeSXNN(boolean lietKeSXNN) {
-		this.lietKeSXNN = lietKeSXNN;
+	public static void setLietKeSXNN() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm sản xuất nông nghiệp"))
+				Tag.lietKeSXNN = true;
 	}
 
-	public boolean isTrangThaiSXTD() {
+	public static boolean isTrangThaiSXTD() {
 		return trangThaiSXTD;
 	}
 
-	public void setTrangThaiSXTD(boolean trangThaiSXTD) {
-		this.trangThaiSXTD = trangThaiSXTD;
+	public static void setTrangThaiSXTD() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái nhóm sản xuất tiêu dùng"))
+				Tag.trangThaiSXTD = true;
 	}
 
-	public boolean isLietKeSXTD() {
+	public static boolean isLietKeSXTD() {
 		return lietKeSXTD;
 	}
 
-	public void setLietKeSXTD(boolean lietKeSXTD) {
-		this.lietKeSXTD = lietKeSXTD;
+	public static void setLietKeSXTD() {
+		for (String s: listTag)
+			if (s.contains("Cổ phiếu nhóm sản xuất tiêu dùng"))
+				Tag.lietKeSXTD = true;
 	}
 
-	public boolean isTrangThaiCoPhieu() {
+	public static boolean isTrangThaiCoPhieu() {
 		return trangThaiCoPhieu;
 	}
 
-	public void setTrangThaiCoPhieu(boolean trangThaiCoPhieu) {
-		this.trangThaiCoPhieu = trangThaiCoPhieu;
+	public static void setTrangThaiCoPhieu() {
+		for (String s: listTag)
+			if (s.contains("Trạng thái cổ phiếu"))
+				Tag.trangThaiCoPhieu = true;
 	}
 	
 }

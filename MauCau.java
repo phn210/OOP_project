@@ -9,22 +9,17 @@ import java.util.ArrayList;
 public class MauCau {
 	//attributes
 	private SanGiaoDich sGD;
-	private Tag tag;
 
 	//constructors
 	public MauCau() {
 		
 	}
-	public MauCau(SanGiaoDich sGD, Tag tag){
+	public MauCau(SanGiaoDich sGD){
 		this.sGD = sGD;
-		this.tag = tag;
 	}
 	
 	public SanGiaoDich getsGD() {
 		return sGD;
-	}
-	public Tag getTag() {
-		return tag;
 	}
 	
 	//method
@@ -38,12 +33,12 @@ public class MauCau {
 			s.append(this.top3Tang() + '\n');
 		if (this.top3Giam().length() != 0)
 			s.append(this.top3Giam() + '\n');
-		if (this.nnMua(tag.getListCP()).length() != 0)
-			s.append(this.nnMua(tag.getListCP()) + '\n');
-		if (this.nnBan(tag.getListCP()).length() != 0)
-			s.append(this.nnBan(tag.getListCP()) + '\n');
-		if (this.nnMuaBan(tag.getListCP()).length() != 0)
-			s.append(this.nnMuaBan(tag.getListCP()) + '\n');
+		if (this.nnMua(Tag.getListCP()).length() != 0)
+			s.append(this.nnMua(Tag.getListCP()) + '\n');
+		if (this.nnBan(Tag.getListCP()).length() != 0)
+			s.append(this.nnBan(Tag.getListCP()) + '\n');
+		if (this.nnMuaBan(Tag.getListCP()).length() != 0)
+			s.append(this.nnMuaBan(Tag.getListCP()) + '\n');
 		if (this.thongTinSan().length() != 0)
 			s.append(this.thongTinSan() + '\n');
 		if (this.trangThaiSan().length() != 0)
@@ -54,18 +49,16 @@ public class MauCau {
 			s.append(this.trangThaiDauKhi() + '\n');
 		if (this.trangThaiNganHang().length() != 0)
 			s.append(this.trangThaiNganHang() + '\n');
-		if (this.trangThaiDauKhi().length() != 0)
+		if (this.lietKeDauKhi().length() != 0)
 			s.append(this.lietKeDauKhi() + '\n');
-		if (this.lietKeNganHang().length() != 0)
-			s.append(this.lietKeNganHang() + '\n');
 		if (this.lietKeNganHang().length() != 0)
 			s.append(this.lietKeNganHang() + '\n');
 		if (this.nhomCoPhieuTang().length() != 0)
 			s.append(this.nhomCoPhieuTang() + '\n');
-		if (this.trangThaiTran(tag.getListCP()).length() != 0)
-			s.append(this.trangThaiTran(tag.getListCP()) + '\n');
-		if (this.khopLenh(tag.getListCP()).length() != 0)
-			s.append(this.khopLenh(tag.getListCP()) + '\n');
+		if (this.trangThaiTran(Tag.getListCP()).length() != 0)
+			s.append(this.trangThaiTran(Tag.getListCP()) + '\n');
+		if (this.khopLenh(Tag.getListCP()).length() != 0)
+			s.append(this.khopLenh(Tag.getListCP()) + '\n');
 		if (this.dungGiaThamChieu().length() != 0)
 			s.append(this.dungGiaThamChieu() + '\n');
 		if (this.tuTruTang().length() != 0)
@@ -95,6 +88,8 @@ public class MauCau {
 		if (this.vhlXanh().length() != 0)
 			s.append(this.vhlXanh() + '\n');
 
+		if (this.trangThaiCoPhieu(Tag.getListCP()).length() != 0)
+			s.append(this.trangThaiCoPhieu(Tag.getListCP()) + '\n');
 		if (this.bcDieuChinhNhe().length() != 0)
 			s.append(this.bcDieuChinhNhe() + '\n');
 
@@ -147,7 +142,7 @@ public class MauCau {
 	public String top1Tang() {
 		StringBuffer s = new StringBuffer();
 		System.out.println(s.length());
-		if (tag.getTopTang() == 1) {
+		if (Tag.isTop1Tang() == true) {
 			CoPhieu cp = sGD.getTopTang().get(0);
 			s.append("Cổ phiếu ");
 			s.append(cp.getTen() + " ");
@@ -160,7 +155,7 @@ public class MauCau {
 	
 	public String top1Giam() {
 		StringBuffer s = new StringBuffer();
-		if (tag.getTopGiam() == 1) {
+		if (Tag.isTop1Giam() == true) {
 			CoPhieu cp = sGD.getTopGiam().get(0);
 			s.append("Cổ phiếu ");
 			s.append(cp.getTen() + " ");
@@ -173,7 +168,7 @@ public class MauCau {
 	
 	public String top3Tang() {
 		StringBuffer s = new StringBuffer();
-		if (tag.getTopTang() == 3) {
+		if (Tag.isTop3Tang() == true) {
 			CoPhieu cp1 = sGD.getTopTang().get(0);
 			CoPhieu cp2 = sGD.getTopTang().get(1);
 			CoPhieu cp3 = sGD.getTopTang().get(2);
@@ -190,7 +185,7 @@ public class MauCau {
 	
 	public String top3Giam() {
 		StringBuffer s = new StringBuffer();
-		if (tag.getTopGiam() == 3) {
+		if (Tag.isTop3Giam() == true) {
 			CoPhieu cp1 = sGD.getTopGiam().get(0);
 			CoPhieu cp2 = sGD.getTopGiam().get(1);
 			CoPhieu cp3 = sGD.getTopGiam().get(2);
@@ -207,7 +202,7 @@ public class MauCau {
 	
 	public String nnMua(List<CoPhieu> dscp) {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNnMua() == true)
+		if (Tag.isNnMua() == true)
 			if (dscp.size() == 0) {
 				Random rd = new Random();
 				int r = rd.nextInt(sGD.getDSCP().size()-1);
@@ -238,7 +233,7 @@ public class MauCau {
 	
 	public String nnBan(List<CoPhieu> dscp) {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNnBan() == true)
+		if (Tag.isNnBan() == true)
 			if (dscp.size()==0) {
 				Random rd = new Random();
 				int r = rd.nextInt(sGD.getDSCP().size()-1);
@@ -269,7 +264,7 @@ public class MauCau {
 	
 	public String nnMuaBan(List<CoPhieu> dscp) {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNnMua() == true && tag.isNnBan() == true) {
+		if (Tag.isNnMua() == true && Tag.isNnBan() == true) {
 			if (dscp.size()==0) {
 				Random rd = new Random();
 				int r1 = rd.nextInt(sGD.getDSCP().size()-1);
@@ -315,7 +310,7 @@ public class MauCau {
 	
 	public String thongTinSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isThongTinSan()==true) {
+		if (Tag.isThongTinSan()==true) {
 			if (sGD.getDiemTuyetDoi()>0) {
 				s.append("Chốt phiên giao dịch ngày, " + sGD.getTENCHISO());
 				s.append(" tăng " + sGD.getDiemTuyetDoi() + " điểm,");
@@ -340,7 +335,7 @@ public class MauCau {
 	
 	public String trangThaiSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isTrangThaiSan() == true) {
+		if (Tag.isTrangThaiSan() == true) {
 			if (sGD.getDiemTuongDoi() >= sGD.getMucTangManh()) {
 				s.append(sGD.getTENCHISO() + " đã nới rộng đà tăng với ");
 				s.append("sắc xanh lan tỏa toàn thị trường.");
@@ -366,7 +361,7 @@ public class MauCau {
 
 	public String xuHuongSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isXuHuongSan() == true) {
+		if (Tag.isXuHuongSan() == true) {
 			if (sGD.getSoMaTang() > sGD.getSoMaGiam() && sGD.getSoMaTang() > sGD.getSoMaDung()) {
 				s.append("Thị trường tiếp tục biểu hiện xu hướng tăng giá, ");
 				s.append("nhiều khả năng " + sGD.getTENCHISO() + "sẽ dao động ");
@@ -389,7 +384,7 @@ public class MauCau {
 		int tang = sGD.demMaTang(sGD.getNhomDauKhi());
 		int giam = sGD.demMaGiam(sGD.getNhomDauKhi());
 		int dung = sGD.demMaDung(sGD.getNhomDauKhi());
-		if (tag.isTrangThaiDauKhi() == true) {
+		if (Tag.isTrangThaiDauKhi() == true) {
 			if (tang > giam && tang > dung)
 				s.append("Nhóm dầu khí nhuộm xanh với nhiều cổ phiếu tăng hết biên do.");
 			else if (giam < tang && giam < dung) {
@@ -403,7 +398,7 @@ public class MauCau {
 	
 	public String lietKeDauKhi() {						
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeDauKhi() == true) {
+		if (Tag.isLietKeDauKhi() == true) {
 			List<CoPhieu> dscp = new ArrayList<>();
 			dscp.addAll(sGD.getNhomDauKhi());
 			Set<CoPhieu> setCP = new HashSet<>();
@@ -434,7 +429,7 @@ public class MauCau {
 		int tang = sGD.demMaTang(sGD.getNhomNganHang());
 		int giam = sGD.demMaGiam(sGD.getNhomNganHang());
 		int dung = sGD.demMaDung(sGD.getNhomNganHang());
-		if (tag.isTrangThaiNganHang() == true) {
+		if (Tag.isTrangThaiNganHang() == true) {
 			if (tang > giam && tang > dung)
 				s.append("Nhóm ngân hàng bật xanh, duy trì phong độ cao.");
 			else if (giam < tang && giam < dung) {
@@ -448,7 +443,7 @@ public class MauCau {
 	
 	public String lietKeNganHang() {						
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeNganHang() == true) {
+		if (Tag.isLietKeNganHang() == true) {
 			List<CoPhieu> dscp = new ArrayList<>();
 			dscp.addAll(sGD.getNhomNganHang());
 			Set<CoPhieu> setCP = new HashSet<>();
@@ -476,7 +471,7 @@ public class MauCau {
 	
 	public String trangThaiKhaiKhoang(){
 		StringBuffer s = new StringBuffer();
-		if (tag.isTrangThaiKhaiKhoang() == true) {
+		if (Tag.isTrangThaiKhaiKhoang() == true) {
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
@@ -491,7 +486,7 @@ public class MauCau {
 	
 	public String lietKeKhaiKhoang() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeKhaiKhoang() == true) {
+		if (Tag.isLietKeKhaiKhoang() == true) {
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
@@ -509,7 +504,7 @@ public class MauCau {
 	
 	public String trangThaiXDBDS() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isTrangThaiXDBDS() == true) {
+		if (Tag.isTrangThaiXDBDS() == true) {
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
@@ -524,7 +519,7 @@ public class MauCau {
 	
 	public String lietKeXDBDS() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeXDBDS() == true) {
+		if (Tag.isLietKeXDBDS() == true) {
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
@@ -542,7 +537,7 @@ public class MauCau {
 	
 	public String trangThaiSXNN() {//ten phuong thuc
 		StringBuffer s = new StringBuffer();
-		if (tag.isTrangThaiSXNN() == true) {//ten tag
+		if (Tag.isTrangThaiSXNN() == true) {//ten tag
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
@@ -557,7 +552,7 @@ public class MauCau {
 	
 	public String lietKeSXNN() {//ten phuong thuc
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeSXNN() == true) {//ten tag
+		if (Tag.isLietKeSXNN() == true) {//ten tag
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
@@ -575,7 +570,7 @@ public class MauCau {
 	
 	public String trangThaiSXTD() {//ten phuong thuc
 		StringBuffer s = new StringBuffer();
-		if (tag.isTrangThaiSXTD() == true) {//ten tag
+		if (Tag.isTrangThaiSXTD() == true) {//ten tag
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
@@ -590,7 +585,7 @@ public class MauCau {
 	
 	public String lietKeSXTD() {//ten phuong thuc
 		StringBuffer s = new StringBuffer();
-		if (tag.isLietKeSXTD() == true) {//ten tag
+		if (Tag.isLietKeSXTD() == true) {//ten tag
 			NhomCoPhieu nhomChon = null;
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
@@ -608,7 +603,7 @@ public class MauCau {
 
 	public String nhomCoPhieuTang() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNhomCoPhieuTang() == true) {
+		if (Tag.isNhomCoPhieuTang() == true) {
 			s.append("Trong phiên giao dịch hôm nay, màu xanh lá đến từ cổ phiếu ");
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
@@ -625,7 +620,7 @@ public class MauCau {
 	public String nhomCoPhieuTangNhanh() {
 		StringBuffer s = new StringBuffer();
 		NhomCoPhieu nhomTangNhanh = null;
-		if (tag.isNhomCoPhieuTangNhanh() == true) {
+		if (Tag.isNhomCoPhieuTangNhanh() == true) {
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isTang() == true) {
@@ -644,7 +639,7 @@ public class MauCau {
 	
 	public String nhomCoPhieuGiam() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNhomCoPhieuGiam() == true) {
+		if (Tag.isNhomCoPhieuGiam() == true) {
 			s.append("Màu đỏ trong phiên giao dịch hôm nay chủ yếu đến từ nhóm cổ phiểu ");
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
@@ -662,7 +657,7 @@ public class MauCau {
 	public String nhomCoPhieuGiamManh() {
 		StringBuffer s = new StringBuffer();
 		NhomCoPhieu nhomGiamManh = null;
-		if (tag.isNhomCoPhieuGiamManh() == true) {
+		if (Tag.isNhomCoPhieuGiamManh() == true) {
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isGiam() == true) {
@@ -681,7 +676,7 @@ public class MauCau {
 	
 	public String nhomCoPhieuOnDinh() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isNhomCoPhieuOnDinh() == true) {
+		if (Tag.isNhomCoPhieuOnDinh() == true) {
 			s.append("Bất chấp sự biến động của sàn giao dịch ");
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
@@ -700,7 +695,7 @@ public class MauCau {
 	public String nhomCoPhieuPhanHoa() {
 		StringBuffer s = new StringBuffer();
 		NhomCoPhieu nhomPhanHoa = null;
-		if (tag.isNhomCoPhieuPhanHoa() == true) {
+		if (Tag.isNhomCoPhieuPhanHoa() == true) {
 			s.append("Một số nhà đầu tư quan ngại khi mã nhóm cổ phiếu ");
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhomPhanHoa == null) nhomPhanHoa = nhom;
@@ -715,61 +710,93 @@ public class MauCau {
 	
 	public String trangThaiCoPhieu(List<CoPhieu> dscp) {
 		StringBuffer s = new StringBuffer();
-		System.out.println(s);
+		if (Tag.isTrangThaiCoPhieu() == true)
+			if (dscp.size() == 0) {
+				Random rd = new Random();
+				int r = rd.nextInt(sGD.getDSCP().size()-1);
+				CoPhieu cp = sGD.getDSCP().get(r);
+				s.append("Mã cổ phiếu " + cp.getTen() + " ");
+				s.append(cp.getTrangThai());
+				if (cp.getBienDong() > 0)
+					s.append(cp.getBienDong() + " điểm.");
+				else if(cp.getBienDong() < 0)
+					s.append(cp.getBienDong()*(-1) + " điểm.");
+				else s.append(".");
+			} else if (dscp.size() == 1) {
+				CoPhieu cp = dscp.get(0);
+				s.append("Mã cổ phiếu " + cp.getTen() + " ");
+				if (cp.getBienDong() > 0)
+					s.append(cp.getBienDong() + " điểm.");
+				else if(cp.getBienDong() < 0)
+					s.append(cp.getBienDong()*(-1) + " điểm.");
+				else s.append(".");
+			} else {
+				s.append("Mã cổ phiếu ");
+				for (int i=0; i< dscp.size() - 1; i++) {
+					CoPhieu cp = dscp.get(i);
+					s.append(cp.getTen() + " ");
+					if (cp.getBienDong() > 0)
+						s.append(cp.getBienDong() + " điểm, ");
+					else if(cp.getBienDong() < 0)
+						s.append(cp.getBienDong()*(-1) + " điểm, ");
+					else s.append(", ");
+				}
+				s.append("và " +dscp.get(dscp.size()-1).getTen() + " ");
+				s.append(dscp.get(dscp.size()-1).getTrangThai());
+				if (dscp.get(dscp.size()-1).getBienDong() > 0)
+					s.append(dscp.get(dscp.size()-1).getBienDong() + " điểm.");
+				else if(dscp.get(dscp.size()-1).getBienDong() < 0)
+					s.append(dscp.get(dscp.size()-1).getBienDong()*(-1) + " điểm.");
+				else s.append(".");
+			}
 		return s.toString();
 	}
 	
 	public String trangThaiTran(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
-		if(tag.isTrangThaiTran()== true){
+		if(Tag.isTrangThaiTran()== true){
 			if(dscp.size()== 0) {
 				Random rd = new Random();
 				int r = rd.nextInt(sGD.getDSCP().size()-1);
 				CoPhieu cp = sGD.getDSCP().get(r);
-				s.append("Co phieu " + cp.getTen());
-
-				if(cp.getGiaMax() == cp.getGiaTran()){
-					s.append("co gia kich tran ");
-				}
-				else if(cp.getGiaMax() > cp.getGiaTran()){
-					s.append("da vuot tren gia tran ");
-				}
-				else if(cp.getGiaMax() - cp.getGiaTran() < 0.5){
-					s.append("dang sat gia tran ");
-				}
-				s.append("voi gia tran " + cp.getGiaTran()*sGD.getDonViGia()+ "dong ");
-				s.append("va gia ban lon nhat la " + cp.getGiaMax()*sGD.getDonViGia() +"dong.");
-			} else {
-				s.append("dang o trang thai binh thuong (la gia ban nho hon gia tran).");
-			}
-		}
-		else {
-			for (int i=0; i< dscp.size() -1; i++) {
-				s.append("Thong tin ve co phieu "+ dscp.get(i).getTen() + "la: ");
-				s.append("Gia tran la " + dscp.get(i).getTen() +"dong ");
-				s.append("va gia tran la " + dscp.get(i).getGiaTran() +"dong.");
-				s.append("De dang ta thay ");
-				s.append("Co phieu " + dscp.get(i).getTen());
-				if(dscp.get(i).getGiaMax() == dscp.get(i).getGiaTran()){
-					s.append("co gia kich tran. ");
-				}
-				else if(dscp.get(i).getGiaMax() > dscp.get(i).getGiaTran()){
-					s.append("da vuot tren gia tran. ");
-				}
-				else if(dscp.get(i).getGiaMax() - dscp.get(i).getGiaTran() < 0.5){
-					s.append("dang sat gia tran. ");
-				}
-				else{
+				s.append("Cổ phiếu " + cp.getTen());
+				
+				if(cp.getGiaMax() == cp.getGiaTran())
+					s.append("có gia kich tran.");
+				else if(cp.getGiaMax() > cp.getGiaTran())
+					s.append("da vuot tren gia tran.");
+				else if(cp.getGiaMax() - cp.getGiaTran() < 0.5)
+					s.append("dang sat gia tran.");
+				else 
 					s.append("dang o trang thai binh thuong (la gia ban nho hon gia tran).");
+			} else {
+				for (int i=0; i< dscp.size() - 1; i++) {
+					s.append("Thong tin ve co phieu "+ dscp.get(i).getTen() + "la: ");
+					s.append("Gia tran la " + dscp.get(i).getTen() +"dong ");
+					s.append("va gia tran la " + dscp.get(i).getGiaTran() +"dong.");
+					s.append("De dang ta thay ");
+					s.append("Co phieu " + dscp.get(i).getTen());
+					if(dscp.get(i).getGiaMax() == dscp.get(i).getGiaTran()){
+						s.append("co gia kich tran. ");
+					}
+					else if(dscp.get(i).getGiaMax() > dscp.get(i).getGiaTran()){
+						s.append("da vuot tren gia tran. ");
+					}
+					else if(dscp.get(i).getGiaMax() - dscp.get(i).getGiaTran() < 0.5){
+						s.append("dang sat gia tran. ");
+					}
+					else{
+						s.append("dang o trang thai binh thuong (la gia ban nho hon gia tran).");
+					}
 				}
 			}
-
 		}
 		return s.toString();
 	}
+	
 	public String khopLenh(List<CoPhieu> dscp){
 		StringBuffer s = new StringBuffer();
-		if(tag.isKhopLenhTungCoPhieu() == true){
+		if(Tag.isKhopLenhTungCoPhieu() == true){
 			if(dscp.size() == 0) {
 				Random rd = new Random();
 				int r = rd.nextInt(sGD.getDSCP().size()-1);
@@ -780,7 +807,7 @@ public class MauCau {
 			else {
 				for (int i=0; i< dscp.size() -1; i++) {
 					s.append("Co phieu " + dscp.get(i).getTen());
-					s.append(" co gia tri khop lenh la " + dscp.get(i).getTongKLGD()*sGD.getDonViGia() + "dong." );
+					s.append(" co gia tri khop lenh la " + dscp.get(i).getTongKLGD()*sGD.getDonViGia() + "dong." + '\n' );
 				}
 			}
 		}
@@ -789,7 +816,7 @@ public class MauCau {
 	
 	public String dungGiaThamChieu() {
 		StringBuffer s = new StringBuffer();
-	if (tag.isDungGiaThamChieu() == true)
+	if (Tag.isDungGiaThamChieu() == true)
 	{
 		int countDungGia =0;
 		for (CoPhieu i : sGD.getDSCP())
@@ -803,7 +830,6 @@ public class MauCau {
 					break;	
 			}
 		s.append(" đứng giá tham chiếu.");
-		System.out.println(s);
 	}
 	return s.toString();
 	}
@@ -811,7 +837,7 @@ public class MauCau {
 	
 	public String tuTruTang() {
 	StringBuffer s = new StringBuffer();
-	if (tag.isTuTruTang() == true)
+	if (Tag.isTuTruTang() == true)
 	{
 		CoPhieu cp1 = sGD.getTopTang().get(0);
 		CoPhieu cp2 = sGD.getTopTang().get(1);
@@ -826,7 +852,6 @@ public class MauCau {
 		s.append("-");
 		s.append(cp1.getBienDong()* sGD.getDonViGia());
 		s.append(" đồng.");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -834,7 +859,7 @@ public class MauCau {
 	
 	public String tangHetBienDo() {
 		StringBuffer s = new StringBuffer();
-	if (tag.isTangHetBienDo() == true)
+	if (Tag.isTangHetBienDo() == true)
 	{
 		int countGiaTran =0;
 		for (CoPhieu i : sGD.getDSCP())
@@ -849,7 +874,6 @@ public class MauCau {
 					
 			}
 		s.append(" vươn lên hết biên độ.");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -857,7 +881,7 @@ public class MauCau {
 	
 	public String dienBienTraiChieu() {
 	StringBuffer s = new StringBuffer();
-	if (tag.isDienBienTraiChieu() == true)
+	if (Tag.isDienBienTraiChieu() == true)
 	{
 		CoPhieu cp1 = sGD.getTop1Giam(sGD.getDSCP());
 		CoPhieu cp2 = sGD.getTopTang().get(0);
@@ -866,7 +890,6 @@ public class MauCau {
 		s.append(cp1.getTen()+ ", ");
 		s.append(cp2.getTen()+ ", ");
 		s.append(cp3.getTen()+ " diễn biến trái chiều.");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -874,7 +897,7 @@ public class MauCau {
 	
 	public String dongLoatMatDiem() {
 		StringBuffer s = new StringBuffer();
-	if (tag.isDongLoatMatDiem() == true)
+	if (Tag.isDongLoatMatDiem() == true)
 	{
 		CoPhieu cp1 = sGD.getTopGiam().get(0);
 		CoPhieu cp2 = sGD.getTopGiam().get(1);
@@ -882,7 +905,6 @@ public class MauCau {
 		s.append(cp1.getTen()+ ", ");
 		s.append(cp2.getTen()+ " và ");
 		s.append(cp3.getTen()+ " đều đồng loạt mất điểm.");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -890,7 +912,7 @@ public class MauCau {
 	
 	public String tuotDoc() {
 	StringBuffer s = new StringBuffer();
-	if (tag.isTuotDoc())
+	if (Tag.isTuotDoc())
 	{
 		CoPhieu cp1 = sGD.getTopGiam().get(0);
 		CoPhieu cp2 = sGD.getTopGiam().get(1);
@@ -905,7 +927,6 @@ public class MauCau {
 		s.append(cp3.getTen()+ ", ");
 		s.append(cp4.getTen()+ ", ");
 		s.append(cp5.getTen()+ "... ");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -913,7 +934,7 @@ public class MauCau {
 	
 	public String chimTrongSacDo() {
 	StringBuffer s = new StringBuffer();
-	if (tag.isChimTrongSacDo()==true)
+	if (Tag.isChimTrongSacDo()==true)
 	{
 		int countGiam =0;
 		for (CoPhieu i : sGD.getDSCP())
@@ -928,7 +949,6 @@ public class MauCau {
 					
 			}
 		s.append(" ... chìm trong sắc đỏ");
-		System.out.println(s);
 	}
 	
 	return s.toString();
@@ -936,7 +956,7 @@ public class MauCau {
 	
 	public String vhlDoSan() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isVonHoaLon() == true)
+		if (Tag.isVonHoaLon() == true)
 		{
 			s.append("Cổ phiếu vốn hóa lớn tại HOSE gồm: ");
 			int counter=0;
@@ -955,7 +975,7 @@ public class MauCau {
 	
 	public String vhlTran() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isVonHoaLon() == true)
+		if (Tag.isVonHoaLon() == true)
 		{
 			s.append("Hàng loạt cổ phiếu vốn hóa lớn: ");
 			int counter=0;
@@ -974,7 +994,7 @@ public class MauCau {
 	
 	public String vhlThamChieu() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isVonHoaLon() == true)
+		if (Tag.isVonHoaLon() == true)
 		{
 			s.append("Những mã vốn hóa lớn: ");
 			int counter=0;
@@ -993,7 +1013,7 @@ public class MauCau {
 	
 	public String vhlXanh() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isVonHoaLon() == true)
+		if (Tag.isVonHoaLon() == true)
 		{
 			s.append("Những mã vốn hóa lớn: ");
 			int counter=0;
@@ -1012,7 +1032,7 @@ public class MauCau {
 	
 	public String vhlGiuGia() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isVonHoaLon() == true)
+		if (Tag.isVonHoaLon() == true)
 		{
 			s.append("Những mã vốn hóa lớn: ");
 			int counter=0;
@@ -1031,7 +1051,7 @@ public class MauCau {
 	
 	public String bcDieuChinhNhe() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isBlueChip() == true)
+		if (Tag.isBlueChip() == true)
 		{
 			s.append("Giá một số blue-chip như ");
 			int counter=0;
@@ -1050,7 +1070,7 @@ public class MauCau {
 	
 	public String bcGiamNhe() {
 		StringBuffer s = new StringBuffer();
-		if (tag.isBlueChip() == true)
+		if (Tag.isBlueChip() == true)
 		{
 			s.append("Một số blue-chip khác như ");
 			int counter=0;

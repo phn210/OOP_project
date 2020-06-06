@@ -1,99 +1,100 @@
 package bai_tap_lon;
 
-import java.io.File;  
-import java.io.FileWriter;
-import java.io.IOException; 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-public class FileTxt{
-	String Result = "D:\\StudyIT\\Java\\Result.txt";
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 
-	SanGiaoDich sgd = new SanGiaoDich();
-	private Tag tag;
-	private String[] keyCP;
-	
-	public FileTxt() {
-	}
+import java.awt.Font;
+import java.util.List;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
-	public SanGiaoDich getSgd() {
-		return sgd;
-	}
+public class ChonTag extends JFrame {
 
-	public Tag getTag() {
-		return tag;
-	}
-	
-	public void setTag(Tag tag) {
-		this.tag = tag;
-	}
-	
-	public String[] getKeyCP() {
-		return keyCP;
-	}
-	
-	public void setKeyCP(String[] keyCP) {
-		this.keyCP = keyCP;
-	}
 
-	
-	//Mở file
-	protected void openFile (String DuongDan) throws IOException {
-		FileReader fr = new FileReader(DuongDan);
-		String line = "";
+	private static final long serialVersionUID = 1L;
+	private JPanel ChonTag;
+	private List<String> tag = new ArrayList<>();
+	protected List<String> Arr;
+	//private JScrollPane scrollPane;
 
-		try(BufferedReader br = new BufferedReader(fr);){
-		//Gán thuộc tính
-			while ((line = br.readLine()) != null) {
-				String A[] = line.split(",");
-				sgd.getDSCP().add(new CoPhieu(A));
-			}
-			sgd.xuLiThongTin();
-		} catch(IOException e){
-		System.out.println("Có lỗi!");
-			fr.close();
-		}
-		System.out.println("Truyền dữ liệu thành công.");
-    }
-	
-	//Tạo file
-	protected void createNewFile() {
-		 File file = new File(Result);
-			try {
-				if (file.createNewFile() == true) {
-					System.out.println("Đã tạo File!!!");
-					System.out.println("Hãy truy cập: D:\\StudyIT\\Java\\Result.txt ");
-				}else {
-					System.out.println("Tạo lại thành công!!!");
+	public void run() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ChonTag frame = new ChonTag();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+		});
 	}
-	
-	//xử lí file
-	protected String processFile() {
-		String s = "";
-		for (int i=0; i< keyCP.length;i++) {
-			tag.getListCP().add(sgd.findCP(keyCP[i]));
+
+	@SuppressWarnings("rawtypes")
+	public ChonTag() {
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 350, 260);
+		ChonTag = new JPanel();
+		ChonTag.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(ChonTag);
+		setLocationRelativeTo(null);
+		
+		String[] T = {"Tăng nhiều nhất","Top 3 tăng","Giảm nhiều nhất","Top 3 giảm","Nước ngoài mua","Nước ngoài bán",
+				"Thông tin sàn giao dịch","Trạng thái sàn giao dịch","Xu hướng sàn giao dịch","Trạng thái nhóm dầu khí",
+				"Cổ phiếu nhóm dầu khí","Trạng thái nhóm ngân hàng","Cổ phiếu nhóm ngân hàng","So sánh giá với giá trần",
+				"Nhóm cổ phiếu tăng","Nhóm cổ phiếu tăng nhanh","Nhóm cổ phiếu giảm","Nhóm cổ phiếu giảm mạnh",
+				"Nhóm cổ phiếu ổn định","Nhóm cổ phiếu phân hóa","Đứng giá tham chiếu","Tự trụ tăng","Tăng hết biên độ",
+				"Diễn biến trái chiều","Đồng loạt mất điểm","Tuột dốc","Chìm trong sắc đỏ",
+				"Vốn hóa lớn", "Cổ phiếu blue chip" };	
+		for (String index : T) {
+			tag.add(index);
 		}
-		MauCau cau = new MauCau(sgd, tag);
-		s = cau.tongHopCau();
-		return s;
+			
+		@SuppressWarnings("unchecked")
+		JList list = new JList(tag.toArray());
+		list.setSelectedIndex(1);
+		list.setFont(new Font("Arial", Font.PLAIN, 15));
+		list.setBounds(0, 0, 200, 376);		
+		ChonTag.add(list);
+		getContentPane().add(BorderLayout.CENTER, new JScrollPane(list));
+		
+		JButton chonButton = new JButton("Chọn");
+		chonButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		chonButton.setBounds(221, 36, 102, 41);
+		ChonTag.add(chonButton);
+		chonButton.addActionListener(new ActionListener() {
+			
+			@SuppressWarnings("unchecked")
+			public void actionPerformed(ActionEvent e) {
+				Arr = (ArrayList<String>) list.getSelectedValuesList();
+				System.out.println(Arr); //test
+				Tag.setListTag(Arr);
+				Tag.setTag();
+				setVisible(false);
+				JOptionPane.showMessageDialog(null, "Chọn Tag thành công!!");
+			}
+		});
+		
+		JLabel lblNewLabel = new JLabel("Note:");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel.setBounds(248, 138, 40, 17);
+		ChonTag.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Bạn có thể chọn nhiều Tag bằng cách giữ \"Ctrl+Chuột\"");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblNewLabel_1.setBounds(235, 164, 79, 16);
+		ChonTag.add(lblNewLabel_1);
+		
 	}
-	
-	//Ghi vào file
-	protected void writeToFile(String A) {
-		try {
-			FileWriter fileWriter = new FileWriter(Result);
-			fileWriter.write(A);
-			fileWriter.close();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
-	
-	
 }
