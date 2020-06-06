@@ -222,13 +222,6 @@ public class SanGiaoDich{
 		this.setNhomNganHang();
 	}
 	
-/*	public void demTrangThai(List<CoPhieu> dscp) { //dem so ma tang, giam, dung
-		
-		this.setSoMaTang(countTang);
-		this.setSoMaGiam(countGiam);
-		this.setSoMaDung(countDung);
-	}
-*/	
 	public int demMaTang(List<CoPhieu> dscp) {
 		int count = 0;
 		for (CoPhieu i: dscp) {

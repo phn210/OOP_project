@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tag {
-	private SanGiaoDich sGD;
 	private List<CoPhieu> listCP; //danh sach co phieu nguoi dung nhap
 	private int topTang;
 	private int topGiam;
@@ -45,10 +44,10 @@ public class Tag {
 	private boolean lietKeSXNN;
 	private boolean trangThaiSXTD;
 	private boolean lietKeSXTD;
+	private boolean trangThaiCoPhieu;
 	
 	//constructors
-	public Tag(SanGiaoDich sGD, List<String> A) {
-		this.sGD = sGD;
+	public Tag() {
 		this.listCP = new ArrayList<>(); 
 		this.setTopTang(3);
 		this.setTopGiam(1);
@@ -62,7 +61,7 @@ public class Tag {
 		this.setLietKeNganHang(true);
 		this.setTrangThaiDauKhi(true);
 		this.setTrangThaiNganHang(true);
-		this.setListCP(A);
+		this.setTuTruTang(true);
 	}
 	
 	public int getTopTang() {
@@ -154,11 +153,7 @@ public class Tag {
 	public List<CoPhieu> getListCP() {
 		return listCP;
 	}
-	public void setListCP(List<String> A) {
-		for (int i=0; i< A.size();i++) {
-			listCP.add(sGD.findCP(A.get(i)));
-		}
-	}
+	
 	public boolean isKhopLenhTungCoPhieu() {
 		return khopLenhTungCoPhieu;
 	}
@@ -233,7 +228,7 @@ public class Tag {
 	}
 
 	public void setVonHoaLon(boolean vonHoaLon) {
-		vonHoaLon = vonHoaLon;
+		this.vonHoaLon = vonHoaLon;
 	}
 
 	public boolean isBlueChip() {
@@ -345,6 +340,14 @@ public class Tag {
 
 	public void setLietKeSXTD(boolean lietKeSXTD) {
 		this.lietKeSXTD = lietKeSXTD;
+	}
+
+	public boolean isTrangThaiCoPhieu() {
+		return trangThaiCoPhieu;
+	}
+
+	public void setTrangThaiCoPhieu(boolean trangThaiCoPhieu) {
+		this.trangThaiCoPhieu = trangThaiCoPhieu;
 	}
 	
 }

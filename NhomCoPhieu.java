@@ -8,6 +8,7 @@ public class NhomCoPhieu{
 	private List<CoPhieu> danhSachCP;
 	private float kiVong;
 	private float doLechChuan;
+	
 	//constructor
 	public NhomCoPhieu(List<CoPhieu> dscp,String tenNhom ,String...danhSachMa ) {	
 		this.setTenNhom(tenNhom);
