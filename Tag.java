@@ -62,6 +62,28 @@ public class Tag {
 		this.setTrangThaiDauKhi(true);
 		this.setTrangThaiNganHang(true);
 		this.setTuTruTang(true);
+		this.setTangHetBienDo(true);
+		this.setDienBienTraiChieu(true);
+		this.setDongLoatMatDiem(true);
+		this.setTuotDoc(true);
+		this.setChimTrongSacDo(true);
+		this.setVonHoaLon(true);
+		this.setBlueChip(true);
+		this.setNhomCoPhieuTang(true);
+		this.setNhomCoPhieuTangNhanh(true);
+		this.setNhomCoPhieuGiam(true);
+		this.setNhomCoPhieuGiamManh(true);
+		this.setNhomCoPhieuOnDinh(true);
+		this.setNhomCoPhieuPhanHoa(true);
+		this.setNhomCoPhieuTangNhanh(true);
+		this.setTrangThaiXDBDS(true);
+		this.setLietKeXDBDS(true);
+		this.setTrangThaiKhaiKhoang(true);
+		this.setLietKeKhaiKhoang(true);
+		this.setTrangThaiSXNN(true);
+		this.setLietKeSXNN(true);
+		this.setTrangThaiSXTD(true);
+		this.setLietKeSXTD(true);
 	}
 	
 	public int getTopTang() {
