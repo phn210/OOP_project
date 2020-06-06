@@ -220,6 +220,7 @@ public class SanGiaoDich{
 		this.sortTopGD();
 		this.setNhomDauKhi();
 		this.setNhomNganHang();
+		this.taoNhom();
 	}
 	
 	public int demMaTang(List<CoPhieu> dscp) {
