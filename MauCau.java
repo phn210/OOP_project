@@ -80,6 +80,67 @@ public class MauCau {
 			s.append(this.tuotDoc() + '\n');
 		if (this.chimTrongSacDo().length() != 0)
 			s.append(this.chimTrongSacDo() + '\n');
+		if (this.vhlDoSan().length() != 0)
+			s.append(this.vhlDoSan() + '\n');
+		
+		if (this.vhlTran().length() != 0)
+			s.append(this.vhlTran() + '\n');
+	
+		if (this.vhlThamChieu().length() != 0)
+			s.append(this.vhlThamChieu() + '\n');
+		
+		if (this.vhlGiuGia().length() != 0)
+			s.append(this.vhlGiuGia() + '\n');
+	
+		if (this.vhlXanh().length() != 0)
+			s.append(this.vhlXanh() + '\n');
+
+		if (this.bcDieuChinhNhe().length() != 0)
+			s.append(this.bcDieuChinhNhe() + '\n');
+
+		if (this.bcGiamNhe().length() != 0)
+			s.append(this.bcGiamNhe() + '\n');
+		
+		if (this.dungGiaThamChieu().length() != 0)
+			s.append(this.dungGiaThamChieu() + '\n');
+		
+		if (this.trangThaiXDBDS().length() != 0)
+			s.append(this.trangThaiXDBDS() + '\n');
+		
+		if (this.lietKeXDBDS().length() != 0)
+			s.append(this.lietKeXDBDS() + '\n');
+		
+		if (this.trangThaiKhaiKhoang().length() != 0)
+			s.append(this.trangThaiKhaiKhoang() + '\n');
+		
+		if (this.lietKeKhaiKhoang().length() != 0)
+			s.append(this.lietKeKhaiKhoang() + '\n');
+		
+		if (this.trangThaiSXNN().length() != 0)
+			s.append(this.trangThaiSXNN() + '\n');
+		if (this.lietKeSXNN().length() != 0)
+			s.append(this.lietKeSXNN() + '\n');
+		if (this.trangThaiSXTD().length() != 0)
+			s.append(this.trangThaiSXTD() + '\n');
+	
+		if (this.lietKeSXTD().length() != 0)
+			s.append(this.lietKeSXTD() + '\n');
+		
+		if (this.nhomCoPhieuTang().length() != 0)
+			s.append(this.nhomCoPhieuTang() + '\n');
+		
+		if (this.nhomCoPhieuTangNhanh().length() != 0)
+			s.append(this.nhomCoPhieuTangNhanh() + '\n');
+		
+		if (this.nhomCoPhieuGiam().length() != 0)
+			s.append(this.nhomCoPhieuGiam() + '\n');
+		if (this.nhomCoPhieuGiamManh().length() != 0)
+			s.append(this.nhomCoPhieuGiamManh() + '\n');
+		
+		if (this.nhomCoPhieuOnDinh().length() != 0)
+			s.append(this.nhomCoPhieuOnDinh() + '\n');
+		if (this.nhomCoPhieuPhanHoa().length() != 0)
+			s.append(this.nhomCoPhieuPhanHoa() + '\n');
 		return s.toString();
 	}
 
