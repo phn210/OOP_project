@@ -53,7 +53,6 @@ public class FileTxt{
 		System.out.println("Có lỗi!");
 			fr.close();
 		}
-		sgd.taoNhom();
 		System.out.println("Truyền dữ liệu thành công.");
     }
 	
