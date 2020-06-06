@@ -420,10 +420,10 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
 			//
-			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
-			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
-			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
-			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+			if (nhomChon.isTang()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng tăng với " + nhomChon.countTang() + " mã tăng. ");
+			else if (nhomChon.isGiam()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giảm " + nhomChon.countGiam() + " mã giảm. ");
+			else if (nhomChon.isOnDinh()) s.append("Các cổ phiếu" + nhomChon.getTenNhom()+ " có xu hướng ổn định. ");
+			else s.append("Các cố phiếu " + nhomChon.getTenNhom()+ " có sự phân hoá " + nhomChon.countTang() + " mã tăng và" + nhomChon.countGiam() + " mã giảm. ");
 		}
 		return s.toString();
 	}
@@ -435,13 +435,13 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm khai khoáng")) nhomChon = nhom;
 			//
-			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getTenNhom() + " ghi nhận mã ");
 			s.append(nhomChon.getDanhSachCP().get(0).getTen());
-			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(0).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(0).getBienDong()*-1 +" điểm, ");
 			s.append(nhomChon.getDanhSachCP().get(1).getTen());
-			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(1).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(1).getBienDong()*-1 +" điểm, ");
 		}
 		return s.toString();
 	}
@@ -453,10 +453,10 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
 			//
-			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
-			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
-			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
-			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+			if (nhomChon.isTang()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng tăng với " + nhomChon.countTang() + " mã tăng. ");
+			else if (nhomChon.isGiam()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giảm với " + nhomChon.countGiam() + " mã giảm. ");
+			else if (nhomChon.isOnDinh()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng ổn định ");
+			else s.append("Các cố phiếu " + nhomChon.getTenNhom()+ " có sự phân hoá với " + nhomChon.countTang() + " mã tăng và " + nhomChon.countGiam() + " mã giảm. ");
 		}
 		return s.toString();
 	}
@@ -468,13 +468,13 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm xây dựng và bất động sản")) nhomChon = nhom;
 			//
-			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getTenNhom() + " ghi nhận mã ");
 			s.append(nhomChon.getDanhSachCP().get(0).getTen());
-			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(0).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(0).getBienDong()*-1 +" điểm , ");
 			s.append(nhomChon.getDanhSachCP().get(1).getTen());
-			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(1).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(1).getBienDong()*-1 +" điểm, ");
 		}
 		return s.toString();
 	}
@@ -486,10 +486,10 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
 			//
-			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
-			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
-			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
-			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+			if (nhomChon.isTang()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng tăng với " + nhomChon.countTang() + " mã tăng. ");
+			else if (nhomChon.isGiam()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giảm với " + nhomChon.countGiam() + " mã giảm. ");
+			else if (nhomChon.isOnDinh()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giữ ổn định. ");
+			else s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có sự phân hóa với " + nhomChon.countTang() + " mã tăng và " + nhomChon.countGiam() + " mã giảm. ");
 		}
 		return s.toString();
 	}
@@ -501,13 +501,13 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất nông nghiệp")) nhomChon = nhom;//ten nhom
 			//
-			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getTenNhom() + " ghi nhận mã ");
 			s.append(nhomChon.getDanhSachCP().get(0).getTen());
-			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(0).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(0).getBienDong()*-1 +" điểm, ");
 			s.append(nhomChon.getDanhSachCP().get(1).getTen());
-			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(1).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(1).getBienDong()*-1 +" điểm, ");
 		}
 		return s.toString();
 	}	
@@ -519,10 +519,10 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
 			//
-			if (nhomChon.isTang()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong tang voi " + nhomChon.countTang() + " ma tang. ");
-			else if (nhomChon.isGiam()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giam voi " + nhomChon.countGiam() + " ma giam. ");
-			else if (nhomChon.isOnDinh()) s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co xu huong giu on dinh. ");
-			else s.append("Cac co phieu " + nhomChon.getTenNhom()+ " co su phan hoa voi " + nhomChon.countTang() + " ma tang va " + nhomChon.countGiam() + " ma giam. ");
+			if (nhomChon.isTang()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng tăng với " + nhomChon.countTang() + " mã tăng. ");
+			else if (nhomChon.isGiam()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giảm với " + nhomChon.countGiam() + " mã giảm. ");
+			else if (nhomChon.isOnDinh()) s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có xu hướng giữ ổn định. ");
+			else s.append("Các cổ phiếu " + nhomChon.getTenNhom()+ " có sự phân hóa với " + nhomChon.countTang() + " mã tăng va " + nhomChon.countGiam() + " mã giảm. ");
 		}
 		return s.toString();
 	}
@@ -534,13 +534,13 @@ public class MauCau {
 			for(NhomCoPhieu nhom: sGD.getNhomCoPhieu())
 				if (nhom.getTenNhom().equals("Nhóm sản xuất và tiêu dùng")) nhomChon = nhom;//ten nhom
 			//
-			s.append(nhomChon.getTenNhom() + " ghi nhan ma ");
+			s.append(nhomChon.getTenNhom() + " ghi nhận mã ");
 			s.append(nhomChon.getDanhSachCP().get(0).getTen());
-			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(0).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(0).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(0).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(0).getBienDong()*-1 +" điểm, ");
 			s.append(nhomChon.getDanhSachCP().get(1).getTen());
-			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tang " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
-			else s.append(" giam " + nhomChon.getDanhSachCP().get(1).getBienDong()*100 +"%, ");
+			if (nhomChon.getDanhSachCP().get(1).getBienDong()>0) s.append(" tăng " + nhomChon.getDanhSachCP().get(1).getBienDong() +" điểm, ");
+			else s.append(" giảm " + nhomChon.getDanhSachCP().get(1).getBienDong()*-1 +" điểm, ");
 		}
 		return s.toString();
 	}
@@ -553,12 +553,11 @@ public class MauCau {
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isTang() == true) {
 					dem++;
-					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " tăng " + (float)nhom.daiDienTang().getBienDong()*100 +"%, ");
+					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " tăng " + (float)nhom.daiDienTang().getBienDong() +" điểm, ");
 				}
 			}
 			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào tăng.");
 		}
-		System.out.println(s);
 		return s.toString();
 	}
 	
@@ -575,8 +574,8 @@ public class MauCau {
 					dem++;
 				}
 			}
-			if (dem ==0 || nhomTangNhanh.getKiVong()<2) s = new StringBuffer("Ngay hom nay khong co nhom co phieu nao tang nhanh.");
-			else s = new StringBuffer("Nhom co phieu " + nhomTangNhanh.getTenNhom() + " tang manh trong phien giao dich ngay hom nay, dai dien la co phieu " + nhomTangNhanh.daiDienTang().getTen() + " voi muc tang an tuong la " + nhomTangNhanh.daiDienTang().getBienDong()*100 +"%. ");
+			if (dem ==0 || nhomTangNhanh.getKiVong()<2) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào tăng nhanh");
+			else s = new StringBuffer("Nhóm cổ phiếu " + nhomTangNhanh.getTenNhom() + " tăng mạnh trong phiên giao dịch hôm nay, đại diện là cổ phiếu " + nhomTangNhanh.daiDienTang().getTen() + " với mức tăng ấn tượng là " + nhomTangNhanh.daiDienTang().getBienDong() +" điểm. ");
 		}
 		System.out.println(s);
 		return s.toString();
@@ -585,15 +584,15 @@ public class MauCau {
 	public String nhomCoPhieuGiam() {
 		StringBuffer s = new StringBuffer();
 		if (tag.isNhomCoPhieuGiam() == true) {
-			s.append("Mau do trong phien giao dich ngay hom nay chu yeu den tu nhom co phieu ");
+			s.append("Màu đỏ trong phiên giao dịch hôm nay chủ yếu đến từ nhóm cổ phiểu ");
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isGiam() == true) {
 					dem++;
-					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienTang().getTen() + " giam " + (float)nhom.daiDienTang().getBienDong()*100 +"%, ");
+					s.append(nhom.getTenNhom()+ " với đại diện là " + nhom.daiDienGiam().getTen() + " giảm " + (float)nhom.daiDienGiam().getBienDong()*-1 +" điểm, ");
 				}
 			}
-			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào giam. ");
+			if (dem==0) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào giảm. ");
 		}
 		System.out.println(s);
 		return s.toString();
@@ -612,8 +611,8 @@ public class MauCau {
 					dem++;
 				}
 			}
-			if (dem ==0 || nhomGiamManh.getKiVong()>-2) s = new StringBuffer("Ngay hom nay khong co nhom co phieu nao giam manh. ");
-			else s = new StringBuffer("Tin xau cho cac nha dau tu " + nhomGiamManh.getTenNhom() + " khi ma nhom nay giam manh, dai dien la co phieu " + nhomGiamManh.daiDienGiam().getTen() + " ve cuoi phien giam tan " + nhomGiamManh.daiDienGiam().getBienDong()*100 +"%. ");
+			if (dem ==0 || nhomGiamManh.getKiVong()>-2) s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào giảm mạnh ");
+			else s = new StringBuffer("Tin xấu cho các nhà đầu tư " + nhomGiamManh.getTenNhom() + " khi mã này giảm mạnh, đặc biệt là " + nhomGiamManh.daiDienGiam().getTen() + " về cuối phiên giảm tận " + nhomGiamManh.daiDienGiam().getBienDong()*-1 +" điểm. ");
 		}
 		System.out.println(s);
 		return s.toString();
@@ -622,7 +621,7 @@ public class MauCau {
 	public String nhomCoPhieuOnDinh() {
 		StringBuffer s = new StringBuffer();
 		if (tag.isNhomCoPhieuOnDinh() == true) {
-			s.append("Bat chat su dien dong cua san giao dich");
+			s.append("Bất chấp sự biến động của sàn giao dịch ");
 			int dem = 0;
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhom.isOnDinh() == true) {
@@ -630,8 +629,8 @@ public class MauCau {
 					s.append(", " + nhom.getTenNhom());
 				}
 			}
-			if (dem>0) s.append("van giu o muc on dinh deu. ");
-			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào on dinh. ");
+			if (dem>0) s.append("vẫn giữ ở mức ổn định đều. ");
+			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào ổn định. ");
 		}
 		System.out.println(s);
 		return s.toString();
@@ -641,13 +640,13 @@ public class MauCau {
 		StringBuffer s = new StringBuffer();
 		NhomCoPhieu nhomPhanHoa = null;
 		if (tag.isNhomCoPhieuPhanHoa() == true) {
-			s.append("Mot so nha dau tu quan ngai khi ma nhom co phieu ");
+			s.append("Một số nhà đầu tư quan ngại khi mã nhóm cổ phiếu ");
 			for(NhomCoPhieu nhom:sGD.getNhomCoPhieu()) {
 				if (nhomPhanHoa == null) nhomPhanHoa = nhom;
 				if (nhom.getDoLechChuan() > nhomPhanHoa.getDoLechChuan()) nhomPhanHoa = nhom;
 			}
-			if (nhomPhanHoa.getDoLechChuan() > 0.65) s.append(nhomPhanHoa.getTenNhom() + " co su phan hoa ro ret khi ma " + nhomPhanHoa.daiDienTang().getTen() + " tang " + nhomPhanHoa.daiDienTang().getBienDong()*100 + "% trong khi ma " + nhomPhanHoa.daiDienGiam().getTen() + " giam " + nhomPhanHoa.daiDienGiam().getBienDong()*100 + "%. ");
-			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào phan hoa ro ret. ");
+			if (nhomPhanHoa.getDoLechChuan() > 0.65) s.append(nhomPhanHoa.getTenNhom() + " có sự phân hóa rõ rệt khi mà " + nhomPhanHoa.daiDienTang().getTen() + " tăng " + nhomPhanHoa.daiDienTang().getBienDong() + " điểm trong khi mà " + nhomPhanHoa.daiDienGiam().getTen() + " giảm " + nhomPhanHoa.daiDienGiam().getBienDong()*-1 + " điểm. ");
+			else s = new StringBuffer("Ngày hôm nay không có nhóm cổ phiếu nào phân hóa rõ rệt. ");
 		}
 		System.out.println(s);
 		return s.toString();
